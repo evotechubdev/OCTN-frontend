@@ -672,6 +672,20 @@ footer {
 
 .consulting-hero {
   background-image: url("./public/imagens_pub/octn-consultoria.jpg");
+  background-position: left center;
+}
+
+.consulting-hero::before {
+  background: linear-gradient(270deg, #ffffff 0%, rgba(255, 255, 255, 0.96) 30%, rgba(244, 246, 247, 0.62) 48%, rgba(244, 246, 247, 0) 68%);
+}
+
+.consulting-hero .inner-hero-content {
+  display: grid;
+  grid-template-columns: 1fr minmax(440px, 0.9fr);
+}
+
+.consulting-hero .inner-hero-content > * {
+  grid-column: 2;
 }
 
 .academy-hero {
@@ -1113,6 +1127,10 @@ footer {
     height: calc(100svh - 180px);
   }
 
+  .consulting-hero .inner-hero-content {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
   .hero {
     min-height: 620px;
     height: calc(100svh - 180px);
@@ -1232,6 +1250,22 @@ footer {
     min-height: 620px;
     height: calc(100svh - 172px);
     background-position: 65% center;
+  }
+
+  .consulting-hero {
+    background-position: 32% center;
+  }
+
+  .consulting-hero::before {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.74));
+  }
+
+  .consulting-hero .inner-hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .consulting-hero .inner-hero-content > * {
+    grid-column: 1;
   }
 
   .inner-hero::before {
