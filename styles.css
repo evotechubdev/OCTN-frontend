@@ -686,6 +686,8 @@ footer {
 
 .consulting-hero .inner-hero-content > * {
   grid-column: 2;
+  justify-self: end;
+  text-align: right;
 }
 
 .academy-hero {
