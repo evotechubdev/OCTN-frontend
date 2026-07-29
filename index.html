@@ -27,20 +27,20 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <button class="skip-link" type="button" data-scroll-target="conteudo">Pular para o conteúdo</button>
 
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="#home" data-view-link="home" aria-label="OCTN — página inicial">
+        <button class="brand" type="button" data-view-link="home" aria-label="OCTN — página inicial">
           <img
             src="./public/imagens_pub/OCTN.png"
             alt="OCTN — Organização de Consultoria Técnica Nutricional"
           />
-        </a>
+        </button>
         <nav class="primary-nav" aria-label="Navegação principal">
-          <a href="#home" data-view-link="home" class="active">Home</a>
-          <a href="#consultoria" data-view-link="consultoria">Consultoria</a>
-          <a href="#capacitacao" data-view-link="capacitacao">Capacitação</a>
+          <button type="button" data-view-link="home" class="active">Home</button>
+          <button type="button" data-view-link="consultoria">Consultoria</button>
+          <button type="button" data-view-link="capacitacao">Capacitação</button>
         </nav>
       </div>
     </header>
@@ -59,10 +59,10 @@
             orientada por referenciais como ISO 22000 e FSSC 22000.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#solucoes">
+            <button class="button button-primary" type="button" data-scroll-target="solucoes">
               Conheça nossas soluções
               <span aria-hidden="true">→</span>
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -269,10 +269,10 @@
             Conte com a OCTN para transformar necessidades institucionais em
             diagnósticos claros, documentação confiável e planos de ação.
           </p>
-          <a class="button button-primary" href="#solucoes">
+          <button class="button button-primary" type="button" data-scroll-target="solucoes">
             Conheça nossas soluções
             <span aria-hidden="true">→</span>
-          </a>
+          </button>
         </div>
       </section>
       </div>

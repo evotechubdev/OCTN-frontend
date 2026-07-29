@@ -3,6 +3,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 const animatedElements = document.querySelectorAll(".reveal");
 const views = document.querySelectorAll("[data-view]");
 const viewLinks = document.querySelectorAll("[data-view-link]");
+const scrollButtons = document.querySelectorAll("[data-scroll-target]");
 const validViews = new Set(["home", "consultoria", "capacitacao"]);
 
 function activateView(viewName, shouldScroll = true) {
@@ -36,36 +37,21 @@ function activateView(viewName, shouldScroll = true) {
   }
 }
 
-function routeFromHash(shouldScroll = true) {
-  const hashTarget = window.location.hash.replace("#", "");
-
-  if (validViews.has(hashTarget)) {
-    activateView(hashTarget, shouldScroll);
-    return;
-  }
-
-  activateView("home", false);
-
-  if (shouldScroll && hashTarget) {
-    requestAnimationFrame(() => {
-      document.getElementById(hashTarget)?.scrollIntoView({ behavior: "smooth" });
-    });
-  }
-}
-
 viewLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const targetView = link.dataset.viewLink;
-
-    if (window.location.hash === `#${targetView}`) {
-      event.preventDefault();
-      activateView(targetView);
-    }
+  link.addEventListener("click", () => {
+    activateView(link.dataset.viewLink);
   });
 });
 
-window.addEventListener("hashchange", () => routeFromHash());
-routeFromHash(false);
+scrollButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    document
+      .getElementById(button.dataset.scrollTarget)
+      ?.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+activateView("home", false);
 
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
