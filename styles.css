@@ -4,13 +4,13 @@
   --navy-800: #0b3a64;
   --green-600: #2f883c;
   --green-500: #45a34c;
-  --green-100: #eaf4e9;
+  --green-100: #f3f7f3;
   --ink: #142a3e;
   --muted: #607080;
-  --cream: #f7f7f2;
+  --cream: #f6f8f9;
   --white: #ffffff;
-  --line: #dfe7e4;
-  --shadow: 0 20px 60px rgba(7, 38, 65, 0.11);
+  --line: #e4e9ec;
+  --shadow: 0 20px 60px rgba(20, 42, 62, 0.08);
   --container: 1180px;
 }
 
@@ -68,7 +68,7 @@ a {
   right: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(8, 43, 76, 0.08);
+  border-bottom: 1px solid #e9edef;
 }
 
 .header-inner {
@@ -472,8 +472,8 @@ a {
 .method {
   position: relative;
   overflow: hidden;
-  background: var(--navy-950);
-  color: var(--white);
+  background: #f3f6f7;
+  color: var(--ink);
 }
 
 .method::before {
@@ -482,10 +482,10 @@ a {
   left: -180px;
   width: 600px;
   height: 600px;
-  border: 1px solid rgba(89, 172, 84, 0.14);
+  border: 1px solid rgba(69, 163, 76, 0.08);
   border-radius: 50%;
   content: "";
-  box-shadow: 0 0 0 100px rgba(89, 172, 84, 0.035), 0 0 0 200px rgba(89, 172, 84, 0.025);
+  box-shadow: 0 0 0 100px rgba(69, 163, 76, 0.018), 0 0 0 200px rgba(69, 163, 76, 0.012);
 }
 
 .method-grid {
@@ -497,16 +497,16 @@ a {
 }
 
 .section-kicker-light {
-  color: #9dd392;
+  color: var(--green-600);
 }
 
 .method h2 {
-  color: var(--white);
+  color: var(--navy-900);
 }
 
 .method-heading p {
   max-width: 500px;
-  color: rgba(255, 255, 255, 0.67);
+  color: var(--muted);
 }
 
 .steps {
@@ -520,11 +520,11 @@ a {
   grid-template-columns: 56px 1fr;
   gap: 20px;
   padding: 28px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid var(--line);
 }
 
 .steps li > span {
-  color: #89c482;
+  color: var(--green-600);
   font-family: "Manrope", sans-serif;
   font-size: 0.74rem;
   font-weight: 800;
@@ -538,11 +538,11 @@ a {
 
 .steps p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
 }
 
 .closing {
-  background: linear-gradient(180deg, var(--white), #f5f8f5);
+  background: linear-gradient(180deg, var(--white), #f6f8f9);
 }
 
 .closing-card {
