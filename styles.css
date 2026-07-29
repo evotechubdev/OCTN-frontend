@@ -62,11 +62,8 @@ a {
 }
 
 .site-header {
-  position: absolute;
+  position: relative;
   z-index: 10;
-  top: 0;
-  right: 0;
-  left: 0;
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid #e9edef;
 }
@@ -85,11 +82,11 @@ a {
 .hero {
   position: relative;
   display: grid;
-  min-height: 700px;
-  height: 100svh;
+  min-height: 620px;
+  height: calc(100svh - 106px);
   align-items: center;
   overflow: hidden;
-  padding: 176px 0 90px;
+  padding: 70px 0;
 }
 
 .hero-media,
@@ -102,7 +99,7 @@ a {
   background:
     #f4f6f7
     url("./public/imagens_pub/consultoria-nutricional-hero.jpg")
-    right center / cover no-repeat;
+    right top / cover no-repeat;
 }
 
 .hero-shade {
@@ -618,11 +615,11 @@ footer {
 
 @media (max-width: 900px) {
   .hero {
-    min-height: 700px;
+    min-height: 620px;
   }
 
   .hero-media {
-    background-position: right center;
+    background-position: right top;
   }
 
   .hero-shade {
@@ -697,13 +694,13 @@ footer {
   }
 
   .hero {
-    min-height: 720px;
-    height: 100svh;
-    padding-top: 135px;
+    min-height: 620px;
+    height: calc(100svh - 84px);
+    padding: 50px 0;
   }
 
   .hero-media {
-    background-position: 68% center;
+    background-position: 68% top;
   }
 
   .hero-shade {
