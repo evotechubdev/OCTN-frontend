@@ -150,9 +150,9 @@ a {
   display: grid;
   min-height: 620px;
   height: calc(100svh - 126px);
-  align-items: center;
+  align-items: start;
   overflow: hidden;
-  padding: 70px 0;
+  padding: clamp(90px, 12svh, 130px) 0 60px;
 }
 
 .hero-media,
@@ -655,8 +655,9 @@ footer {
   display: grid;
   min-height: 620px;
   height: calc(100svh - 126px);
-  align-items: center;
+  align-items: start;
   overflow: hidden;
+  padding: clamp(90px, 12svh, 130px) 0 60px;
   background-color: #f4f6f7;
   background-position: right center;
   background-size: cover;
@@ -1237,7 +1238,7 @@ footer {
   .hero {
     min-height: 620px;
     height: calc(100svh - 172px);
-    padding: 50px 0;
+    padding: 60px 0 40px;
   }
 
   .hero-content {
@@ -1251,6 +1252,7 @@ footer {
   .inner-hero {
     min-height: 620px;
     height: calc(100svh - 172px);
+    padding: 60px 0 40px;
     background-position: 65% center;
   }
 
