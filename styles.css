@@ -127,7 +127,11 @@ a {
 }
 
 .eyebrow {
-  color: var(--green-600);
+  color: #444444;
+}
+
+.eyebrow::before {
+  background: var(--green-500);
 }
 
 .eyebrow::before,
