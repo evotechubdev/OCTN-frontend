@@ -177,7 +177,7 @@ a {
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(calc(100% - 96px), 1440px);
+  width: min(calc(100% - 40px), var(--container));
   color: #111111;
 }
 
@@ -671,7 +671,7 @@ footer {
 }
 
 .consulting-hero {
-  background-image: url("./public/imagens_pub/octn-consultoria-invertida.jpg");
+  background-image: url("./public/imagens_pub/octn-consultoria-equilibrada.jpg");
   background-position: left center;
 }
 
@@ -1239,7 +1239,7 @@ footer {
   }
 
   .hero-content {
-    width: min(calc(100% - 30px), 1440px);
+    width: min(calc(100% - 30px), var(--container));
   }
 
   .hero-media {
