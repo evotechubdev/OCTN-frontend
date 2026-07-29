@@ -1,12 +1,12 @@
 :root {
-  --navy-950: #061f38;
-  --navy-900: #082b4c;
-  --navy-800: #0b3a64;
+  --navy-950: #161616;
+  --navy-900: #171717;
+  --navy-800: #202020;
   --green-600: #2f883c;
   --green-500: #45a34c;
   --green-100: #f3f7f3;
-  --ink: #142a3e;
-  --muted: #607080;
+  --ink: #1b1b1b;
+  --muted: #626262;
   --cream: #f6f8f9;
   --white: #ffffff;
   --line: #e4e9ec;
@@ -102,7 +102,7 @@ a {
   background:
     #f4f6f7
     url("./public/imagens_pub/consultoria-nutricional-hero.jpg")
-    center / contain no-repeat;
+    right center / cover no-repeat;
 }
 
 .hero-shade {
@@ -114,7 +114,7 @@ a {
 .hero-content {
   position: relative;
   z-index: 2;
-  color: var(--navy-900);
+  color: #111111;
 }
 
 .eyebrow,
@@ -158,7 +158,7 @@ a {
 .hero-content > p {
   max-width: 590px;
   margin: 0;
-  color: #506274;
+  color: #444444;
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
 }
 
@@ -622,7 +622,7 @@ footer {
   }
 
   .hero-media {
-    background-position: center;
+    background-position: right center;
   }
 
   .hero-shade {
@@ -703,7 +703,7 @@ footer {
   }
 
   .hero-media {
-    background-position: center;
+    background-position: 68% center;
   }
 
   .hero-shade {
