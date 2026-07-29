@@ -119,7 +119,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  color: var(--green-600);
+  color: #444444;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -130,15 +130,11 @@ a {
   color: #444444;
 }
 
-.eyebrow::before {
-  background: var(--green-500);
-}
-
 .eyebrow::before,
 .section-kicker::before {
   width: 30px;
   height: 2px;
-  background: currentColor;
+  background: var(--green-500);
   content: "";
 }
 
@@ -380,7 +376,7 @@ a {
 .standards-label {
   display: block;
   margin-bottom: 7px;
-  color: var(--green-600);
+  color: #444444;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.13em;
@@ -498,7 +494,7 @@ a {
 }
 
 .section-kicker-light {
-  color: var(--green-600);
+  color: #444444;
 }
 
 .method h2 {
