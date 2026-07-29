@@ -88,21 +88,30 @@ a {
 .primary-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
 }
 
 .primary-nav button {
   position: relative;
-  min-width: 150px;
+  min-width: 0;
   min-height: 58px;
-  padding: 0 24px;
-  border: 1px solid #dfe5e8;
-  border-radius: 6px;
-  background: #f7f8f9;
+  padding: 0 30px;
+  border: 0;
+  background: transparent;
   color: #444444;
   cursor: pointer;
-  font: 700 0.96rem "DM Sans", sans-serif;
+  font: 700 1.04rem "DM Sans", sans-serif;
   transition: 180ms ease;
+}
+
+.primary-nav button + button::before {
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  color: #b9bfc2;
+  content: "|";
+  font-weight: 400;
+  transform: translateY(-52%);
 }
 
 .primary-nav button::after {
@@ -119,16 +128,12 @@ a {
 }
 
 .primary-nav button:hover {
-  border-color: #bcc6ca;
-  background: #ffffff;
   color: #111111;
-  transform: translateY(-1px);
 }
 
 .primary-nav button.active {
-  border-color: #171717;
-  background: #171717;
-  color: #ffffff;
+  background: transparent;
+  color: #111111;
 }
 
 .primary-nav button.active::after {
@@ -665,7 +670,7 @@ footer {
 }
 
 .consulting-hero {
-  background-image: url("./public/imagens_pub/consultoria-nutricional-hero.jpg");
+  background-image: url("./public/imagens_pub/octn-consultoria.jpg");
 }
 
 .academy-hero {
@@ -1097,9 +1102,9 @@ footer {
   }
 
   .primary-nav button {
-    min-width: 132px;
+    min-width: 0;
     min-height: 52px;
-    padding: 0 16px;
+    padding: 0 22px;
   }
 
   .inner-hero {
@@ -1235,14 +1240,15 @@ footer {
 
   .primary-nav {
     width: 100%;
-    gap: 6px;
+    justify-content: center;
+    gap: 0;
   }
 
   .primary-nav button {
     min-width: 0;
     min-height: 50px;
-    flex: 1;
-    padding: 0 8px;
+    flex: 0 1 auto;
+    padding: 0 14px;
     font-size: 0.8rem;
   }
 
