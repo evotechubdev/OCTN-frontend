@@ -31,16 +31,22 @@
 
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="#inicio" aria-label="OCTN — página inicial">
+        <a class="brand" href="#home" data-view-link="home" aria-label="OCTN — página inicial">
           <img
             src="./public/imagens_pub/OCTN.png"
             alt="OCTN — Organização de Consultoria Técnica Nutricional"
           />
         </a>
+        <nav class="primary-nav" aria-label="Navegação principal">
+          <a href="#home" data-view-link="home" class="active">Home</a>
+          <a href="#consultoria" data-view-link="consultoria">Consultoria</a>
+          <a href="#capacitacao" data-view-link="capacitacao">Capacitação</a>
+        </nav>
       </div>
     </header>
 
     <main id="conteudo">
+      <div class="page-view active" id="home" data-view="home">
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <div class="hero-media" role="img" aria-label="Avaliação técnica em uma unidade de alimentação institucional"></div>
         <div class="hero-shade"></div>
@@ -269,6 +275,227 @@
           </a>
         </div>
       </section>
+      </div>
+
+      <div class="page-view" id="consultoria" data-view="consultoria" hidden>
+        <section class="inner-hero consulting-hero" aria-labelledby="consulting-title">
+          <div class="container inner-hero-content">
+            <span class="section-kicker">OCTN Consultoria</span>
+            <h1 id="consulting-title">Soluções técnicas para operações mais seguras.</h1>
+            <p>
+              Uma empresa especializada em soluções para gestão, qualidade,
+              segurança dos alimentos e assistência nutricional.
+            </p>
+          </div>
+        </section>
+
+        <section class="section service-overview">
+          <div class="container">
+            <div class="section-heading compact reveal">
+              <div>
+                <span class="section-kicker">Onde atuamos</span>
+                <h2>Consultoria conectada à realidade de cada operação.</h2>
+              </div>
+              <p>
+                Alimentação escolar, UANs, restaurantes, cafeterias,
+                churrascarias, padarias e delicatessens.
+              </p>
+            </div>
+            <ul class="segment-list reveal" aria-label="Segmentos atendidos">
+              <li>Alimentação Escolar</li>
+              <li>UAN</li>
+              <li>Restaurantes</li>
+              <li>Cafeterias</li>
+              <li>Churrascarias</li>
+              <li>Padarias</li>
+              <li>Delicatessens</li>
+            </ul>
+            <ul class="expertise-list reveal" aria-label="Áreas de atuação">
+              <li>Auditorias</li>
+              <li>BPF</li>
+              <li>POP</li>
+              <li>APPCC</li>
+              <li>Responsabilidade Técnica</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section vnt-section" aria-labelledby="vnt-title">
+          <div class="container">
+            <div class="solution-label reveal"><span>Solução 01</span></div>
+            <div class="vnt-intro reveal">
+              <div>
+                <span class="section-kicker">VNT OCTN</span>
+                <h2 id="vnt-title">Vistoria Nutricional Técnica</h2>
+              </div>
+              <div>
+                <strong>O que é?</strong>
+                <p>
+                  Um serviço técnico estruturado para avaliar, documentar e
+                  acompanhar a qualidade nutricional, sanitária e operacional
+                  de serviços de alimentação, promovendo conformidade com a
+                  legislação vigente, segurança dos alimentos e melhoria contínua.
+                </p>
+              </div>
+            </div>
+
+            <div class="vnt-layout">
+              <div class="vnt-steps reveal">
+                <details open>
+                  <summary><span>01</span> Vistoria Técnica em Campo</summary>
+                  <div class="detail-content">
+                    <p><strong>Objetivo:</strong> avaliar sistematicamente toda a operação.</p>
+                    <ul>
+                      <li>Estrutura física e fluxo de produção</li>
+                      <li>Armazenamento e organização do estoque</li>
+                      <li>Higiene, manipulação e controle de temperaturas</li>
+                      <li>Documentação obrigatória</li>
+                      <li>RDC nº 216/2004 e demais normas aplicáveis</li>
+                    </ul>
+                  </div>
+                </details>
+                <details>
+                  <summary><span>02</span> Relatório Técnico VNT OCTN</summary>
+                  <div class="detail-content">
+                    <ul>
+                      <li>Evidências, pontos fortes e não conformidades</li>
+                      <li>Classificação dos riscos</li>
+                      <li>Registro fotográfico, quando autorizado</li>
+                      <li>Índice Técnico OCTN da Unidade</li>
+                      <li>Recomendações técnicas</li>
+                    </ul>
+                  </div>
+                </details>
+                <details>
+                  <summary><span>03</span> Plano de Adequação</summary>
+                  <div class="detail-content">
+                    <ul>
+                      <li>Ações corretivas e ordem de prioridade</li>
+                      <li>Responsáveis e prazos para execução</li>
+                      <li>Evidências esperadas</li>
+                      <li>Cronograma de acompanhamento</li>
+                    </ul>
+                  </div>
+                </details>
+                <details>
+                  <summary><span>04</span> Manual de Boas Práticas e POPs</summary>
+                  <div class="detail-content">
+                    <ul>
+                      <li>Manual de Boas Práticas</li>
+                      <li>Procedimentos Operacionais Padronizados</li>
+                      <li>Registros de monitoramento</li>
+                      <li>Planilhas de controle</li>
+                      <li>Documentação adaptada à realidade da instituição</li>
+                    </ul>
+                  </div>
+                </details>
+              </div>
+
+              <aside class="index-card reveal" aria-label="Exemplo do Índice Técnico OCTN">
+                <span class="index-label">Índice Técnico OCTN</span>
+                <div class="index-score"><strong>0–100</strong><span>evolução mensurável</span></div>
+                <div class="index-track"><span></span></div>
+                <p>
+                  Indicador proprietário para visualizar o nível de conformidade
+                  e acompanhar a evolução da unidade ao longo da consultoria.
+                </p>
+                <small>
+                  Indicador gerencial OCTN. Não equivale a licença sanitária,
+                  acreditação ou certificação oficial.
+                </small>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="section pillars" aria-labelledby="pillars-title">
+          <div class="container">
+            <div class="section-heading compact reveal">
+              <div>
+                <span class="section-kicker">Diferencial OCTN</span>
+                <h2 id="pillars-title">Uma metodologia, quatro pilares.</h2>
+              </div>
+            </div>
+            <div class="pillar-grid">
+              <article class="reveal"><span>01</span><h3>Diagnosticar</h3><p>Identificação técnica das conformidades e oportunidades de melhoria.</p></article>
+              <article class="reveal"><span>02</span><h3>Organizar</h3><p>Padronização dos processos, registros e documentação.</p></article>
+              <article class="reveal"><span>03</span><h3>Adequar</h3><p>Implantação das ações corretivas conforme a legislação aplicável.</p></article>
+              <article class="reveal"><span>04</span><h3>Monitorar</h3><p>Acompanhamento contínuo da qualidade e segurança dos alimentos.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-split care-feature">
+          <div class="feature-image" role="img" aria-label="Atendimento nutricional online OCTN Care"></div>
+          <div class="feature-copy reveal">
+            <span class="section-kicker">OCTN Care</span>
+            <h2>Assistência nutricional onde o cuidado acontece.</h2>
+            <p>
+              Atendimento técnico e acompanhamento próximo para ampliar o
+              acesso ao cuidado nutricional.
+            </p>
+            <ul>
+              <li>Atendimento Nutricional Online</li>
+              <li>Home Care</li>
+              <li>Acompanhamento Nutricional</li>
+              <li>Educação Nutricional</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="page-view" id="capacitacao" data-view="capacitacao" hidden>
+        <section class="inner-hero academy-hero" aria-labelledby="academy-title">
+          <div class="container inner-hero-content">
+            <span class="section-kicker">OCTN Academy</span>
+            <h1 id="academy-title">Conhecimento técnico que transforma práticas.</h1>
+            <p>
+              Treinamentos e experiências de aprendizagem para desenvolver
+              equipes mais preparadas, seguras e conscientes.
+            </p>
+          </div>
+        </section>
+
+        <section class="section academy-services">
+          <div class="container">
+            <div class="section-heading compact reveal">
+              <div>
+                <span class="section-kicker">Capacitação profissional</span>
+                <h2>Conteúdo aplicável à rotina das organizações.</h2>
+              </div>
+              <p>
+                Programas presenciais ou online, personalizados para o
+                segmento, os riscos e as necessidades da equipe.
+              </p>
+            </div>
+            <div class="academy-grid">
+              <article class="reveal"><span>01</span><h3>Treinamentos</h3><p>Aprendizagem prática para equipes operacionais e lideranças.</p></article>
+              <article class="reveal"><span>02</span><h3>Capacitações</h3><p>Desenvolvimento técnico alinhado às normas e responsabilidades.</p></article>
+              <article class="reveal"><span>03</span><h3>Palestras</h3><p>Conteúdo objetivo para sensibilização e atualização profissional.</p></article>
+              <article class="reveal"><span>04</span><h3>Cursos</h3><p>Formações estruturadas com conteúdo, atividades e avaliação.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section academy-topics">
+          <div class="container topics-layout">
+            <div class="reveal">
+              <span class="section-kicker">Temas técnicos</span>
+              <h2>Formação orientada por riscos e evidências.</h2>
+            </div>
+            <ul class="topic-list reveal">
+              <li>Boas Práticas de Fabricação e Manipulação</li>
+              <li>Procedimentos Operacionais Padronizados</li>
+              <li>APPCC / HACCP e segurança dos alimentos</li>
+              <li>Controle de temperaturas e armazenamento</li>
+              <li>Higiene e saúde dos manipuladores</li>
+              <li>ISO 22000 e fundamentos do FSSC 22000</li>
+              <li>Vigilância Sanitária e documentação</li>
+              <li>Educação alimentar e nutricional</li>
+            </ul>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer>
