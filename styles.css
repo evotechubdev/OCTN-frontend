@@ -654,6 +654,7 @@ footer {
   position: relative;
   display: grid;
   min-height: 620px;
+  height: calc(100svh - 126px);
   align-items: center;
   overflow: hidden;
   background-color: #f4f6f7;
@@ -1108,11 +1109,13 @@ footer {
   }
 
   .inner-hero {
-    min-height: 600px;
+    min-height: 620px;
+    height: calc(100svh - 180px);
   }
 
   .hero {
     min-height: 620px;
+    height: calc(100svh - 180px);
   }
 
   .hero-media {
@@ -1227,6 +1230,7 @@ footer {
 
   .inner-hero {
     min-height: 620px;
+    height: calc(100svh - 172px);
     background-position: 65% center;
   }
 
