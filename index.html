@@ -482,6 +482,30 @@
                 </div>
 
                 <fieldset>
+                  <legend>Dados do contrato</legend>
+                  <div class="contract-fields">
+                    <label><span>Instituição ou cliente contratante</span><input id="client-name" type="text" placeholder="Nome ou razão social" autocomplete="organization" /></label>
+                    <label><span>CPF ou CNPJ da contratante</span><input id="client-document" type="text" placeholder="CPF/CNPJ" /></label>
+                    <label class="wide-field"><span>Endereço da contratante</span><input id="client-address" type="text" placeholder="Endereço completo" autocomplete="street-address" /></label>
+                    <label><span>Nutricionista responsável</span><input id="nutritionist-name" type="text" placeholder="Nome completo" autocomplete="name" /></label>
+                    <label><span>Número do CRN</span><input id="nutritionist-crn" type="text" placeholder="Ex.: CRN-5/0000" /></label>
+                    <label><span>CPF/CNPJ da prestadora</span><input id="provider-document" type="text" placeholder="CPF/CNPJ" /></label>
+                    <label><span>Cidade</span><input id="contract-city" type="text" placeholder="Cidade/UF" autocomplete="address-level2" /></label>
+                    <label><span>Início da parceria</span><input id="contract-start" type="date" /></label>
+                    <label><span>Dia do vencimento mensal</span><input id="payment-day" type="number" min="1" max="28" value="5" /></label>
+                    <label>
+                      <span>Prazo contratual</span>
+                      <select id="contract-term">
+                        <option value="indeterminado">Prazo indeterminado</option>
+                        <option value="3 meses">3 meses</option>
+                        <option value="6 meses">6 meses</option>
+                        <option value="12 meses">12 meses</option>
+                      </select>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset>
                   <legend>Serviço individual mensal</legend>
                   <label class="service-option">
                     <input type="radio" name="primary-service" value="avaliacao" checked />
@@ -514,7 +538,7 @@
               <aside class="simulation-summary reveal" id="simulation-summary" aria-live="polite">
                 <div class="print-brand">
                   <img src="./public/imagens_pub/OCTN.png" alt="OCTN — Organização de Consultoria Técnica Nutricional" />
-                  <span>Simulação de serviços nutricionais</span>
+                  <span>Contrato de prestação de serviços nutricionais</span>
                 </div>
                 <div class="summary-heading">
                   <span>Resumo mensal</span>
@@ -529,15 +553,44 @@
                   <span>Mensalidade da parceria</span>
                   <strong id="summary-total">R$ 1.798,80</strong>
                 </div>
+                <p class="unit-reference">Valor individual de referência: <strong id="summary-unit-reference">R$ 149,90</strong></p>
                 <ul class="summary-deliverables" id="summary-deliverables"></ul>
-                <div class="dimension-note" id="dimension-note"></div>
+                <div class="contract-document">
+                  <div class="contract-document-header"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Instrumento particular</span></div>
+                  <h2>Contrato de Prestação de Serviços Nutricionais</h2>
+                  <p class="contract-parties">
+                    <strong>CONTRATANTE:</strong> <span id="contract-client-output">________________________________</span>,
+                    inscrita no CPF/CNPJ sob nº <span id="contract-client-document-output">________________</span>,
+                    com endereço em <span id="contract-client-address-output">________________________________</span>.
+                    <strong>CONTRATADA:</strong> OCTN - Organização de Consultoria Técnica Nutricional,
+                    CPF/CNPJ nº <span id="contract-provider-document-output">________________</span>, representada tecnicamente por
+                    <span id="contract-nutritionist-output">________________________________</span>,
+                    <span id="contract-crn-output">CRN __________</span>. As partes celebram o presente contrato mediante as cláusulas seguintes.
+                  </p>
+                  <ol class="contract-clauses">
+                    <li><strong>Objeto.</strong> <span id="contract-object-output"></span></li>
+                    <li><strong>Mensalidade.</strong> <span id="contract-payment-output"></span> O valor individual é apenas uma referência para formação da mensalidade, não caracterizando cobrança avulsa por atendimento.</li>
+                    <li><strong>Execução.</strong> Os atendimentos serão agendados em comum acordo. A CONTRATADA preservará sua autonomia técnica e registrará os serviços profissionais realizados.</li>
+                    <li><strong>Obrigações da contratante.</strong> A CONTRATANTE fornecerá informações, autorizações, espaço e condições adequadas à execução do serviço, além de comunicar alterações relevantes sobre as pessoas atendidas.</li>
+                    <li><strong>Prazo.</strong> <span id="contract-term-output"></span> Qualquer parte poderá encerrar a parceria mediante aviso escrito com antecedência mínima de 30 dias, sem prejuízo dos valores já vencidos.</li>
+                    <li><strong>Confidencialidade e dados.</strong> As partes protegerão prontuários e dados pessoais, especialmente dados de saúde, utilizando-os somente para a execução do cuidado e demais hipóteses permitidas pela legislação aplicável.</li>
+                    <li><strong>Natureza da contratação.</strong> Este instrumento possui natureza civil de prestação de serviços, preservadas a autonomia profissional e as condições efetivamente praticadas entre as partes.</li>
+                  </ol>
+                  <p class="contract-agreement">Por estarem de acordo, as partes assinam este instrumento em duas vias de igual teor.</p>
+                  <p class="signature-place"><span id="contract-city-output">________________</span>, <span id="contract-sign-date"></span>.</p>
+                  <div class="contract-signatures">
+                    <div><span class="signature-line"></span><strong id="signature-nutritionist-output">Nutricionista responsável</strong><small id="signature-crn-output">CRN __________</small></div>
+                    <div><span class="signature-line"></span><strong id="signature-client-output">Contratante</strong><small id="signature-client-document-output">CPF/CNPJ __________</small></div>
+                  </div>
+                </div>
                 <p class="summary-disclaimer">
-                  Valor mensal recorrente enquanto a parceria estiver ativa, para a quantidade e o escopo indicados. Não representa parcelamento nem cobrança por atendimento realizado. Simulação informativa baseada na Tabela de Honorários 2026–2027 do SINDNUT/BA; a contratação definitiva depende de proposta e contrato.
+                  Valor mensal recorrente enquanto a parceria estiver ativa, para a quantidade e o escopo indicados. Não representa parcelamento nem cobrança por atendimento realizado. Confira os dados e submeta a minuta à revisão jurídica antes da assinatura definitiva.
                 </p>
                 <p class="print-date">Emitida em <span id="simulation-date"></span>.</p>
                 <button class="button button-primary print-button" type="button" id="print-simulation">
-                  Imprimir simulação <span aria-hidden="true">↗</span>
+                  Imprimir contrato <span aria-hidden="true">↗</span>
                 </button>
+                <div class="print-footer">OCTN - Organização de Consultoria Técnica Nutricional</div>
               </aside>
             </div>
           </div>
@@ -551,7 +604,6 @@
             </div>
             <div class="guidance-copy">
               <p><strong>Atendimento individual:</strong> o valor simulado cobre uma avaliação ou consulta por pessoa no mês, conforme a modalidade selecionada.</p>
-              <p><strong>Serviço institucional de ILPI:</strong> para até 20 idosos, a Resolução CFN nº 600/2018 indica 1 nutricionista e 15 horas técnicas semanais. Essa carga não está incluída automaticamente na conta de atendimentos individuais.</p>
               <p><strong>Outros escopos:</strong> produção de refeições, responsabilidade técnica, deslocamentos e vínculo empregatício exigem dimensionamento separado.</p>
               <div class="reference-actions">
                 <a href="https://www.sindnutba.org.br/p/tabela-de-honorarios_4.html" target="_blank" rel="noopener noreferrer">Tabela SINDNUT/BA 2026–2027 <span aria-hidden="true">↗</span></a>
