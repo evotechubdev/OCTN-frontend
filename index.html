@@ -24,7 +24,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css?v=10" />
-    <script src="./script.js" defer></script>
+    <script src="./script.js?v=2" defer></script>
   </head>
   <body>
     <button class="skip-link" type="button" data-scroll-target="conteudo">Pular para o conteúdo</button>
@@ -467,13 +467,13 @@
             <div class="simulator-heading reveal">
               <span class="section-kicker">Simulador mensal</span>
               <h2 id="simulator-title">Monte o atendimento da instituição.</h2>
-              <p>Informe quantas pessoas serão atendidas uma vez por mês, escolha o serviço principal e inclua apenas os serviços complementares necessários.</p>
+              <p>Informe quantas pessoas serão cobertas pela parceria mensal, escolha o serviço principal e inclua apenas os serviços complementares necessários.</p>
             </div>
 
             <div class="simulator-layout">
               <form class="simulator-form reveal" id="service-simulator">
                 <div class="form-field">
-                  <label for="resident-count">Pessoas atendidas por mês</label>
+                  <label for="resident-count">Pessoas cobertas pela mensalidade</label>
                   <div class="quantity-control">
                     <button type="button" data-quantity-action="decrease" aria-label="Diminuir quantidade">−</button>
                     <input id="resident-count" name="resident-count" type="number" min="1" max="500" step="1" value="12" inputmode="numeric" />
@@ -485,15 +485,15 @@
                   <legend>Serviço individual mensal</legend>
                   <label class="service-option">
                     <input type="radio" name="primary-service" value="avaliacao" checked />
-                    <span><strong>Apenas avaliação nutricional</strong><small>Avaliação e registro individual — R$ 149,90 por pessoa.</small></span>
+                    <span><strong>Plano mensal de avaliação nutricional</strong><small>Atendimento e registro individual de todas as pessoas cobertas pela parceria.</small></span>
                   </label>
                   <label class="service-option">
                     <input type="radio" name="primary-service" value="clinica-social" />
-                    <span><strong>Atendimento nutricional clínico — condição social</strong><small>Consulta individual com redução social máxima de 50% sobre R$ 403,07.</small></span>
+                    <span><strong>Plano clínico mensal — condição social</strong><small>Consulta individual com a condição social máxima prevista na tabela profissional.</small></span>
                   </label>
                   <label class="service-option">
                     <input type="radio" name="primary-service" value="clinica" />
-                    <span><strong>Atendimento nutricional clínico integral</strong><small>Consulta individual — R$ 403,07 por pessoa.</small></span>
+                    <span><strong>Plano clínico mensal integral</strong><small>Consulta clínica individual para todas as pessoas cobertas.</small></span>
                   </label>
                 </fieldset>
 
@@ -508,7 +508,7 @@
                   <label class="analysis-option"><input type="checkbox" id="extended-scope" /><span>Solicitar também análise de alimentação coletiva ou responsabilidade técnica <small>Valor definido em proposta específica.</small></span></label>
                 </fieldset>
 
-                <button class="button simulator-reset" type="reset">Limpar adicionais</button>
+                <button class="button simulator-reset" type="reset">Restaurar simulação</button>
               </form>
 
               <aside class="simulation-summary reveal" id="simulation-summary" aria-live="polite">
@@ -518,21 +518,21 @@
                 </div>
                 <div class="summary-heading">
                   <span>Resumo mensal</span>
-                  <h3 id="summary-service-name">Apenas avaliação nutricional</h3>
-                  <p><strong id="summary-resident-count">12</strong> pessoas atendidas por mês</p>
+                  <h3 id="summary-service-name">Plano mensal de avaliação nutricional</h3>
+                  <p>Parceria com cobertura para até <strong id="summary-resident-count">12</strong> pessoas</p>
                 </div>
                 <div class="summary-table" role="table" aria-label="Composição da simulação">
                   <div class="summary-table-head" role="row"><span role="columnheader">Serviço</span><span role="columnheader">Valor</span></div>
                   <div id="summary-items"></div>
                 </div>
                 <div class="summary-total">
-                  <span>Estimativa mensal</span>
+                  <span>Mensalidade da parceria</span>
                   <strong id="summary-total">R$ 1.798,80</strong>
                 </div>
                 <ul class="summary-deliverables" id="summary-deliverables"></ul>
                 <div class="dimension-note" id="dimension-note"></div>
                 <p class="summary-disclaimer">
-                  Simulação informativa baseada na Tabela de Honorários 2026–2027 do SINDNUT/BA. Não constitui proposta comercial, desconto promocional ou contrato. Deslocamentos, insumos e complexidades não informadas podem alterar o valor final.
+                  Valor mensal recorrente enquanto a parceria estiver ativa, para a quantidade e o escopo indicados. Não representa parcelamento nem cobrança por atendimento realizado. Simulação informativa baseada na Tabela de Honorários 2026–2027 do SINDNUT/BA; a contratação definitiva depende de proposta e contrato.
                 </p>
                 <p class="print-date">Emitida em <span id="simulation-date"></span>.</p>
                 <button class="button button-primary print-button" type="button" id="print-simulation">
