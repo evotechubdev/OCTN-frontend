@@ -4,7 +4,7 @@ const animatedElements = document.querySelectorAll(".reveal");
 const views = document.querySelectorAll("[data-view]");
 const viewLinks = document.querySelectorAll("[data-view-link]");
 const scrollButtons = document.querySelectorAll("[data-scroll-target]");
-const validViews = new Set(["home", "consultoria", "capacitacao"]);
+const validViews = new Set(["home", "consultoria", "servicos", "capacitacao"]);
 
 function activateView(viewName, shouldScroll = true) {
   const selectedView = validViews.has(viewName) ? viewName : "home";
@@ -28,6 +28,8 @@ function activateView(viewName, shouldScroll = true) {
   document.title =
     selectedView === "consultoria"
       ? "Consultoria | OCTN"
+      : selectedView === "servicos"
+        ? "Serviços | OCTN"
       : selectedView === "capacitacao"
         ? "Capacitação | OCTN"
         : "OCTN | Consultoria Técnica Nutricional";
@@ -39,8 +41,14 @@ function activateView(viewName, shouldScroll = true) {
 
 viewLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    activateView(link.dataset.viewLink);
+    const targetView = link.dataset.viewLink;
+    history.pushState(null, "", `#${targetView}`);
+    activateView(targetView);
   });
+});
+
+window.addEventListener("popstate", () => {
+  activateView(window.location.hash.slice(1), false);
 });
 
 scrollButtons.forEach((button) => {
@@ -51,7 +59,8 @@ scrollButtons.forEach((button) => {
   });
 });
 
-activateView("home", false);
+const initialView = window.location.hash.slice(1);
+activateView(validViews.has(initialView) ? initialView : "home", false);
 
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(

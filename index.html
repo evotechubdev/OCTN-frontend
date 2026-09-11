@@ -23,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=9" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
     <script src="./script.js" defer></script>
   </head>
   <body>
@@ -40,6 +40,7 @@
         <nav class="primary-nav" aria-label="Navegação principal">
           <button type="button" data-view-link="home" class="active">Home</button>
           <button type="button" data-view-link="consultoria">Consultoria</button>
+          <button type="button" data-view-link="servicos">Serviços</button>
           <button type="button" data-view-link="capacitacao">Capacitação</button>
         </nav>
       </div>
@@ -440,6 +441,179 @@
               <li>Acompanhamento Nutricional</li>
               <li>Educação Nutricional</li>
             </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="page-view" id="servicos" data-view="servicos" hidden>
+        <section class="inner-hero services-hero" aria-labelledby="services-title">
+          <div class="container inner-hero-content">
+            <span class="section-kicker">Plano Institucional Mensal</span>
+            <h1 id="services-title">Cuidado nutricional contínuo, pessoa por pessoa.</h1>
+            <p>
+              Assistência nutricional individual para residentes de instituições
+              sociais, organizada em um contrato mensal acessível, responsável e
+              dimensionado para a realidade de cada instituição.
+            </p>
+            <button class="button button-primary services-hero-action" type="button" data-scroll-target="plano-institucional">
+              Conheça o plano
+              <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section institutional-plan" id="plano-institucional" aria-labelledby="plan-title">
+          <div class="container package-layout">
+            <div class="package-intro reveal">
+              <span class="section-kicker">OCTN Care Institucional</span>
+              <h2 id="plan-title">Um plano mensal. Cuidado individual para todos.</h2>
+              <p>
+                A instituição contrata uma assistência continuada e cada residente
+                recebe avaliação, conduta e acompanhamento individualizados. A
+                frequência de cada reavaliação é definida pela necessidade clínica,
+                pelo risco nutricional e pela evolução de cada pessoa.
+              </p>
+              <div class="package-tags" aria-label="Instituições atendidas">
+                <span>ILPIs</span>
+                <span>Casas de acolhimento</span>
+                <span>Instituições filantrópicas</span>
+                <span>Projetos sociais</span>
+              </div>
+            </div>
+
+            <aside class="package-card reveal" aria-label="Resumo do plano institucional">
+              <span class="package-badge">Contratação recorrente</span>
+              <h3>Pacote de atendimento nutricional individual</h3>
+              <div class="package-price">
+                <strong>Mensalidade sob proposta</strong>
+                <span>dimensionada por instituição</span>
+              </div>
+              <ul>
+                <li>Atendimento de cada residente incluído no escopo</li>
+                <li>Planejamento mensal e presença técnica recorrente</li>
+                <li>Prontuários e evolução nutricional individual</li>
+                <li>Relatório gerencial para a instituição</li>
+              </ul>
+              <small>
+                O valor é apresentado após o dimensionamento técnico, sempre
+                respeitando os referenciais profissionais vigentes.
+              </small>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section care-journey" aria-labelledby="journey-title">
+          <div class="container">
+            <div class="section-heading compact reveal">
+              <div>
+                <span class="section-kicker">Ciclo de cuidado</span>
+                <h2 id="journey-title">O que cada residente recebe.</h2>
+              </div>
+              <p>
+                Um acompanhamento documentado e integrado à rotina assistencial,
+                com condutas definidas pelo nutricionista responsável.
+              </p>
+            </div>
+            <ol class="care-cycle">
+              <li class="reveal"><span>01</span><h3>Avaliação individual</h3><p>Anamnese, antropometria possível, consumo alimentar, condições clínicas e risco nutricional.</p></li>
+              <li class="reveal"><span>02</span><h3>Plano de cuidado</h3><p>Diagnóstico nutricional, objetivos e conduta individual, considerando preferências e necessidades.</p></li>
+              <li class="reveal"><span>03</span><h3>Acompanhamento</h3><p>Reavaliações priorizadas por risco, registro da evolução e ajustes sempre que clinicamente indicados.</p></li>
+              <li class="reveal"><span>04</span><h3>Integração assistencial</h3><p>Orientações à equipe e aos responsáveis, com encaminhamento a outros profissionais quando necessário.</p></li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="section example-section" aria-labelledby="example-title">
+          <div class="container example-panel reveal">
+            <div class="example-heading">
+              <span class="section-kicker section-kicker-light">Exemplo de dimensionamento</span>
+              <h2 id="example-title">Uma ILPI com até 20 residentes.</h2>
+              <p>
+                Todos entram no plano de cuidado individual. O serviço é organizado
+                como assistência contínua — não como uma sequência isolada de vinte consultas.
+              </p>
+            </div>
+            <dl class="example-metrics">
+              <div><dt>Profissional de referência</dt><dd><strong>1</strong> nutricionista</dd></div>
+              <div><dt>Carga técnica de referência</dt><dd><strong>15 h</strong> por semana</dd></div>
+              <div><dt>Cobertura assistencial</dt><dd><strong>100%</strong> dos residentes do escopo</dd></div>
+              <div><dt>Forma de contratação</dt><dd><strong>1</strong> mensalidade institucional</dd></div>
+            </dl>
+            <p class="example-note">
+              Referência clínica para até 20 idosos conforme a Resolução CFN nº 600/2018.
+              O dimensionamento final considera complexidade clínica, grau de dependência,
+              atividades contratadas e regras regionais aplicáveis.
+            </p>
+          </div>
+        </section>
+
+        <section class="section accessible-model" aria-labelledby="accessible-title">
+          <div class="container accessible-layout">
+            <div class="reveal">
+              <span class="section-kicker">Acesso com responsabilidade</span>
+              <h2 id="accessible-title">Como buscamos o menor valor viável.</h2>
+              <p>
+                A acessibilidade vem da escala institucional, do planejamento de agenda,
+                da logística compartilhada e de um escopo bem definido — sem reduzir o
+                honorário profissional abaixo do referencial vigente.
+              </p>
+            </div>
+            <ul class="accessible-points reveal">
+              <li><strong>Mensalidade previsível</strong><span>A instituição concentra o pagamento e planeja o cuidado ao longo do mês.</span></li>
+              <li><strong>Escopo sob medida</strong><span>Número de residentes, carga técnica, complexidade e deslocamento entram no cálculo.</span></li>
+              <li><strong>Eficiência institucional</strong><span>Rotinas e registros comuns reduzem custos administrativos sem padronizar a conduta clínica.</span></li>
+              <li><strong>Revisão transparente</strong><span>Valores e condições são acordados previamente e atualizados quando mudam o escopo ou os referenciais.</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section compliance-section" aria-labelledby="compliance-title">
+          <div class="container">
+            <div class="compliance-heading reveal">
+              <span class="section-kicker">Honorários e conformidade</span>
+              <h2 id="compliance-title">Proposta construída dentro das regras profissionais.</h2>
+              <p>
+                O Sistema CFN/CRN regulamenta e fiscaliza o exercício profissional;
+                o SINDNUT/BA publica a tabela regional de honorários. São referências
+                complementares, com funções diferentes.
+              </p>
+            </div>
+            <div class="compliance-grid">
+              <article class="reveal"><span>01</span><h3>Honorário mínimo preservado</h3><p>A proposta considera a Tabela de Honorários 2026–2027 do SINDNUT/BA, vigente na data da contratação, sem anunciar desconto ou preço promocional.</p></article>
+              <article class="reveal"><span>02</span><h3>Carga horária dimensionada</h3><p>A assistência em ILPI observa os parâmetros numéricos da Resolução CFN nº 600/2018 e a necessidade real do serviço.</p></article>
+              <article class="reveal"><span>03</span><h3>Contrato com a instituição</h3><p>A mensalidade e o escopo são acordados com a contratante. Não há cobrança adicional dos residentes pelos atendimentos incluídos.</p></article>
+              <article class="reveal"><span>04</span><h3>Escopos não se confundem</h3><p>Assistência clínica, produção de refeições e responsabilidade técnica são dimensionadas separadamente e somadas quando acumuladas.</p></article>
+            </div>
+
+            <div class="official-references reveal">
+              <div><strong>Referências oficiais</strong><p>Consulte os textos vigentes antes da contratação.</p></div>
+              <div class="reference-actions">
+                <a href="https://www.sindnutba.org.br/p/tabela-de-honorarios_4.html" target="_blank" rel="noopener noreferrer">Tabela SINDNUT/BA 2026–2027 <span aria-hidden="true">↗</span></a>
+                <a href="https://www.cfn.org.br/wp-content/uploads/resolucoes/DOU_600.pdf" target="_blank" rel="noopener noreferrer">Resolução CFN nº 600/2018 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section proposal-section" id="proposta-institucional" aria-labelledby="proposal-title">
+          <div class="container proposal-card reveal">
+            <span class="section-kicker">Proposta institucional</span>
+            <h2 id="proposal-title">Para dimensionar o plano da sua instituição.</h2>
+            <p>
+              Informe o número de residentes, a cidade, o perfil assistencial, a
+              estrutura já existente e se o escopo inclui apenas assistência clínica
+              ou também alimentação coletiva e responsabilidade técnica.
+            </p>
+            <div class="proposal-checklist" aria-label="Informações necessárias para a proposta">
+              <span>Número de residentes</span><span>Localização</span><span>Perfil clínico</span><span>Escopo necessário</span>
+            </div>
+            <small>
+              A proposta comercial definitiva depende de avaliação técnica e contratual.
+              Este conteúdo é informativo e não substitui orientação do CRN-5, do SINDNUT/BA
+              ou assessoria jurídica específica. O plano descreve prestação de serviços;
+              havendo vínculo de emprego, piso salarial e convenção coletiva aplicáveis
+              devem ser analisados separadamente.
+            </small>
           </div>
         </section>
       </div>
