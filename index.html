@@ -462,131 +462,97 @@
           </div>
         </section>
 
-        <section class="section institutional-plan" id="plano-institucional" aria-labelledby="plan-title">
-          <div class="container package-layout">
-            <div class="package-intro reveal">
-              <span class="section-kicker">OCTN Care Institucional</span>
-              <h2 id="plan-title">Um plano mensal. Cuidado individual para todos.</h2>
-              <p>
-                A instituição contrata uma assistência continuada e cada residente
-                recebe avaliação, conduta e acompanhamento individualizados. A
-                frequência de cada reavaliação é definida pela necessidade clínica,
-                pelo risco nutricional e pela evolução de cada pessoa.
-              </p>
-              <div class="package-tags" aria-label="Instituições atendidas">
-                <span>ILPIs</span>
-                <span>Casas de acolhimento</span>
-                <span>Instituições filantrópicas</span>
-                <span>Projetos sociais</span>
-              </div>
-            </div>
-
-            <aside class="package-card reveal" aria-label="Resumo do plano institucional">
-              <span class="package-badge">Contratação recorrente</span>
-              <h3>Pacote de atendimento nutricional individual</h3>
-              <div class="package-price">
-                <strong>Mensalidade sob proposta</strong>
-                <span>dimensionada por instituição</span>
-              </div>
-              <ul>
-                <li>Atendimento de cada residente incluído no escopo</li>
-                <li>Planejamento mensal e presença técnica recorrente</li>
-                <li>Prontuários e evolução nutricional individual</li>
-                <li>Relatório gerencial para a instituição</li>
-              </ul>
-              <small>
-                O valor é apresentado após o dimensionamento técnico, sempre
-                respeitando os referenciais profissionais vigentes.
-              </small>
-            </aside>
-          </div>
-        </section>
-
-        <section class="section care-journey" aria-labelledby="journey-title">
+        <section class="section simulator-section" id="plano-institucional" aria-labelledby="simulator-title">
           <div class="container">
-            <div class="section-heading compact reveal">
-              <div>
-                <span class="section-kicker">Ciclo de cuidado</span>
-                <h2 id="journey-title">O que cada residente recebe.</h2>
-              </div>
-              <p>
-                Um acompanhamento documentado e integrado à rotina assistencial,
-                com condutas definidas pelo nutricionista responsável.
-              </p>
+            <div class="simulator-heading reveal">
+              <span class="section-kicker">Simulador mensal</span>
+              <h2 id="simulator-title">Monte o atendimento da instituição.</h2>
+              <p>Informe quantas pessoas serão atendidas uma vez por mês, escolha o serviço principal e inclua apenas os serviços complementares necessários.</p>
             </div>
-            <ol class="care-cycle">
-              <li class="reveal"><span>01</span><h3>Avaliação individual</h3><p>Anamnese, antropometria possível, consumo alimentar, condições clínicas e risco nutricional.</p></li>
-              <li class="reveal"><span>02</span><h3>Plano de cuidado</h3><p>Diagnóstico nutricional, objetivos e conduta individual, considerando preferências e necessidades.</p></li>
-              <li class="reveal"><span>03</span><h3>Acompanhamento</h3><p>Reavaliações priorizadas por risco, registro da evolução e ajustes sempre que clinicamente indicados.</p></li>
-              <li class="reveal"><span>04</span><h3>Integração assistencial</h3><p>Orientações à equipe e aos responsáveis, com encaminhamento a outros profissionais quando necessário.</p></li>
-            </ol>
+
+            <div class="simulator-layout">
+              <form class="simulator-form reveal" id="service-simulator">
+                <div class="form-field">
+                  <label for="resident-count">Pessoas atendidas por mês</label>
+                  <div class="quantity-control">
+                    <button type="button" data-quantity-action="decrease" aria-label="Diminuir quantidade">−</button>
+                    <input id="resident-count" name="resident-count" type="number" min="1" max="500" step="1" value="12" inputmode="numeric" />
+                    <button type="button" data-quantity-action="increase" aria-label="Aumentar quantidade">+</button>
+                  </div>
+                </div>
+
+                <fieldset>
+                  <legend>Serviço individual mensal</legend>
+                  <label class="service-option">
+                    <input type="radio" name="primary-service" value="avaliacao" checked />
+                    <span><strong>Apenas avaliação nutricional</strong><small>Avaliação e registro individual — R$ 149,90 por pessoa.</small></span>
+                  </label>
+                  <label class="service-option">
+                    <input type="radio" name="primary-service" value="clinica-social" />
+                    <span><strong>Atendimento nutricional clínico — condição social</strong><small>Consulta individual com redução social máxima de 50% sobre R$ 403,07.</small></span>
+                  </label>
+                  <label class="service-option">
+                    <input type="radio" name="primary-service" value="clinica" />
+                    <span><strong>Atendimento nutricional clínico integral</strong><small>Consulta individual — R$ 403,07 por pessoa.</small></span>
+                  </label>
+                </fieldset>
+
+                <fieldset>
+                  <legend>Serviços institucionais opcionais</legend>
+                  <p class="field-help">Cada item reserva 1 hora técnica mensal a R$ 271,23.</p>
+                  <div class="extra-options">
+                    <label><input type="checkbox" name="extra-service" value="relatorio" /><span>Relatório consolidado</span></label>
+                    <label><input type="checkbox" name="extra-service" value="reuniao" /><span>Reunião com a equipe</span></label>
+                    <label><input type="checkbox" name="extra-service" value="educacao" /><span>Orientação coletiva</span></label>
+                  </div>
+                  <label class="analysis-option"><input type="checkbox" id="extended-scope" /><span>Solicitar também análise de alimentação coletiva ou responsabilidade técnica <small>Valor definido em proposta específica.</small></span></label>
+                </fieldset>
+
+                <button class="button simulator-reset" type="reset">Limpar adicionais</button>
+              </form>
+
+              <aside class="simulation-summary reveal" id="simulation-summary" aria-live="polite">
+                <div class="print-brand">
+                  <img src="./public/imagens_pub/OCTN.png" alt="OCTN — Organização de Consultoria Técnica Nutricional" />
+                  <span>Simulação de serviços nutricionais</span>
+                </div>
+                <div class="summary-heading">
+                  <span>Resumo mensal</span>
+                  <h3 id="summary-service-name">Apenas avaliação nutricional</h3>
+                  <p><strong id="summary-resident-count">12</strong> pessoas atendidas por mês</p>
+                </div>
+                <div class="summary-table" role="table" aria-label="Composição da simulação">
+                  <div class="summary-table-head" role="row"><span role="columnheader">Serviço</span><span role="columnheader">Valor</span></div>
+                  <div id="summary-items"></div>
+                </div>
+                <div class="summary-total">
+                  <span>Estimativa mensal</span>
+                  <strong id="summary-total">R$ 1.798,80</strong>
+                </div>
+                <ul class="summary-deliverables" id="summary-deliverables"></ul>
+                <div class="dimension-note" id="dimension-note"></div>
+                <p class="summary-disclaimer">
+                  Simulação informativa baseada na Tabela de Honorários 2026–2027 do SINDNUT/BA. Não constitui proposta comercial, desconto promocional ou contrato. Deslocamentos, insumos e complexidades não informadas podem alterar o valor final.
+                </p>
+                <p class="print-date">Emitida em <span id="simulation-date"></span>.</p>
+                <button class="button button-primary print-button" type="button" id="print-simulation">
+                  Imprimir simulação <span aria-hidden="true">↗</span>
+                </button>
+              </aside>
+            </div>
           </div>
         </section>
 
-        <section class="section example-section" aria-labelledby="example-title">
-          <div class="container example-panel reveal">
-            <div class="example-heading">
-              <span class="section-kicker section-kicker-light">Exemplo de dimensionamento</span>
-              <h2 id="example-title">Uma ILPI com até 20 residentes.</h2>
-              <p>
-                Todos entram no plano de cuidado individual. O serviço é organizado
-                como assistência contínua — não como uma sequência isolada de vinte consultas.
-              </p>
+        <section class="section simulator-guidance" aria-labelledby="guidance-title">
+          <div class="container guidance-layout reveal">
+            <div>
+              <span class="section-kicker">Antes de contratar</span>
+              <h2 id="guidance-title">Simulação simples, escopo responsável.</h2>
             </div>
-            <dl class="example-metrics">
-              <div><dt>Profissional de referência</dt><dd><strong>1</strong> nutricionista</dd></div>
-              <div><dt>Carga técnica de referência</dt><dd><strong>15 h</strong> por semana</dd></div>
-              <div><dt>Cobertura assistencial</dt><dd><strong>100%</strong> dos residentes do escopo</dd></div>
-              <div><dt>Forma de contratação</dt><dd><strong>1</strong> mensalidade institucional</dd></div>
-            </dl>
-            <p class="example-note">
-              Referência clínica para até 20 idosos conforme a Resolução CFN nº 600/2018.
-              O dimensionamento final considera complexidade clínica, grau de dependência,
-              atividades contratadas e regras regionais aplicáveis.
-            </p>
-          </div>
-        </section>
-
-        <section class="section accessible-model" aria-labelledby="accessible-title">
-          <div class="container accessible-layout">
-            <div class="reveal">
-              <span class="section-kicker">Acesso com responsabilidade</span>
-              <h2 id="accessible-title">Como buscamos o menor valor viável.</h2>
-              <p>
-                A acessibilidade vem da escala institucional, do planejamento de agenda,
-                da logística compartilhada e de um escopo bem definido — sem reduzir o
-                honorário profissional abaixo do referencial vigente.
-              </p>
-            </div>
-            <ul class="accessible-points reveal">
-              <li><strong>Mensalidade previsível</strong><span>A instituição concentra o pagamento e planeja o cuidado ao longo do mês.</span></li>
-              <li><strong>Escopo sob medida</strong><span>Número de residentes, carga técnica, complexidade e deslocamento entram no cálculo.</span></li>
-              <li><strong>Eficiência institucional</strong><span>Rotinas e registros comuns reduzem custos administrativos sem padronizar a conduta clínica.</span></li>
-              <li><strong>Revisão transparente</strong><span>Valores e condições são acordados previamente e atualizados quando mudam o escopo ou os referenciais.</span></li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="section compliance-section" aria-labelledby="compliance-title">
-          <div class="container">
-            <div class="compliance-heading reveal">
-              <span class="section-kicker">Honorários e conformidade</span>
-              <h2 id="compliance-title">Proposta construída dentro das regras profissionais.</h2>
-              <p>
-                O Sistema CFN/CRN regulamenta e fiscaliza o exercício profissional;
-                o SINDNUT/BA publica a tabela regional de honorários. São referências
-                complementares, com funções diferentes.
-              </p>
-            </div>
-            <div class="compliance-grid">
-              <article class="reveal"><span>01</span><h3>Honorário mínimo preservado</h3><p>A proposta considera a Tabela de Honorários 2026–2027 do SINDNUT/BA, vigente na data da contratação, sem anunciar desconto ou preço promocional.</p></article>
-              <article class="reveal"><span>02</span><h3>Carga horária dimensionada</h3><p>A assistência em ILPI observa os parâmetros numéricos da Resolução CFN nº 600/2018 e a necessidade real do serviço.</p></article>
-              <article class="reveal"><span>03</span><h3>Contrato com a instituição</h3><p>A mensalidade e o escopo são acordados com a contratante. Não há cobrança adicional dos residentes pelos atendimentos incluídos.</p></article>
-              <article class="reveal"><span>04</span><h3>Escopos não se confundem</h3><p>Assistência clínica, produção de refeições e responsabilidade técnica são dimensionadas separadamente e somadas quando acumuladas.</p></article>
-            </div>
-
-            <div class="official-references reveal">
-              <div><strong>Referências oficiais</strong><p>Consulte os textos vigentes antes da contratação.</p></div>
+            <div class="guidance-copy">
+              <p><strong>Atendimento individual:</strong> o valor simulado cobre uma avaliação ou consulta por pessoa no mês, conforme a modalidade selecionada.</p>
+              <p><strong>Serviço institucional de ILPI:</strong> para até 20 idosos, a Resolução CFN nº 600/2018 indica 1 nutricionista e 15 horas técnicas semanais. Essa carga não está incluída automaticamente na conta de atendimentos individuais.</p>
+              <p><strong>Outros escopos:</strong> produção de refeições, responsabilidade técnica, deslocamentos e vínculo empregatício exigem dimensionamento separado.</p>
               <div class="reference-actions">
                 <a href="https://www.sindnutba.org.br/p/tabela-de-honorarios_4.html" target="_blank" rel="noopener noreferrer">Tabela SINDNUT/BA 2026–2027 <span aria-hidden="true">↗</span></a>
                 <a href="https://www.cfn.org.br/wp-content/uploads/resolucoes/DOU_600.pdf" target="_blank" rel="noopener noreferrer">Resolução CFN nº 600/2018 <span aria-hidden="true">↗</span></a>
@@ -595,27 +561,6 @@
           </div>
         </section>
 
-        <section class="section proposal-section" id="proposta-institucional" aria-labelledby="proposal-title">
-          <div class="container proposal-card reveal">
-            <span class="section-kicker">Proposta institucional</span>
-            <h2 id="proposal-title">Para dimensionar o plano da sua instituição.</h2>
-            <p>
-              Informe o número de residentes, a cidade, o perfil assistencial, a
-              estrutura já existente e se o escopo inclui apenas assistência clínica
-              ou também alimentação coletiva e responsabilidade técnica.
-            </p>
-            <div class="proposal-checklist" aria-label="Informações necessárias para a proposta">
-              <span>Número de residentes</span><span>Localização</span><span>Perfil clínico</span><span>Escopo necessário</span>
-            </div>
-            <small>
-              A proposta comercial definitiva depende de avaliação técnica e contratual.
-              Este conteúdo é informativo e não substitui orientação do CRN-5, do SINDNUT/BA
-              ou assessoria jurídica específica. O plano descreve prestação de serviços;
-              havendo vínculo de emprego, piso salarial e convenção coletiva aplicáveis
-              devem ser analisados separadamente.
-            </small>
-          </div>
-        </section>
       </div>
 
       <div class="page-view" id="capacitacao" data-view="capacitacao" hidden>

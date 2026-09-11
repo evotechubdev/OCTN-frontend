@@ -6,6 +6,49 @@ const viewLinks = document.querySelectorAll("[data-view-link]");
 const scrollButtons = document.querySelectorAll("[data-scroll-target]");
 const validViews = new Set(["home", "consultoria", "servicos", "capacitacao"]);
 
+const simulator = document.getElementById("service-simulator");
+const residentCountInput = document.getElementById("resident-count");
+const summaryItems = document.getElementById("summary-items");
+const summaryTotal = document.getElementById("summary-total");
+const summaryServiceName = document.getElementById("summary-service-name");
+const summaryResidentCount = document.getElementById("summary-resident-count");
+const summaryDeliverables = document.getElementById("summary-deliverables");
+const dimensionNote = document.getElementById("dimension-note");
+const extendedScope = document.getElementById("extended-scope");
+const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+
+const serviceRates = {
+  avaliacao: {
+    name: "Apenas avaliação nutricional",
+    unitCents: 14990,
+    factor: 1,
+    label: "avaliações × R$ 149,90",
+    deliverables: ["Avaliação nutricional individual", "Registro individual dos resultados", "Classificação de risco nutricional"],
+  },
+  "clinica-social": {
+    name: "Atendimento nutricional clínico — condição social",
+    unitCents: 40307,
+    factor: 0.5,
+    label: "consultas × R$ 403,07 × 50%",
+    deliverables: ["Consulta clínica individual", "Avaliação e diagnóstico nutricional", "Plano de cuidado e orientações", "Registro de evolução"],
+  },
+  clinica: {
+    name: "Atendimento nutricional clínico integral",
+    unitCents: 40307,
+    factor: 1,
+    label: "consultas × R$ 403,07",
+    deliverables: ["Consulta clínica individual", "Avaliação e diagnóstico nutricional", "Plano de cuidado e orientações", "Registro de evolução"],
+  },
+};
+
+const extraServices = {
+  relatorio: "Relatório consolidado",
+  reuniao: "Reunião com a equipe",
+  educacao: "Orientação coletiva",
+};
+
+const technicalHourCents = 27123;
+
 function activateView(viewName, shouldScroll = true) {
   const selectedView = validViews.has(viewName) ? viewName : "home";
 
