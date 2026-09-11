@@ -482,30 +482,6 @@
                 </div>
 
                 <fieldset>
-                  <legend>Dados do contrato</legend>
-                  <div class="contract-fields">
-                    <label><span>Instituição ou cliente contratante</span><input id="client-name" type="text" placeholder="Nome ou razão social" autocomplete="organization" /></label>
-                    <label><span>CPF ou CNPJ da contratante</span><input id="client-document" type="text" placeholder="CPF/CNPJ" /></label>
-                    <label class="wide-field"><span>Endereço da contratante</span><input id="client-address" type="text" placeholder="Endereço completo" autocomplete="street-address" /></label>
-                    <label><span>Nutricionista responsável</span><input id="nutritionist-name" type="text" placeholder="Nome completo" autocomplete="name" /></label>
-                    <label><span>Número do CRN</span><input id="nutritionist-crn" type="text" placeholder="Ex.: CRN-5/0000" /></label>
-                    <label><span>CPF/CNPJ da prestadora</span><input id="provider-document" type="text" placeholder="CPF/CNPJ" /></label>
-                    <label><span>Cidade</span><input id="contract-city" type="text" placeholder="Cidade/UF" autocomplete="address-level2" /></label>
-                    <label><span>Início da parceria</span><input id="contract-start" type="date" /></label>
-                    <label><span>Dia do vencimento mensal</span><input id="payment-day" type="number" min="1" max="28" value="5" /></label>
-                    <label>
-                      <span>Prazo contratual</span>
-                      <select id="contract-term">
-                        <option value="indeterminado">Prazo indeterminado</option>
-                        <option value="3 meses">3 meses</option>
-                        <option value="6 meses">6 meses</option>
-                        <option value="12 meses">12 meses</option>
-                      </select>
-                    </label>
-                  </div>
-                </fieldset>
-
-                <fieldset>
                   <legend>Serviço individual mensal</legend>
                   <label class="service-option">
                     <input type="radio" name="primary-service" value="avaliacao" checked />
@@ -559,28 +535,30 @@
                   <div class="contract-document-header"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Instrumento particular</span></div>
                   <h2>Contrato de Prestação de Serviços Nutricionais</h2>
                   <p class="contract-parties">
-                    <strong>CONTRATANTE:</strong> <span id="contract-client-output">________________________________</span>,
-                    inscrita no CPF/CNPJ sob nº <span id="contract-client-document-output">________________</span>,
-                    com endereço em <span id="contract-client-address-output">________________________________</span>.
+                    <strong>CONTRATANTE:</strong> <span class="handwrite-line handwrite-wide"></span>,
+                    inscrita no CPF/CNPJ sob nº <span class="handwrite-line handwrite-medium"></span>,
+                    com endereço em <span class="handwrite-line handwrite-full"></span>.
                     <strong>CONTRATADA:</strong> OCTN - Organização de Consultoria Técnica Nutricional,
-                    CPF/CNPJ nº <span id="contract-provider-document-output">________________</span>, representada tecnicamente por
-                    <span id="contract-nutritionist-output">________________________________</span>,
-                    <span id="contract-crn-output">CRN __________</span>. As partes celebram o presente contrato mediante as cláusulas seguintes.
+                    CPF/CNPJ nº <span class="handwrite-line handwrite-medium"></span>, representada tecnicamente por
+                    <span class="handwrite-line handwrite-wide"></span>,
+                    CRN nº <span class="handwrite-line handwrite-short"></span>. As partes celebram o presente contrato mediante as cláusulas seguintes.
+                    <span class="contract-service-address"><strong>ENDEREÇO EXCLUSIVO DA PRESTAÇÃO DOS SERVIÇOS:</strong> <span class="handwrite-line handwrite-full"></span>.</span>
                   </p>
                   <ol class="contract-clauses">
                     <li><strong>Objeto.</strong> <span id="contract-object-output"></span></li>
-                    <li><strong>Mensalidade.</strong> <span id="contract-payment-output"></span> O valor individual é apenas uma referência para formação da mensalidade, não caracterizando cobrança avulsa por atendimento.</li>
-                    <li><strong>Execução.</strong> Os atendimentos serão agendados em comum acordo. A CONTRATADA preservará sua autonomia técnica e registrará os serviços profissionais realizados.</li>
+                    <li><strong>Mensalidade.</strong> <span id="contract-payment-output"></span> O pagamento vencerá no dia <span class="handwrite-line handwrite-day"></span> de cada mês, com início em <span class="handwrite-line handwrite-date"></span>. O valor individual é apenas uma referência para formação da mensalidade, não caracterizando cobrança avulsa por atendimento.</li>
+                    <li><strong>Execução e local.</strong> Os atendimentos serão agendados em comum acordo e prestados exclusivamente no endereço indicado pela CONTRATANTE neste instrumento. A CONTRATADA preservará sua autonomia técnica e registrará os serviços profissionais realizados. Qualquer alteração do local dependerá de prévio acordo escrito entre as partes.</li>
                     <li><strong>Obrigações da contratante.</strong> A CONTRATANTE fornecerá informações, autorizações, espaço e condições adequadas à execução do serviço, além de comunicar alterações relevantes sobre as pessoas atendidas.</li>
-                    <li><strong>Prazo.</strong> <span id="contract-term-output"></span> Qualquer parte poderá encerrar a parceria mediante aviso escrito com antecedência mínima de 30 dias, sem prejuízo dos valores já vencidos.</li>
+                    <li><strong>Falecimento e adequação do plano.</strong> Em caso de falecimento de pessoa coberta, os serviços já realizados e os valores já vencidos permanecerão devidos. Mediante comunicação da CONTRATANTE, a pessoa será retirada do plano e a quantidade coberta e a mensalidade serão ajustadas para as cobranças futuras, conforme o valor individual de referência vigente, sem multa ou taxa de cancelamento.</li>
+                    <li><strong>Prazo.</strong> O contrato vigorará pelo prazo de <span class="handwrite-line handwrite-day"></span> meses, a partir de <span class="handwrite-line handwrite-date"></span>, ou por prazo indeterminado se assinalado: (&nbsp;&nbsp;) indeterminado. Qualquer parte poderá encerrar a parceria mediante aviso escrito com antecedência mínima de 30 dias, sem prejuízo dos valores já vencidos.</li>
                     <li><strong>Confidencialidade e dados.</strong> As partes protegerão prontuários e dados pessoais, especialmente dados de saúde, utilizando-os somente para a execução do cuidado e demais hipóteses permitidas pela legislação aplicável.</li>
                     <li><strong>Natureza da contratação.</strong> Este instrumento possui natureza civil de prestação de serviços, preservadas a autonomia profissional e as condições efetivamente praticadas entre as partes.</li>
                   </ol>
                   <p class="contract-agreement">Por estarem de acordo, as partes assinam este instrumento em duas vias de igual teor.</p>
-                  <p class="signature-place"><span id="contract-city-output">________________</span>, <span id="contract-sign-date"></span>.</p>
+                  <p class="signature-place"><span class="handwrite-line handwrite-city"></span>, <span class="handwrite-line handwrite-day"></span> de <span class="handwrite-line handwrite-month"></span> de <span class="handwrite-line handwrite-year"></span>.</p>
                   <div class="contract-signatures">
-                    <div><span class="signature-line"></span><strong id="signature-nutritionist-output">Nutricionista responsável</strong><small id="signature-crn-output">CRN __________</small></div>
-                    <div><span class="signature-line"></span><strong id="signature-client-output">Contratante</strong><small id="signature-client-document-output">CPF/CNPJ __________</small></div>
+                    <div><span class="signature-line"></span><strong>Nutricionista responsável</strong><small>Nome: <span class="handwrite-line signature-detail"></span></small><small>CRN: <span class="handwrite-line signature-detail"></span></small></div>
+                    <div><span class="signature-line"></span><strong>Contratante</strong><small>Nome: <span class="handwrite-line signature-detail"></span></small><small>CPF/CNPJ: <span class="handwrite-line signature-detail"></span></small></div>
                   </div>
                 </div>
                 <p class="summary-disclaimer">

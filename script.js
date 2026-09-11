@@ -46,17 +46,8 @@ const extraServices = {
 
 const technicalHourCents = 27123;
 
-function fieldValue(id, fallback) {
-  return document.getElementById(id).value.trim() || fallback;
-}
-
 function setOutput(id, value) {
   document.getElementById(id).textContent = value;
-}
-
-function formatContractDate(value) {
-  if (!value) return "data a definir";
-  return new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));
 }
 
 function updateSimulation() {
@@ -96,36 +87,11 @@ function updateSimulation() {
   if (extendedScope.checked) deliverables.push("Análise complementar solicitada — valor pendente de dimensionamento");
   summaryDeliverables.innerHTML = deliverables.map((item) => `<li>${item}</li>`).join("");
 
-  const clientName = fieldValue("client-name", "________________________________");
-  const clientDocument = fieldValue("client-document", "________________");
-  const clientAddress = fieldValue("client-address", "________________________________");
-  const nutritionistName = fieldValue("nutritionist-name", "________________________________");
-  const nutritionistCrn = fieldValue("nutritionist-crn", "CRN __________");
-  const providerDocument = fieldValue("provider-document", "________________");
-  const city = fieldValue("contract-city", "________________");
-  const startDate = formatContractDate(document.getElementById("contract-start").value);
-  const paymentDayInput = document.getElementById("payment-day");
-  const paymentDay = Math.min(28, Math.max(1, Number.parseInt(paymentDayInput.value, 10) || 5));
-  paymentDayInput.value = paymentDay;
-  const term = document.getElementById("contract-term").value;
   const extraNames = selectedExtras.map((input) => extraServices[input.value]);
   const scopeItems = [selectedService.name, ...extraNames];
 
-  setOutput("contract-client-output", clientName);
-  setOutput("contract-client-document-output", clientDocument);
-  setOutput("contract-client-address-output", clientAddress);
-  setOutput("contract-provider-document-output", providerDocument);
-  setOutput("contract-nutritionist-output", nutritionistName);
-  setOutput("contract-crn-output", nutritionistCrn);
   setOutput("contract-object-output", `Prestação recorrente dos serviços de ${scopeItems.join(", ").toLowerCase()}, com cobertura mensal para até ${count} ${count === 1 ? "pessoa" : "pessoas"}.${extendedScope.checked ? " A análise de alimentação coletiva ou responsabilidade técnica não integra este valor e depende de proposta específica." : ""}`);
-  setOutput("contract-payment-output", `A CONTRATANTE pagará à CONTRATADA a mensalidade de ${currency.format(total / 100)}, com vencimento no dia ${paymentDay} de cada mês, a partir de ${startDate}. Valor individual de referência: ${summaryUnitReference.textContent}.`);
-  setOutput("contract-term-output", term === "indeterminado" ? `O contrato vigorará por prazo indeterminado a partir de ${startDate}.` : `O contrato vigorará pelo prazo de ${term}, contado de ${startDate}.`);
-  setOutput("contract-city-output", city);
-  setOutput("contract-sign-date", new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(new Date()));
-  setOutput("signature-nutritionist-output", nutritionistName === "________________________________" ? "Nutricionista responsável" : nutritionistName);
-  setOutput("signature-crn-output", nutritionistCrn);
-  setOutput("signature-client-output", clientName === "________________________________" ? "Contratante" : clientName);
-  setOutput("signature-client-document-output", `CPF/CNPJ ${clientDocument}`);
+  setOutput("contract-payment-output", `A CONTRATANTE pagará à CONTRATADA a mensalidade de ${currency.format(total / 100)}. Valor individual de referência: ${summaryUnitReference.textContent}.`);
 }
 
 function activateView(viewName, shouldScroll = true) {
@@ -182,14 +148,9 @@ scrollButtons.forEach((button) => {
 });
 
 if (simulator) {
-  const localToday = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-  document.getElementById("contract-start").value = localToday;
   simulator.addEventListener("input", updateSimulation);
   simulator.addEventListener("change", updateSimulation);
-  simulator.addEventListener("reset", () => window.setTimeout(() => {
-    document.getElementById("contract-start").value = localToday;
-    updateSimulation();
-  }, 0));
+  simulator.addEventListener("reset", () => window.setTimeout(updateSimulation, 0));
 
   document.querySelectorAll("[data-quantity-action]").forEach((button) => {
     button.addEventListener("click", () => {

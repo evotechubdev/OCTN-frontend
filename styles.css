@@ -1825,27 +1825,44 @@ footer {
   .print-button { display: none !important; }
   .contract-document {
     display: block;
-    padding-top: 15mm;
+    padding-top: 8mm;
     break-before: page;
     color: #171717;
-    font-size: 9.5pt;
-    line-height: 1.5;
+    font-size: 8.5pt;
+    line-height: 1.38;
   }
-  .contract-document-header { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 5mm; border-bottom: 2px solid #45a34c; }
-  .contract-document-header img { width: 48mm; }
+  .contract-document-header { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 3mm; border-bottom: 2px solid #45a34c; }
+  .contract-document-header img { width: 41mm; }
   .contract-document-header span { color: #666666; font-size: 8pt; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-  .contract-document h2 { margin: 9mm 0 7mm; color: #111111; font-family: "Manrope", sans-serif; font-size: 15pt; letter-spacing: -0.02em; text-align: center; text-transform: uppercase; }
-  .contract-parties { margin: 0 0 6mm; text-align: justify; }
+  .contract-document h2 { margin: 5mm 0 4mm; color: #111111; font-family: "Manrope", sans-serif; font-size: 13pt; letter-spacing: -0.02em; text-align: center; text-transform: uppercase; }
+  .contract-parties { margin: 0 0 3mm; text-align: justify; }
   .contract-parties strong { color: #111111; }
+  .contract-service-address { display: block; margin-top: 2mm; }
+  .handwrite-line {
+    display: inline-block;
+    min-height: 4mm;
+    border-bottom: 1px solid #333333;
+    vertical-align: bottom;
+  }
+  .handwrite-wide { width: 72mm; }
+  .handwrite-medium { width: 42mm; }
+  .handwrite-full { width: 108mm; }
+  .handwrite-short { width: 25mm; }
+  .handwrite-day { width: 10mm; }
+  .handwrite-date { width: 28mm; }
+  .handwrite-city { width: 55mm; }
+  .handwrite-month { width: 32mm; }
+  .handwrite-year { width: 15mm; }
   .contract-clauses { margin: 0; padding-left: 6mm; }
-  .contract-clauses li { padding: 0 0 3.2mm 1.5mm; text-align: justify; break-inside: avoid; }
-  .contract-agreement { margin: 5mm 0; text-align: justify; }
-  .signature-place { margin: 8mm 0 14mm; text-align: center; }
+  .contract-clauses li { padding: 0 0 1.8mm 1.5mm; text-align: justify; break-inside: avoid; }
+  .contract-agreement { margin: 3mm 0; text-align: justify; }
+  .signature-place { margin: 4mm 0 10mm; text-align: center; }
   .contract-signatures { display: grid; grid-template-columns: 1fr 1fr; gap: 18mm; break-inside: avoid; }
   .contract-signatures > div { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .signature-line { display: block; width: 100%; margin-bottom: 2mm; border-top: 1px solid #333333; }
   .contract-signatures strong { color: #111111; font-size: 9pt; }
-  .contract-signatures small { color: #666666; font-size: 8pt; }
+  .contract-signatures small { display: flex; width: 100%; align-items: flex-end; gap: 2mm; margin-top: 1.5mm; color: #666666; font-size: 8pt; text-align: left; }
+  .signature-detail { flex: 1; min-width: 0; }
   .print-footer {
     position: fixed;
     right: 15mm;
