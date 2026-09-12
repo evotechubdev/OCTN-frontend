@@ -70,6 +70,34 @@ const servicesById = new Map(
   serviceGroups.flatMap((group) => group.services).map((service) => [service.id, service])
 );
 
+const fnnOfficialNames = {
+  "hora-tecnica": "Hora Técnica",
+  "assessoria-rt": "Assessoria com RT - (por hora)",
+  assessoria: "Assessoria sem RT - (por hora)",
+  consultoria: "Consultoria - (por hora)",
+  "checklist-rdc": "CheckList de Acordo com RDC 216/04 ANVISA",
+  auditoria: "Auditoria com Relatório",
+  mbp: "MBP - (POP’s, Fluxograma, Layout)",
+  "avaliacao-enteral": "Avaliação Clínica Enteral",
+  "avaliacao-parenteral": "Avaliação Clínica Parenteral",
+  "avaliacao-nutricional": "Avaliação Nutricional",
+  bioimpedancia: "Bioimpedância",
+  "consulta-clinica": "Consulta Clínica",
+  "consulta-convenio": "Consulta Convênio",
+  "consultorio-academia": "Consultório - (academia)",
+  "home-care": "Home Care - (consulta domiciliar / por visita)",
+  orientacao: "Orientação Nutricional",
+  "personal-diet": "Personal Diet",
+  "cardapio-diario": "Cardápio Diário",
+  "cardapio-semanal": "Cardápio Semanal",
+  "cardapio-mensal": "Cardápio Mensal",
+  "ficha-tecnica": "Ficha Técnica - (por ficha)",
+  rotulagem: "Rotulagem Nutricional - (por rótulo)",
+  "educacao-nutricional": "Atividade de Educação Nutricional",
+  palestra: "Palestra - (por participante)",
+  "treinamento-rt": "Treinamento Capacitação RT - (por hora)",
+};
+
 function setOutput(id, value) {
   document.getElementById(id).textContent = value;
 }
@@ -90,7 +118,7 @@ function renderServiceCatalog() {
               .map(
                 (service) => `
                   <div class="catalog-service" data-service-row>
-                    <label class="catalog-service-select">
+                    <label class="catalog-service-select" data-fnn-name="${fnnOfficialNames[service.id] ?? service.name}">
                       <input type="checkbox" name="selected-service" value="${service.id}" ${service.selected ? "checked" : ""} />
                       <span>
                         <strong>${service.name}</strong>

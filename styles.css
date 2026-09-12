@@ -1200,7 +1200,7 @@ footer {
 .service-catalog { display: grid; gap: 10px; clear: both; }
 
 .service-group {
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #ffffff;
@@ -1227,6 +1227,7 @@ footer {
 .service-group-list { display: grid; }
 
 .catalog-service {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 88px;
   align-items: stretch;
@@ -1236,8 +1237,11 @@ footer {
 
 .catalog-service:last-child { border-bottom: 0; }
 .catalog-service.selected { background: var(--green-100); }
+.catalog-service:hover,
+.catalog-service:focus-within { z-index: 10; }
 
 .catalog-service-select {
+  position: relative;
   display: grid;
   grid-template-columns: 18px minmax(0, 1fr) auto;
   gap: 12px;
@@ -1246,6 +1250,38 @@ footer {
   padding: 13px 14px;
   cursor: pointer;
 }
+
+.catalog-service-select::after {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% - 5px);
+  left: 44px;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 92px));
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  background: var(--navy-900);
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 27, 35, 0.2);
+  content: "Nome oficial na FNN: " attr(data-fnn-name);
+  font: 600 0.72rem/1.45 "DM Sans", sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  visibility: hidden;
+  transition: opacity 140ms ease 350ms, transform 140ms ease 350ms, visibility 0s linear 490ms;
+}
+
+.catalog-service-select:hover::after,
+.catalog-service-select:focus-within::after {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition-delay: 350ms;
+}
+
+.catalog-service-select:focus-within::after { transition-delay: 0ms; }
 
 .catalog-service-select > span { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
 .catalog-service-select strong { color: #252525; font-size: 0.82rem; line-height: 1.35; }
