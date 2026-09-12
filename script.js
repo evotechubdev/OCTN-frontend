@@ -7,91 +7,201 @@ const scrollButtons = document.querySelectorAll("[data-scroll-target]");
 const validViews = new Set(["home", "consultoria", "servicos", "capacitacao"]);
 
 const simulator = document.getElementById("service-simulator");
-const residentCountInput = document.getElementById("resident-count");
+const serviceCatalog = document.getElementById("service-catalog");
 const summaryItems = document.getElementById("summary-items");
 const summaryTotal = document.getElementById("summary-total");
 const summaryServiceName = document.getElementById("summary-service-name");
-const summaryResidentCount = document.getElementById("summary-resident-count");
+const summaryServiceCount = document.getElementById("summary-service-count");
+const summarySelectionSuffix = document.getElementById("summary-selection-suffix");
+const summaryPlanLabel = document.getElementById("summary-plan-label");
+const summaryTotalLabel = document.getElementById("summary-total-label");
 const summaryDeliverables = document.getElementById("summary-deliverables");
-const summaryUnitReference = document.getElementById("summary-unit-reference");
-const extendedScope = document.getElementById("extended-scope");
 const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 
-const serviceRates = {
-  avaliacao: {
-    name: "Plano mensal de avaliação nutricional",
-    unitCents: 14990,
-    factor: 1,
-    deliverables: ["Avaliação nutricional individual", "Registro individual dos resultados", "Classificação de risco nutricional"],
+const serviceGroups = [
+  {
+    name: "Consultoria e gestão",
+    services: [
+      { id: "hora-tecnica", name: "Hora técnica", unit: "hora", unitCents: 16079 },
+      { id: "assessoria-rt", name: "Assessoria com responsabilidade técnica", unit: "hora", unitCents: 21428 },
+      { id: "assessoria", name: "Assessoria sem responsabilidade técnica", unit: "hora", unitCents: 10714 },
+      { id: "consultoria", name: "Consultoria", unit: "hora", unitCents: 16079 },
+      { id: "checklist-rdc", name: "Checklist de acordo com a RDC 216/04 Anvisa", unit: "checklist", unitCents: 21428 },
+      { id: "auditoria", name: "Auditoria com relatório", unit: "auditoria", unitCents: 430828 },
+      { id: "mbp", name: "MBP, POPs, fluxograma e layout", unit: "projeto", unitCents: 430828 },
+    ],
   },
-  "clinica-social": {
-    name: "Plano clínico mensal — condição social",
-    unitCents: 40307,
-    factor: 0.5,
-    deliverables: ["Consulta clínica individual", "Avaliação e diagnóstico nutricional", "Plano de cuidado e orientações", "Registro de evolução"],
+  {
+    name: "Nutrição clínica e cuidado",
+    services: [
+      { id: "avaliacao-enteral", name: "Avaliação clínica enteral", unit: "avaliação", unitCents: 42856 },
+      { id: "avaliacao-parenteral", name: "Avaliação clínica parenteral", unit: "avaliação", unitCents: 42856 },
+      { id: "avaliacao-nutricional", name: "Avaliação nutricional", unit: "avaliação", unitCents: 21428, selected: true },
+      { id: "bioimpedancia", name: "Bioimpedância", unit: "avaliação", unitCents: 21428 },
+      { id: "consulta-clinica", name: "Consulta clínica", unit: "consulta", unitCents: 21428 },
+      { id: "consulta-convenio", name: "Consulta por convênio", unit: "consulta", unitCents: 10714 },
+      { id: "consultorio-academia", name: "Consultório em academia", unit: "atendimento", unitCents: 21428 },
+      { id: "home-care", name: "Home care — consulta domiciliar", unit: "visita", unitCents: 42856 },
+      { id: "orientacao", name: "Orientação nutricional", unit: "orientação", unitCents: 10714 },
+      { id: "personal-diet", name: "Personal Diet", unit: "atendimento", unitCents: 42828 },
+    ],
   },
-  clinica: {
-    name: "Plano clínico mensal integral",
-    unitCents: 40307,
-    factor: 1,
-    deliverables: ["Consulta clínica individual", "Avaliação e diagnóstico nutricional", "Plano de cuidado e orientações", "Registro de evolução"],
+  {
+    name: "Cardápios e produção",
+    services: [
+      { id: "cardapio-diario", name: "Cardápio diário", unit: "cardápio", unitCents: 10714 },
+      { id: "cardapio-semanal", name: "Cardápio semanal", unit: "cardápio", unitCents: 53570 },
+      { id: "cardapio-mensal", name: "Cardápio mensal", unit: "cardápio", unitCents: 214280 },
+      { id: "ficha-tecnica", name: "Ficha técnica", unit: "ficha", unitCents: 42856 },
+      { id: "rotulagem", name: "Rotulagem nutricional", unit: "rótulo", unitCents: 16079 },
+    ],
   },
-};
+  {
+    name: "Educação e capacitação",
+    services: [
+      { id: "educacao-nutricional", name: "Atividade de educação nutricional", unit: "atividade", unitCents: 16079 },
+      { id: "palestra", name: "Palestra", unit: "participante", unitCents: 16079 },
+      { id: "treinamento-rt", name: "Treinamento e capacitação em RT", unit: "hora", unitCents: 16079 },
+    ],
+  },
+];
 
-const extraServices = {
-  relatorio: "Relatório consolidado",
-  reuniao: "Reunião com a equipe",
-  educacao: "Orientação coletiva",
-};
-
-const technicalHourCents = 27123;
+const servicesById = new Map(
+  serviceGroups.flatMap((group) => group.services).map((service) => [service.id, service])
+);
 
 function setOutput(id, value) {
   document.getElementById(id).textContent = value;
 }
 
+function renderServiceCatalog() {
+  if (!serviceCatalog) return;
+
+  serviceCatalog.innerHTML = serviceGroups
+    .map(
+      (group, groupIndex) => `
+        <details class="service-group" ${groupIndex === 1 || groupIndex === 2 ? "open" : ""}>
+          <summary>
+            <span>${group.name}</span>
+            <small>${group.services.length} ${group.services.length === 1 ? "serviço" : "serviços"}</small>
+          </summary>
+          <div class="service-group-list">
+            ${group.services
+              .map(
+                (service) => `
+                  <div class="catalog-service" data-service-row>
+                    <label class="catalog-service-select">
+                      <input type="checkbox" name="selected-service" value="${service.id}" ${service.selected ? "checked" : ""} />
+                      <span>
+                        <strong>${service.name}</strong>
+                        <small>Por ${service.unit} · referência FNN 2026</small>
+                      </span>
+                      <b>${currency.format(service.unitCents / 100)}</b>
+                    </label>
+                    <label class="catalog-quantity">
+                      <span data-quantity-label>Qtd./mês</span>
+                      <input
+                        type="number"
+                        name="quantity-${service.id}"
+                        min="1"
+                        max="500"
+                        step="1"
+                        value="1"
+                        inputmode="numeric"
+                        aria-label="Quantidade de ${service.name}"
+                        ${service.selected ? "" : "disabled"}
+                      />
+                    </label>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        </details>
+      `
+    )
+    .join("");
+}
+
+function getSelectedServices() {
+  return [...simulator.querySelectorAll('input[name="selected-service"]:checked')].map((checkbox) => {
+    const service = servicesById.get(checkbox.value);
+    const quantityInput = simulator.elements[`quantity-${checkbox.value}`];
+    const parsedQuantity = Number.parseInt(quantityInput.value, 10) || 1;
+    const quantity = Math.min(500, Math.max(1, parsedQuantity));
+    quantityInput.value = quantity;
+    return { ...service, quantity, subtotalCents: service.unitCents * quantity };
+  });
+}
+
 function updateSimulation() {
   if (!simulator) return;
 
-  const parsedCount = Number.parseInt(residentCountInput.value, 10) || 1;
-  const count = Math.min(500, Math.max(1, parsedCount));
-  residentCountInput.value = count;
+  const planType = simulator.elements["plan-type"].value;
+  const isMonthly = planType === "mensal";
 
-  const selectedServiceKey = simulator.elements["primary-service"].value;
-  const selectedService = serviceRates[selectedServiceKey];
-  const selectedExtras = [...simulator.querySelectorAll('input[name="extra-service"]:checked')];
-  const individualTotal = Math.round(selectedService.unitCents * count * selectedService.factor);
-  const extrasTotal = selectedExtras.length * technicalHourCents;
-  const total = individualTotal + extrasTotal;
+  simulator.querySelectorAll("[data-service-row]").forEach((row) => {
+    const checkbox = row.querySelector('input[name="selected-service"]');
+    const quantityInput = row.querySelector('input[type="number"]');
+    quantityInput.disabled = !checkbox.checked;
+    row.classList.toggle("selected", checkbox.checked);
+  });
+  simulator.querySelectorAll("[data-quantity-label]").forEach((label) => {
+    label.textContent = isMonthly ? "Qtd./mês" : "Quantidade";
+  });
 
-  const rows = [
-    `<div class="summary-row" role="row"><span role="cell">Pacote mensal — cobertura para até ${count} ${count === 1 ? "pessoa" : "pessoas"}</span><span role="cell">${currency.format(individualTotal / 100)}</span></div>`,
-    ...selectedExtras.map((input) => `<div class="summary-row" role="row"><span role="cell">${extraServices[input.value]} — 1 hora técnica</span><span role="cell">${currency.format(technicalHourCents / 100)}</span></div>`),
-  ];
+  const selectedServices = getSelectedServices();
+  const totalCents = selectedServices.reduce((sum, service) => sum + service.subtotalCents, 0);
+  const serviceCount = selectedServices.length;
 
-  if (extendedScope.checked) {
-    rows.push('<div class="summary-row" role="row"><span role="cell">Alimentação coletiva / responsabilidade técnica</span><span role="cell">Sob proposta</span></div>');
-  }
+  summaryItems.innerHTML = serviceCount
+    ? selectedServices
+        .map(
+          (service) =>
+            `<div class="summary-row" role="row"><span role="cell"><strong>${service.name}</strong><small>${service.quantity} × ${currency.format(service.unitCents / 100)} por ${service.unit}</small></span><span role="cell">${currency.format(service.subtotalCents / 100)}</span></div>`
+        )
+        .join("")
+    : '<div class="summary-empty">Selecione ao menos um serviço para montar a proposta.</div>';
 
-  summaryItems.innerHTML = rows.join("");
-  summaryTotal.textContent = currency.format(total / 100);
-  summaryServiceName.textContent = selectedService.name;
-  summaryResidentCount.textContent = count;
-  summaryUnitReference.textContent = currency.format(Math.round(selectedService.unitCents * selectedService.factor) / 100);
+  summaryTotal.textContent = currency.format(totalCents / 100);
+  summaryPlanLabel.textContent = isMonthly ? "Resumo mensal" : "Resumo avulso";
+  summaryServiceName.textContent = isMonthly ? "Plano mensal personalizado" : "Plano avulso personalizado";
+  summaryTotalLabel.textContent = isMonthly ? "Mensalidade estimada" : "Total estimado";
+  summaryServiceCount.textContent = `${serviceCount} ${serviceCount === 1 ? "serviço" : "serviços"}`;
+  summarySelectionSuffix.textContent = serviceCount === 1 ? "selecionado" : "selecionados";
 
-  const deliverables = [
-    `Cobertura individual mensal para até ${count} ${count === 1 ? "pessoa" : "pessoas"}`,
-    ...selectedService.deliverables,
-    ...selectedExtras.map((input) => extraServices[input.value]),
-  ];
-  if (extendedScope.checked) deliverables.push("Análise complementar solicitada — valor pendente de dimensionamento");
-  summaryDeliverables.innerHTML = deliverables.map((item) => `<li>${item}</li>`).join("");
+  const frequencyText = isMonthly ? "por mês" : "nesta contratação";
+  summaryDeliverables.innerHTML = selectedServices
+    .map((service) => `<li>${service.quantity} × ${service.name} ${frequencyText}</li>`)
+    .join("");
 
-  const extraNames = selectedExtras.map((input) => extraServices[input.value]);
-  const scopeItems = [selectedService.name, ...extraNames];
+  const scopeItems = selectedServices.map(
+    (service) => `${service.name} (${service.quantity} × ${service.unit})`
+  );
+  const scopeDescription = scopeItems.length ? scopeItems.join("; ") : "serviços a definir";
+  const paymentValue = currency.format(totalCents / 100);
 
-  setOutput("contract-object-output", `Prestação recorrente dos serviços de ${scopeItems.join(", ").toLowerCase()}, com cobertura mensal para até ${count} ${count === 1 ? "pessoa" : "pessoas"}.${extendedScope.checked ? " A análise de alimentação coletiva ou responsabilidade técnica não integra este valor e depende de proposta específica." : ""}`);
-  setOutput("contract-payment-output", `A CONTRATANTE pagará à CONTRATADA a mensalidade de ${currency.format(total / 100)}. Valor individual de referência: ${summaryUnitReference.textContent}.`);
+  setOutput(
+    "contract-object-output",
+    isMonthly
+      ? `Prestação mensal recorrente dos seguintes serviços: ${scopeDescription}.`
+      : `Prestação avulsa dos seguintes serviços: ${scopeDescription}.`
+  );
+  setOutput(
+    "contract-payment-output",
+    isMonthly
+      ? `A CONTRATANTE pagará à CONTRATADA a mensalidade de ${paymentValue}.`
+      : `A CONTRATANTE pagará à CONTRATADA o valor total de ${paymentValue}.`
+  );
+
+  document.getElementById("contract-payment-title").textContent = isMonthly ? "Mensalidade." : "Pagamento.";
+  document.getElementById("contract-payment-terms").innerHTML = isMonthly
+    ? 'O pagamento vencerá no dia <span class="handwrite-line handwrite-day"></span> de cada mês, com início em <span class="handwrite-line handwrite-date"></span>.'
+    : 'O pagamento será realizado na forma e nas datas acordadas entre as partes: <span class="handwrite-line handwrite-full"></span>.';
+  document.getElementById("contract-adjustment-clause").hidden = !isMonthly;
+  document.getElementById("contract-term-output").innerHTML = isMonthly
+    ? 'O contrato vigorará pelo prazo de <span class="handwrite-line handwrite-day"></span> meses, a partir de <span class="handwrite-line handwrite-date"></span>, ou por prazo indeterminado se assinalado: (&nbsp;&nbsp;) indeterminado. Qualquer parte poderá encerrar a parceria mediante aviso escrito com antecedência mínima de 30 dias, sem prejuízo dos valores já vencidos.'
+    : 'A contratação vigorará até a conclusão e entrega do escopo avulso, prevista para <span class="handwrite-line handwrite-date"></span>, preservadas as obrigações já assumidas pelas partes.';
 }
 
 function activateView(viewName, shouldScroll = true) {
@@ -148,18 +258,10 @@ scrollButtons.forEach((button) => {
 });
 
 if (simulator) {
+  renderServiceCatalog();
   simulator.addEventListener("input", updateSimulation);
   simulator.addEventListener("change", updateSimulation);
   simulator.addEventListener("reset", () => window.setTimeout(updateSimulation, 0));
-
-  document.querySelectorAll("[data-quantity-action]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const currentCount = Number.parseInt(residentCountInput.value, 10) || 1;
-      const change = button.dataset.quantityAction === "increase" ? 1 : -1;
-      residentCountInput.value = Math.min(500, Math.max(1, currentCount + change));
-      updateSimulation();
-    });
-  });
 
   document.getElementById("simulation-date").textContent = new Intl.DateTimeFormat("pt-BR").format(new Date());
   document.getElementById("print-simulation").addEventListener("click", () => {

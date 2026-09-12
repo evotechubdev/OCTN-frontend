@@ -448,15 +448,14 @@
       <div class="page-view" id="servicos" data-view="servicos" hidden>
         <section class="inner-hero services-hero" aria-labelledby="services-title">
           <div class="container inner-hero-content">
-            <span class="section-kicker">Plano Institucional Mensal</span>
-            <h1 id="services-title">Cuidado nutricional contínuo, pessoa por pessoa.</h1>
+            <span class="section-kicker">Serviços e honorários</span>
+            <h1 id="services-title">Monte uma proposta do seu jeito.</h1>
             <p>
-              Assistência nutricional individual para residentes de instituições
-              sociais, organizada em um contrato mensal acessível, responsável e
-              dimensionado para a realidade de cada instituição.
+              Escolha entre atendimento avulso ou plano mensal e combine os
+              serviços de nutrição necessários para você ou sua instituição.
             </p>
             <button class="button button-primary services-hero-action" type="button" data-scroll-target="plano-institucional">
-              Conheça o plano
+              Montar proposta
               <span aria-hidden="true">↓</span>
             </button>
           </div>
@@ -465,47 +464,31 @@
         <section class="section simulator-section" id="plano-institucional" aria-labelledby="simulator-title">
           <div class="container">
             <div class="simulator-heading reveal">
-              <span class="section-kicker">Simulador mensal</span>
-              <h2 id="simulator-title">Monte o atendimento da instituição.</h2>
-              <p>Informe quantas pessoas serão cobertas pela parceria mensal, escolha o serviço principal e inclua apenas os serviços complementares necessários.</p>
+              <span class="section-kicker">Simulador de honorários</span>
+              <h2 id="simulator-title">Monte seu plano de serviços.</h2>
+              <p>Selecione a forma de contratação, marque quantos serviços desejar e ajuste a quantidade de cada item. Os valores seguem prioritariamente a referência nacional FNN 2026 indicada pelo CFN.</p>
             </div>
 
             <div class="simulator-layout">
               <form class="simulator-form reveal" id="service-simulator">
-                <div class="form-field">
-                  <label for="resident-count">Pessoas cobertas pela mensalidade</label>
-                  <div class="quantity-control">
-                    <button type="button" data-quantity-action="decrease" aria-label="Diminuir quantidade">−</button>
-                    <input id="resident-count" name="resident-count" type="number" min="1" max="500" step="1" value="12" inputmode="numeric" />
-                    <button type="button" data-quantity-action="increase" aria-label="Aumentar quantidade">+</button>
+                <fieldset class="plan-type-fieldset">
+                  <legend>Forma de contratação</legend>
+                  <div class="plan-type-options">
+                    <label class="plan-type-option">
+                      <input type="radio" name="plan-type" value="avulso" />
+                      <span><strong>Plano avulso</strong><small>Contratação pontual, com pagamento único pelos itens selecionados.</small></span>
+                    </label>
+                    <label class="plan-type-option">
+                      <input type="radio" name="plan-type" value="mensal" checked />
+                      <span><strong>Plano mensal</strong><small>Serviços e quantidades recorrentes a cada mês.</small></span>
+                    </label>
                   </div>
-                </div>
-
-                <fieldset>
-                  <legend>Serviço individual mensal</legend>
-                  <label class="service-option">
-                    <input type="radio" name="primary-service" value="avaliacao" checked />
-                    <span><strong>Plano mensal de avaliação nutricional</strong><small>Atendimento e registro individual de todas as pessoas cobertas pela parceria.</small></span>
-                  </label>
-                  <label class="service-option">
-                    <input type="radio" name="primary-service" value="clinica-social" />
-                    <span><strong>Plano clínico mensal — condição social</strong><small>Consulta individual com a condição social máxima prevista na tabela profissional.</small></span>
-                  </label>
-                  <label class="service-option">
-                    <input type="radio" name="primary-service" value="clinica" />
-                    <span><strong>Plano clínico mensal integral</strong><small>Consulta clínica individual para todas as pessoas cobertas.</small></span>
-                  </label>
                 </fieldset>
 
-                <fieldset>
-                  <legend>Serviços institucionais opcionais</legend>
-                  <p class="field-help">Cada item reserva 1 hora técnica mensal a R$ 271,23.</p>
-                  <div class="extra-options">
-                    <label><input type="checkbox" name="extra-service" value="relatorio" /><span>Relatório consolidado</span></label>
-                    <label><input type="checkbox" name="extra-service" value="reuniao" /><span>Reunião com a equipe</span></label>
-                    <label><input type="checkbox" name="extra-service" value="educacao" /><span>Orientação coletiva</span></label>
-                  </div>
-                  <label class="analysis-option"><input type="checkbox" id="extended-scope" /><span>Solicitar também análise de alimentação coletiva ou responsabilidade técnica <small>Valor definido em proposta específica.</small></span></label>
+                <fieldset class="service-catalog-fieldset">
+                  <legend>Serviços disponíveis</legend>
+                  <p class="field-help">Valores mínimos nacionais da FNN, vigentes de 01/01/2026 a 31/12/2026. Selecione um ou mais itens.</p>
+                  <div class="service-catalog" id="service-catalog"></div>
                 </fieldset>
 
                 <button class="button simulator-reset" type="reset">Restaurar simulação</button>
@@ -517,19 +500,19 @@
                   <span>Contrato de prestação de serviços nutricionais</span>
                 </div>
                 <div class="summary-heading">
-                  <span>Resumo mensal</span>
-                  <h3 id="summary-service-name">Plano mensal de avaliação nutricional</h3>
-                  <p>Parceria com cobertura para até <strong id="summary-resident-count">12</strong> pessoas</p>
+                  <span id="summary-plan-label">Resumo mensal</span>
+                  <h3 id="summary-service-name">Plano mensal personalizado</h3>
+                  <p><strong id="summary-service-count">1 serviço</strong> <span id="summary-selection-suffix">selecionado</span></p>
                 </div>
                 <div class="summary-table" role="table" aria-label="Composição da simulação">
                   <div class="summary-table-head" role="row"><span role="columnheader">Serviço</span><span role="columnheader">Valor</span></div>
                   <div id="summary-items"></div>
                 </div>
                 <div class="summary-total">
-                  <span>Mensalidade da parceria</span>
-                  <strong id="summary-total">R$ 1.798,80</strong>
+                  <span id="summary-total-label">Mensalidade estimada</span>
+                  <strong id="summary-total">R$ 214,28</strong>
                 </div>
-                <p class="unit-reference">Valor individual de referência: <strong id="summary-unit-reference">R$ 149,90</strong></p>
+                <p class="unit-reference">Referência nacional FNN 2026: <strong>1 USN = R$ 107,14</strong></p>
                 <ul class="summary-deliverables" id="summary-deliverables"></ul>
                 <div class="contract-document">
                   <div class="contract-document-header"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Instrumento particular</span></div>
@@ -546,11 +529,11 @@
                   </p>
                   <ol class="contract-clauses">
                     <li><strong>Objeto.</strong> <span id="contract-object-output"></span></li>
-                    <li><strong>Mensalidade.</strong> <span id="contract-payment-output"></span> O pagamento vencerá no dia <span class="handwrite-line handwrite-day"></span> de cada mês, com início em <span class="handwrite-line handwrite-date"></span>. O valor individual é apenas uma referência para formação da mensalidade, não caracterizando cobrança avulsa por atendimento.</li>
+                    <li><strong id="contract-payment-title">Mensalidade.</strong> <span id="contract-payment-output"></span> <span id="contract-payment-terms"></span></li>
                     <li><strong>Execução e local.</strong> Os atendimentos serão agendados em comum acordo e prestados exclusivamente no endereço indicado pela CONTRATANTE neste instrumento. A CONTRATADA preservará sua autonomia técnica e registrará os serviços profissionais realizados. Qualquer alteração do local dependerá de prévio acordo escrito entre as partes.</li>
                     <li><strong>Obrigações da contratante.</strong> A CONTRATANTE fornecerá informações, autorizações, espaço e condições adequadas à execução do serviço, além de comunicar alterações relevantes sobre as pessoas atendidas.</li>
-                    <li><strong>Falecimento e adequação do plano.</strong> Em caso de falecimento de pessoa coberta, os serviços já realizados e os valores já vencidos permanecerão devidos. Mediante comunicação da CONTRATANTE, a pessoa será retirada do plano e a quantidade coberta e a mensalidade serão ajustadas para as cobranças futuras, conforme o valor individual de referência vigente, sem multa ou taxa de cancelamento.</li>
-                    <li><strong>Prazo.</strong> O contrato vigorará pelo prazo de <span class="handwrite-line handwrite-day"></span> meses, a partir de <span class="handwrite-line handwrite-date"></span>, ou por prazo indeterminado se assinalado: (&nbsp;&nbsp;) indeterminado. Qualquer parte poderá encerrar a parceria mediante aviso escrito com antecedência mínima de 30 dias, sem prejuízo dos valores já vencidos.</li>
+                    <li id="contract-adjustment-clause"><strong>Adequação do plano.</strong> As quantidades e os serviços recorrentes poderão ser ajustados para as cobranças futuras mediante acordo escrito entre as partes, preservados os serviços já realizados e os valores já vencidos.</li>
+                    <li><strong>Prazo.</strong> <span id="contract-term-output"></span></li>
                     <li><strong>Confidencialidade e dados.</strong> As partes protegerão prontuários e dados pessoais, especialmente dados de saúde, utilizando-os somente para a execução do cuidado e demais hipóteses permitidas pela legislação aplicável.</li>
                     <li><strong>Natureza da contratação.</strong> Este instrumento possui natureza civil de prestação de serviços, preservadas a autonomia profissional e as condições efetivamente praticadas entre as partes.</li>
                   </ol>
@@ -562,7 +545,7 @@
                   </div>
                 </div>
                 <p class="summary-disclaimer">
-                  Valor mensal recorrente enquanto a parceria estiver ativa, para a quantidade e o escopo indicados. Não representa parcelamento nem cobrança por atendimento realizado. Confira os dados e submeta a minuta à revisão jurídica antes da assinatura definitiva.
+                  Estimativa baseada nos valores mínimos nacionais da FNN 2026. Deslocamento, insumos, complexidade, tributos e escopos adicionais podem alterar o valor final. Confira os dados e submeta a minuta à revisão jurídica antes da assinatura definitiva.
                 </p>
                 <p class="print-date">Emitida em <span id="simulation-date"></span>.</p>
                 <button class="button button-primary print-button" type="button" id="print-simulation">
@@ -577,15 +560,17 @@
         <section class="section simulator-guidance" aria-labelledby="guidance-title">
           <div class="container guidance-layout reveal">
             <div>
-              <span class="section-kicker">Antes de contratar</span>
-              <h2 id="guidance-title">Simulação simples, escopo responsável.</h2>
+              <span class="section-kicker">Referências profissionais</span>
+              <h2 id="guidance-title">Valores claros, escopo responsável.</h2>
             </div>
             <div class="guidance-copy">
-              <p><strong>Atendimento individual:</strong> o valor simulado cobre uma avaliação ou consulta por pessoa no mês, conforme a modalidade selecionada.</p>
-              <p><strong>Outros escopos:</strong> produção de refeições, responsabilidade técnica, deslocamentos e vínculo empregatício exigem dimensionamento separado.</p>
+              <p><strong>Referência nacional:</strong> a simulação prioriza a tabela de honorários 2026 da Federação Nacional dos Nutricionistas, fonte indicada pelo CFN para consulta de valores mínimos profissionais.</p>
+              <p><strong>Plano mensal:</strong> as quantidades selecionadas se repetem mensalmente. No plano avulso, os itens são cobrados uma única vez.</p>
+              <p><strong>Composição final:</strong> deslocamento, insumos, tributos, responsabilidade técnica, complexidade e particularidades do contratante devem ser validados na proposta definitiva.</p>
               <div class="reference-actions">
+                <a href="https://www.fnn.org.br/honorarios" target="_blank" rel="noopener noreferrer">Honorários FNN 2026 <span aria-hidden="true">↗</span></a>
+                <a href="https://www.cfn.org.br/legacy-45/" target="_blank" rel="noopener noreferrer">Orientação do CFN <span aria-hidden="true">↗</span></a>
                 <a href="https://www.sindnutba.org.br/p/tabela-de-honorarios_4.html" target="_blank" rel="noopener noreferrer">Tabela SINDNUT/BA 2026–2027 <span aria-hidden="true">↗</span></a>
-                <a href="https://www.cfn.org.br/wp-content/uploads/resolucoes/DOU_600.pdf" target="_blank" rel="noopener noreferrer">Resolução CFN nº 600/2018 <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </div>
