@@ -13,6 +13,15 @@ python -m http.server 8080
 
 Depois, acesse `http://localhost:8080`.
 
+## Área profissional (fase de testes)
+
+- Login: `admin`
+- Senha: `1234`
+- Os diagnósticos ILPI são salvos no `localStorage` do navegador em uso.
+- O botão **Gerar PDF** abre a impressão do navegador; escolha **Salvar como PDF**.
+
+Esta autenticação é apenas uma barreira de interface para o protótipo. Antes de publicar a área profissional para terceiros, substitua-a por Firebase Authentication e migre os registros locais para um banco com regras de acesso apropriadas.
+
 ## Publicação
 
 O workflow `.github/workflows/deploy-pages.yml` publica o conteúdo no GitHub

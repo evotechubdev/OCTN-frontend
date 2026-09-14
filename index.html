@@ -23,8 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=10" />
-    <script src="./script.js?v=2" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=11" />
+    <script src="./script.js?v=3" defer></script>
   </head>
   <body>
     <button class="skip-link" type="button" data-scroll-target="conteudo">Pular para o conteúdo</button>
@@ -42,6 +42,7 @@
           <button type="button" data-view-link="consultoria">Consultoria</button>
           <button type="button" data-view-link="servicos">Serviços</button>
           <button type="button" data-view-link="capacitacao">Capacitação</button>
+          <button type="button" data-view-link="formularios" id="forms-nav" hidden>Formulários</button>
         </nav>
       </div>
     </header>
@@ -258,6 +259,28 @@
               </div>
             </li>
           </ol>
+        </div>
+      </section>
+
+      <section class="section access-section" id="acesso" aria-labelledby="access-title">
+        <div class="container access-card reveal">
+          <div class="access-copy">
+            <span class="section-kicker">Área profissional</span>
+            <h2 id="access-title">Acesso aos formulários e relatórios.</h2>
+            <p>Ambiente reservado para elaboração, armazenamento local e emissão dos documentos técnicos OCTN.</p>
+          </div>
+          <form class="login-form" id="login-form" autocomplete="on">
+            <label><span>Login</span><input type="text" name="username" autocomplete="username" required /></label>
+            <label><span>Senha</span><input type="password" name="password" autocomplete="current-password" required /></label>
+            <button class="button button-primary" type="submit">Entrar</button>
+            <p class="form-message" id="login-message" role="status" aria-live="polite"></p>
+          </form>
+          <div class="logged-panel" id="logged-panel" hidden>
+            <span class="online-dot" aria-hidden="true"></span>
+            <div><strong>Sessão administrativa ativa</strong><small>Os formulários estão disponíveis no menu principal.</small></div>
+            <button class="button button-primary" type="button" data-view-link="formularios">Abrir formulários</button>
+            <button class="text-button" type="button" id="logout-button">Sair</button>
+          </div>
         </div>
       </section>
 
@@ -629,6 +652,169 @@
             </ul>
           </div>
         </section>
+      </div>
+
+      <div class="page-view forms-view" id="formularios" data-view="formularios" hidden>
+        <section class="forms-hero">
+          <div class="container forms-hero-inner">
+            <div>
+              <span class="section-kicker">Área profissional protegida</span>
+              <h1>Formulários e relatórios técnicos</h1>
+              <p>Preencha em campo, salve localmente e emita documentos padronizados com a identidade OCTN.</p>
+            </div>
+            <button class="text-button logout-top" type="button" data-logout>Sair da área profissional</button>
+          </div>
+        </section>
+
+        <section class="forms-dashboard" id="forms-dashboard">
+          <div class="container">
+            <div class="workspace-heading"><div><span>Biblioteca de instrumentos</span><h2>Diagnósticos disponíveis</h2></div></div>
+            <article class="form-product-card">
+              <div class="product-icon" aria-hidden="true">ILPI</div>
+              <div>
+                <span class="product-tag">Disponível</span>
+                <h3>Diagnóstico Nutricional Inicial — ILPI</h3>
+                <p>Instrumento completo para caracterização institucional, perfil de saúde, rotina alimentar, inspeção da cozinha, prioridades e parecer técnico.</p>
+                <ul><li>11 seções técnicas</li><li>Indicadores automáticos</li><li>Relatório A4 profissional</li></ul>
+              </div>
+              <button class="button button-primary" type="button" id="new-ilpi">Novo diagnóstico</button>
+            </article>
+            <div class="saved-heading"><div><span>Banco local</span><h2>Relatórios salvos</h2></div><small>Os registros ficam somente neste navegador.</small></div>
+            <div class="saved-reports" id="saved-reports"></div>
+          </div>
+        </section>
+
+        <section class="form-workspace" id="ilpi-workspace" hidden>
+          <div class="container workspace-topbar">
+            <button class="back-button" type="button" id="back-to-forms">← Voltar aos formulários</button>
+            <div class="document-state"><span id="save-indicator">Alterações não salvas</span><strong id="current-report-label">Novo diagnóstico</strong></div>
+            <div class="workspace-actions"><button class="button button-secondary" type="button" id="save-ilpi">Salvar localmente</button><button class="button button-primary" type="button" id="print-ilpi">Gerar PDF</button></div>
+          </div>
+          <div class="container editor-layout">
+            <aside class="form-index" aria-label="Seções do formulário">
+              <strong>Diagnóstico ILPI</strong><div class="progress-track"><span id="form-progress"></span></div><small id="form-progress-text">0% preenchido</small><nav id="form-section-nav"></nav>
+            </aside>
+            <form class="ilpi-form" id="ilpi-form">
+              <input type="hidden" name="reportId" />
+              <section class="form-section" id="section-documento" data-section-title="Documento">
+                <div class="form-section-heading"><span>Documento</span><h2>Controle e apresentação</h2><p>Informações usadas na capa e no controle do relatório.</p></div>
+                <div class="form-grid three">
+                  <label><span>Número do relatório</span><input name="reportNumber" placeholder="OCTN-ILPI-2026-001" /></label>
+                  <label><span>Versão</span><input name="version" value="1.0" /></label>
+                  <label><span>Status</span><select name="status"><option>Em elaboração</option><option>Concluído</option><option>Revisão necessária</option></select></label>
+                  <label class="span-2"><span>Título complementar</span><input name="subtitle" placeholder="Diagnóstico inicial do serviço de alimentação e nutrição" /></label>
+                  <label><span>Local de emissão</span><input name="issueCity" placeholder="Salvador/BA" /></label>
+                </div>
+              </section>
+
+              <section class="form-section" id="section-identificacao" data-section-title="Identificação">
+                <div class="form-section-heading"><span>01</span><h2>Identificação da instituição</h2></div>
+                <div class="form-grid two">
+                  <label class="span-2"><span>Nome da instituição *</span><input name="institutionName" required /></label>
+                  <label class="span-2"><span>Endereço completo</span><input name="address" /></label>
+                  <label><span>Responsável pela instituição</span><input name="institutionManager" /></label>
+                  <label><span>Telefone</span><input name="phone" inputmode="tel" /></label>
+                  <label><span>Data de início das atividades</span><input name="activityStart" type="date" /></label>
+                  <label><span>Data da visita *</span><input name="visitDate" type="date" required /></label>
+                  <label><span>Nutricionista responsável</span><input name="nutritionist" /></label>
+                  <label><span>CRN</span><input name="crn" placeholder="17272" /></label>
+                  <label><span>CNPJ (opcional)</span><input name="cnpj" /></label>
+                  <label><span>E-mail institucional</span><input name="email" type="email" /></label>
+                </div>
+              </section>
+
+              <section class="form-section" id="section-caracterizacao" data-section-title="Caracterização">
+                <div class="form-section-heading"><span>02</span><h2>Caracterização da instituição</h2><p>O total por grau de dependência deve ser compatível com o número de residentes.</p></div>
+                <div class="form-grid three numeric-grid">
+                  <label><span>Total de residentes</span><input name="totalResidents" type="number" min="0" /></label>
+                  <label><span>Idosos independentes</span><input name="independentResidents" type="number" min="0" /></label>
+                  <label><span>Parcialmente dependentes</span><input name="partialResidents" type="number" min="0" /></label>
+                  <label><span>Idosos dependentes</span><input name="dependentResidents" type="number" min="0" /></label>
+                  <label><span>Idosos acamados</span><input name="bedriddenResidents" type="number" min="0" /></label>
+                  <label><span>Funcionários na alimentação</span><input name="foodEmployees" type="number" min="0" /></label>
+                </div>
+                <div class="validation-note" id="resident-count-note"></div>
+              </section>
+
+              <section class="form-section" id="section-saude" data-section-title="Perfil de saúde">
+                <div class="form-section-heading"><span>03</span><h2>Perfil de saúde dos residentes</h2><p>Registre prevalência e observações relevantes para o cuidado nutricional.</p></div>
+                <div class="responsive-table"><table class="input-table"><thead><tr><th>Condição / característica</th><th>Nº de idosos</th><th>Observações</th></tr></thead><tbody id="health-rows"></tbody></table></div>
+              </section>
+
+              <section class="form-section" id="section-rotina" data-section-title="Rotina alimentar">
+                <div class="form-section-heading"><span>04</span><h2>Rotina alimentar da instituição</h2></div>
+                <div class="form-grid three">
+                  <label><span>Refeições oferecidas/dia</span><input name="mealsPerDay" type="number" min="0" max="12" /></label>
+                  <fieldset><legend>Existe cardápio planejado?</legend><label><input type="radio" name="plannedMenu" value="Sim" /> Sim</label><label><input type="radio" name="plannedMenu" value="Não" /> Não</label></fieldset>
+                  <fieldset><legend>Há registro de aceitação?</legend><label><input type="radio" name="acceptanceRecord" value="Sim" /> Sim</label><label><input type="radio" name="acceptanceRecord" value="Não" /> Não</label></fieldset>
+                  <label class="span-2"><span>Quem define atualmente as refeições?</span><input name="mealPlanner" /></label>
+                  <fieldset><legend>Existem dietas especiais?</legend><label><input type="radio" name="specialDiets" value="Sim" /> Sim</label><label><input type="radio" name="specialDiets" value="Não" /> Não</label></fieldset>
+                  <label class="span-3"><span>Quais dietas especiais / critérios?</span><textarea name="specialDietsDetails" rows="2"></textarea></label>
+                </div>
+                <div class="responsive-table"><table class="input-table"><thead><tr><th>Refeição</th><th>Horário</th><th>Preparação / observações</th></tr></thead><tbody id="meal-rows"></tbody></table></div>
+                <div class="validation-note" id="meal-count-note"></div>
+              </section>
+
+              <section class="form-section" id="section-residentes" data-section-title="Residentes">
+                <div class="form-section-heading with-action"><div><span>05</span><h2>Levantamento geral dos residentes</h2><p>Use identificação compatível com a política de privacidade da instituição.</p></div><button class="small-button" type="button" id="add-resident">+ Adicionar residente</button></div>
+                <div class="responsive-table wide-table"><table class="input-table"><thead><tr><th>Nome / identificação</th><th>Idade</th><th>Diagnóstico</th><th>Acamado</th><th>Perda de peso</th><th>Dieta especial</th><th>Prioridade</th><th></th></tr></thead><tbody id="resident-rows"></tbody></table></div>
+              </section>
+
+              <section class="form-section" id="section-cozinha" data-section-title="Visita à cozinha">
+                <div class="form-section-heading"><span>06</span><h2>Visita técnica ao serviço de alimentação</h2><p>S = Sim · N = Não · NA = Não se aplica.</p></div>
+                <div class="responsive-table wide-table"><table class="input-table assessment-table"><thead><tr><th>Item avaliado</th><th>Avaliação</th><th>Observações / evidência</th></tr></thead><tbody id="kitchen-rows"></tbody></table></div>
+              </section>
+
+              <section class="form-section" id="section-entrevista" data-section-title="Entrevista">
+                <div class="form-section-heading"><span>07</span><h2>Entrevista com a cozinheira</h2></div>
+                <div class="form-grid two">
+                  <label><span>Nome</span><input name="cookName" /></label><label><span>Tempo de experiência</span><input name="cookExperience" /></label>
+                  <fieldset class="span-2"><legend>Possui capacitação em Boas Práticas?</legend><label><input type="radio" name="cookTraining" value="Sim" /> Sim</label><label><input type="radio" name="cookTraining" value="Não" /> Não</label></fieldset>
+                  <label class="span-2"><span>Quem realiza o planejamento das refeições?</span><textarea name="cookPlanning" rows="2"></textarea></label>
+                  <label class="span-2"><span>Principais dificuldades na preparação</span><textarea name="cookDifficulties" rows="3"></textarea></label>
+                  <label><span>Alimentos com maior aceitação</span><textarea name="mostAcceptedFoods" rows="3"></textarea></label><label><span>Alimentos com maior rejeição</span><textarea name="mostRejectedFoods" rows="3"></textarea></label>
+                  <label class="span-2"><span>Como são realizadas as compras?</span><textarea name="foodPurchases" rows="3"></textarea></label>
+                  <label><span>Dificuldade para atender dietas especiais</span><textarea name="specialDietDifficulties" rows="3"></textarea></label><label><span>Equipamentos ou recursos que fazem falta</span><textarea name="missingResources" rows="3"></textarea></label>
+                </div>
+              </section>
+
+              <section class="form-section" id="section-refeicao" data-section-title="Observação da refeição">
+                <div class="form-section-heading"><span>08</span><h2>Observação da refeição</h2><p>Preencher quando houver acompanhamento direto de uma refeição.</p></div>
+                <div class="responsive-table"><table class="input-table assessment-table"><thead><tr><th>Aspecto observado</th><th>Avaliação</th><th>Observações</th></tr></thead><tbody id="observation-rows"></tbody></table></div>
+              </section>
+
+              <section class="form-section" id="section-prioridades" data-section-title="Prioridades">
+                <div class="form-section-heading"><span>09</span><h2>Demandas e prioridades identificadas</h2></div>
+                <div class="priority-fields">
+                  <label class="priority immediate"><span>Prioridade imediata</span><small>Risco relevante ou ação que não deve aguardar.</small><textarea name="immediatePriority" rows="4"></textarea></label>
+                  <label class="priority short"><span>Curto prazo</span><small>Ações recomendadas para os próximos 30 dias.</small><textarea name="shortPriority" rows="4"></textarea></label>
+                  <label class="priority medium"><span>Médio prazo</span><small>Melhorias estruturantes para 31 a 90 dias.</small><textarea name="mediumPriority" rows="4"></textarea></label>
+                </div>
+              </section>
+
+              <section class="form-section" id="section-parecer" data-section-title="Parecer">
+                <div class="form-section-heading"><span>10</span><h2>Parecer diagnóstico inicial</h2><p>Síntese técnica das necessidades, riscos, pontos positivos e impacto esperado.</p></div>
+                <label><span>Síntese diagnóstica</span><textarea name="diagnosticOpinion" rows="9"></textarea></label>
+                <label><span>Pontos fortes observados</span><textarea name="strengths" rows="5"></textarea></label>
+                <label><span>Limitações do levantamento</span><textarea name="limitations" rows="4" placeholder="Ex.: documentos não disponibilizados, refeição não observada, dados autorreferidos..."></textarea></label>
+              </section>
+
+              <section class="form-section" id="section-recomendacoes" data-section-title="Recomendações">
+                <div class="form-section-heading with-action"><div><span>11</span><h2>Recomendações e próximos passos</h2><p>Estruture ações verificáveis para facilitar o acompanhamento.</p></div><button class="small-button" type="button" id="add-action">+ Adicionar ação</button></div>
+                <label><span>Orientações gerais</span><textarea name="recommendations" rows="6"></textarea></label>
+                <div class="responsive-table wide-table"><table class="input-table"><thead><tr><th>Ação recomendada</th><th>Prioridade</th><th>Responsável</th><th>Prazo</th><th>Status</th><th></th></tr></thead><tbody id="action-rows"></tbody></table></div>
+              </section>
+
+              <section class="form-section final-review" id="section-revisao" data-section-title="Revisão final">
+                <div class="form-section-heading"><span>Finalização</span><h2>Revisão e emissão</h2><p>Confira os dados antes de gerar a versão para a cliente.</p></div>
+                <div class="review-cards" id="review-cards"></div>
+                <label class="consent-check"><input type="checkbox" name="reviewConfirmed" value="Sim" /><span>Declaro que revisei as informações e que o documento representa os achados da visita técnica.</span></label>
+                <div class="final-actions"><button class="button button-secondary" type="button" data-save>Salvar rascunho</button><button class="button button-primary" type="button" data-print>Visualizar e gerar PDF</button></div>
+              </section>
+            </form>
+          </div>
+        </section>
+        <article class="ilpi-report" id="ilpi-report" aria-label="Relatório para impressão"></article>
       </div>
     </main>
 
