@@ -525,9 +525,9 @@ function createImportedReport() {
       limitations: "Até esta etapa, foram disponibilizados somente os dados do primeiro levantamento de campo. Não constam avaliação completa da cozinha, observação de refeição, registros individualizados, documentos institucionais nem anexos fotográficos.",
       recommendations: "Priorizar triagem e avaliação nutricional dos residentes com perda de peso; conferir diagnósticos e prescrições nos prontuários; estruturar cardápio planejado; descrever corretamente consistências e dietas especiais; implantar controle de aceitação alimentar; concluir a verificação de boas práticas e manter evidências das adequações realizadas.",
       findings: [
-        { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Quatro residentes com perda de peso recente foram informados.", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Avaliação nutricional individual e plano assistencial", guidance: "Realizar triagem e avaliação nutricional individual, investigar causas e definir acompanhamento.", priority: "Alta" },
-        { area: "Alimentação e nutrição", classification: "Oportunidade de melhoria", finding: "A instituição informou não possuir cardápio planejado.", evidence: "Entrevista com a responsável durante a visita.", reference: "Planejamento técnico da alimentação coletiva", guidance: "Elaborar cardápio por nutricionista, contemplando necessidades, consistências, variedade e viabilidade operacional.", priority: "Alta" },
-        { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "A oferta informada de quatro refeições diárias é inferior ao mínimo de seis refeições previsto para ILPI.", evidence: "Relato da responsável e registro da rotina alimentar em 10/09/2026; há cinco horários preenchidos, que também devem ser conferidos.", reference: "RDC Anvisa nº 502/2021, arts. 44 e 45", guidance: "Adequar imediatamente a rotina para ao menos seis refeições por dia, atualizar os horários e manter cardápio e registros coerentes com a prática.", priority: "Imediata" }
+        { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Alta" },
+        { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "Não foi apresentado cardápio planejado para as refeições da instituição.", evidence: "Informação prestada pela responsável durante a visita de 10/09/2026.", reference: "Lei nº 8.234/1991, art. 3º, II; Resolução CFN nº 600/2018, Anexo II, item I.A.1.1.1.1", guidance: "Elaborar e implantar cardápio sob responsabilidade de nutricionista, com base no diagnóstico nutricional da clientela e contemplando necessidades, consistências, hábitos alimentares e viabilidade operacional.", priority: "Alta" },
+        { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "A rotina informada registra quatro refeições diárias, abaixo do mínimo de seis exigido para ILPI.", evidence: "Relato da responsável em 10/09/2026; o formulário contém cinco horários de refeições, divergência que também precisa ser conferida.", reference: "RDC Anvisa nº 502/2021, art. 44", guidance: "Adequar imediatamente a rotina para, no mínimo, seis refeições diárias e alinhar o total informado, os horários, o cardápio e a prática efetiva.", priority: "Imediata" }
       ],
       residents: [], actions: [
         { action: "Adequar a rotina para no mínimo seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista", deadline: "7 dias", status: "Pendente" },
@@ -554,8 +554,15 @@ function seedLocalDatabase() {
     Object.keys(imported.data).filter((key) => key.startsWith("normative")).forEach((key) => delete imported.data[key]);
     if (imported.data.methodology?.includes("Os itens não avaliados ou sem evidência disponível")) imported.data.methodology = defaults.methodology;
     if (imported.data.documentsReviewed?.startsWith("Nenhum documento complementar")) imported.data.documentsReviewed = "";
-    const mealFinding = imported.data.findings?.find((finding) => finding.finding?.includes("quatro refeições diárias") && finding.reference === "Consistência e rastreabilidade dos registros");
-    if (mealFinding) Object.assign(mealFinding, defaults.findings[2]);
+    const findingMigrations = [
+      { match: (finding) => finding.finding?.includes("perda de peso recente"), replacement: defaults.findings[0] },
+      { match: (finding) => finding.finding?.includes("cardápio planejado"), replacement: defaults.findings[1] },
+      { match: (finding) => finding.finding?.includes("quatro refeições diárias"), replacement: defaults.findings[2] }
+    ];
+    findingMigrations.forEach(({ match, replacement }) => {
+      const finding = imported.data.findings?.find(match);
+      if (finding) Object.assign(finding, replacement);
+    });
     const oldMealAction = imported.data.actions?.find((action) => action.action === "Validar e corrigir o quantitativo diário de refeições.");
     if (oldMealAction) Object.assign(oldMealAction, defaults.actions[0]);
     if (imported.data.immediatePriority?.includes("validar a divergência entre o número de refeições")) imported.data.immediatePriority = defaults.immediatePriority;
