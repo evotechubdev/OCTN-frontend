@@ -559,7 +559,8 @@ function createImportedReport() {
       contentRevision: 4,
       annexRevision: 2,
       completionRevision: 1,
-      recommendations: "Recomenda-se que a instituição execute as adequações de forma escalonada, priorizando os riscos sanitários, nutricionais, assistenciais e documentais que podem comprometer a segurança e a qualidade do cuidado aos residentes. A gestão deve formalizar responsáveis e prazos, enquanto a nutricionista coordena a avaliação individual, o planejamento do cardápio, a definição das dietas especiais e os controles do serviço de alimentação. Todas as medidas adotadas devem ser comprovadas por registros, documentos e fotografias, acompanhadas semanalmente nos primeiros 30 dias e reavaliadas tecnicamente após a implantação, com atualização contínua do plano de ação.",
+      consultancyRevision: 1,
+      recommendations: "Recomenda-se que a instituição execute as adequações de forma escalonada, priorizando os riscos sanitários, nutricionais, assistenciais e documentais que podem comprometer a segurança e a qualidade do cuidado aos residentes. A gestão deve formalizar responsáveis e prazos, cabendo à gestão designar ou contratar profissional habilitado para conduzir a avaliação individual, o planejamento do cardápio, a definição das dietas especiais e os controles do serviço de alimentação. Todas as medidas adotadas devem ser comprovadas por registros, documentos e fotografias, acompanhadas semanalmente nos primeiros 30 dias e reavaliadas tecnicamente após a implantação, com atualização contínua do plano de ação.",
       findings: [
         { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Alta" },
         { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "Não foi apresentado cardápio planejado para as refeições da instituição.", evidence: "Informação prestada pela responsável durante a visita de 10/09/2026.", reference: "Lei nº 8.234/1991, art. 3º, II; Resolução CFN nº 600/2018, Anexo II, item I.A.1.1.1.1", guidance: "Elaborar e implantar cardápio sob responsabilidade de nutricionista, com base no diagnóstico nutricional da clientela e contemplando necessidades, consistências, hábitos alimentares e viabilidade operacional.", priority: "Alta" },
@@ -571,16 +572,16 @@ function createImportedReport() {
         { area: "Gestão", classification: "Não conformidade", finding: "Não foi apresentado Plano de Trabalho nem instrumento para planejar, acompanhar e revisar as ações institucionais.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, arts. 31 e 32", guidance: "Elaborar o Plano de Trabalho institucional e desdobrá-lo em plano de ação com responsáveis, prazos, situação e revisão periódica, considerando a participação dos residentes.", priority: "Moderada" }
       ],
       residents: [], actions: [
-        { action: "Regularizar o alvará sanitário, organizar os documentos institucionais e completar os registros individuais dos residentes.", priority: "Imediata", responsible: "Gestão e responsável técnica", deadline: "7 dias", status: "Pendente" },
-        { action: "Adequar a rotina para, no mínimo, seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista", deadline: "7 dias", status: "Pendente" },
-        { action: "Realizar avaliação nutricional individual dos quatro residentes com perda de peso recente e registrar diagnóstico, prescrição e evolução.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
-        { action: "Elaborar e implantar cardápio planejado, incluindo consistências, dietas especiais e necessidades clínicas.", priority: "Alta", responsible: "Nutricionista", deadline: "30 dias", status: "Pendente" },
+        { action: "Regularizar o alvará sanitário, organizar os documentos institucionais e completar os registros individuais dos residentes.", priority: "Imediata", responsible: "Gestão e responsável legal da instituição", deadline: "7 dias", status: "Pendente" },
+        { action: "Adequar a rotina para, no mínimo, seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista designado pela instituição", deadline: "7 dias", status: "Pendente" },
+        { action: "Realizar avaliação nutricional individual dos quatro residentes com perda de peso recente e registrar diagnóstico, prescrição e evolução.", priority: "Alta", responsible: "Nutricionista designado pela instituição", deadline: "15 dias", status: "Pendente" },
+        { action: "Elaborar e implantar cardápio planejado, incluindo consistências, dietas especiais e necessidades clínicas.", priority: "Alta", responsible: "Nutricionista designado pela instituição", deadline: "30 dias", status: "Pendente" },
         { action: "Identificar os alimentos, controlar datas de preparo e validade, registrar temperaturas e retirar os produtos do chão.", priority: "Imediata", responsible: "Gestão e equipe da cozinha", deadline: "48 horas", status: "Pendente" },
         { action: "Organizar o fluxo entre armazenamento e preparo e executar reparos em pisos, paredes e instalações elétricas e hidráulicas.", priority: "Alta", responsible: "Gestão e manutenção", deadline: "30 dias", status: "Pendente" },
-        { action: "Elaborar e implantar o Manual de Boas Práticas e os Procedimentos Operacionais Padronizados.", priority: "Alta", responsible: "Nutricionista e gestão", deadline: "30 dias", status: "Pendente" },
-        { action: "Capacitar os manipuladores em boas práticas e manter registros comprobatórios dos treinamentos.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
+        { action: "Elaborar e implantar o Manual de Boas Práticas e os Procedimentos Operacionais Padronizados.", priority: "Alta", responsible: "Gestão e nutricionista designado pela instituição", deadline: "30 dias", status: "Pendente" },
+        { action: "Capacitar os manipuladores em boas práticas e manter registros comprobatórios dos treinamentos.", priority: "Alta", responsible: "Nutricionista designado pela instituição", deadline: "15 dias", status: "Pendente" },
         { action: "Elaborar o Plano de Trabalho e acompanhar as ações com responsáveis, prazos, status e evidências.", priority: "Moderada", responsible: "Gestão e equipe multiprofissional", deadline: "30 dias", status: "Pendente" },
-        { action: "Registrar as adequações e realizar nova avaliação técnica para verificar o cumprimento das medidas.", priority: "Moderada", responsible: "Nutricionista e responsável técnica", deadline: "60 dias", status: "Pendente" }
+        { action: "Registrar as adequações e realizar nova avaliação técnica para verificar o cumprimento das medidas.", priority: "Moderada", responsible: "Gestão da instituição e consultoria contratada", deadline: "60 dias", status: "Pendente" }
       ], annexes: [
         { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 1", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-01", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-1.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-1.jpg" },
         { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 2", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-02", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-2.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-2.jpg" },
@@ -606,6 +607,7 @@ function seedLocalDatabase() {
     const storedContentRevision = Number(imported.data.contentRevision || 0);
     const storedAnnexRevision = Number(imported.data.annexRevision || 0);
     const storedCompletionRevision = Number(imported.data.completionRevision || 0);
+    const storedConsultancyRevision = Number(imported.data.consultancyRevision || 0);
     Object.entries(defaults).forEach(([key, value]) => {
       if (imported.data[key] === undefined) imported.data[key] = value;
     });
@@ -668,6 +670,14 @@ function seedLocalDatabase() {
         if (!String(imported.data[key] || "").trim()) imported.data[key] = defaults[key];
       });
       imported.data.completionRevision = defaults.completionRevision;
+    }
+    if (storedConsultancyRevision < defaults.consultancyRevision) {
+      defaults.actions.forEach((defaultAction) => {
+        const savedAction = imported.data.actions?.find((action) => action.action === defaultAction.action);
+        if (savedAction) savedAction.responsible = defaultAction.responsible;
+      });
+      if (imported.data.recommendations?.includes("enquanto a nutricionista coordena")) imported.data.recommendations = defaults.recommendations;
+      imported.data.consultancyRevision = defaults.consultancyRevision;
     }
     persistReports(reports);
   }
@@ -744,7 +754,7 @@ function saveCurrentReport() {
   const index = reports.findIndex((report) => report.id === currentReportId);
   const now = new Date().toISOString();
   if (index >= 0) {
-    ["contentRevision", "annexRevision", "completionRevision"].forEach((key) => {
+    ["contentRevision", "annexRevision", "completionRevision", "consultancyRevision"].forEach((key) => {
       if (reports[index].data[key] !== undefined) data[key] = reports[index].data[key];
     });
   }
@@ -894,7 +904,7 @@ function reportHeader(data) {
 }
 
 function reportFooter(data, page, total) {
-  return `<footer class="report-page-footer"><span>${shown(data.nutritionist, "Nutricionista responsável")} · Documento técnico confidencial</span><span>${shown(data.institutionName, "ILPI")} · Página __OCTN_PAGE__ de __OCTN_TOTAL__</span></footer>`;
+  return `<footer class="report-page-footer"><span>${shown(data.nutritionist, "Nutricionista consultora")} · Documento técnico confidencial</span><span>${shown(data.institutionName, "ILPI")} · Página __OCTN_PAGE__ de __OCTN_TOTAL__</span></footer>`;
 }
 
 function reportPage(data, kicker, title, content, page, total, className = "") {
@@ -903,8 +913,9 @@ function reportPage(data, kicker, title, content, page, total, className = "") {
 
 function finalizeReportPages(cover, pages, totalPages) {
   let currentPage = 1;
+  const numberedCover = cover.replaceAll("__OCTN_TOTAL__", String(totalPages)).replaceAll("__OCTN_PAGE__", "1");
   const body = pages.join("").replaceAll("__OCTN_TOTAL__", String(totalPages)).replace(/__OCTN_PAGE__/g, () => String(++currentPage));
-  return cover + body;
+  return numberedCover + body;
 }
 
 function reportTable(headers, rows, emptyText = "Sem registros informados") {
@@ -930,9 +941,9 @@ function buildReportHtml(data) {
   const weightLoss = Number(data.health4Count || 0);
   const executiveSummary = `A visita técnica realizada em ${formatDate(data.visitDate)} registrou uma instituição com ${shown(data.totalResidents, "quantitativo não informado")} residentes, sendo ${shown(data.bedriddenResidents, "quantitativo não informado")} acamado(s), e ${shown(data.foodEmployees, "quantitativo não informado")} profissional(is) envolvido(s) na alimentação. Foram informados ${diabetes} caso(s) de diabetes mellitus, ${hypertension} de hipertensão arterial e ${weightLoss} de perda de peso recente. A instituição relatou oferta de ${shown(data.mealsPerDay, "quantitativo não informado")} refeições diárias. A existência de cardápio planejado foi registrada como “${shown(data.plannedMenu)}”. Os principais achados e as orientações correspondentes estão consolidados nas seções seguintes.`;
 
-  const cover = `<section class="report-page report-cover"><div class="report-cover-brand"><img src="./public/imagens_pub/logo_grazielle_matos.jpeg" alt="Grazielle Matos — Nutricionista" /><span>Consultoria Técnica Nutricional</span></div><div class="report-cover-title"><span class="report-type">Relatório técnico</span><h1>Diagnóstico Institucional e Nutricional — ILPI</h1><p>${shown(data.subtitle, "Avaliação do serviço de alimentação, do perfil assistencial e das prioridades nutricionais")}</p><table class="cover-client"><tr><td>Contratante</td><td>${shown(data.institutionName)}</td></tr><tr><td>Solicitante</td><td>${shown(data.requestedBy || data.institutionManager)}</td></tr><tr><td>Data da visita</td><td>${formatDate(data.visitDate)}</td></tr><tr><td>Responsável técnica</td><td>${shown(data.nutritionist)} · CRN ${shown(data.crn)}</td></tr></table></div><div class="cover-footer"><span>${shown(data.issueCity, "Brasil")} · ${new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(new Date())}</span><span>${shown(data.reportNumber, "Relatório técnico ILPI")} · Versão ${shown(data.version, "1.0")}</span></div></section>`;
+  const cover = `<section class="report-page report-cover"><div class="report-cover-brand"><img src="./public/imagens_pub/logo_grazielle_matos.jpeg" alt="Grazielle Matos — Nutricionista" /><span>Consultoria Técnica Nutricional</span></div><div class="report-cover-title"><span class="report-type">Relatório técnico</span><h1>Diagnóstico Institucional e Nutricional — ILPI</h1><p>${shown(data.subtitle, "Avaliação do serviço de alimentação, do perfil assistencial e das prioridades nutricionais")}</p><table class="cover-client"><tr><td>Contratante</td><td>${shown(data.institutionName)}</td></tr><tr><td>Solicitante</td><td>${shown(data.requestedBy || data.institutionManager)}</td></tr><tr><td>Data da visita</td><td>${formatDate(data.visitDate)}</td></tr><tr><td>Nutricionista consultora</td><td>${shown(data.nutritionist)} · CRN ${shown(data.crn)}</td></tr></table></div><div class="cover-footer"><span>${shown(data.issueCity, "Brasil")} · ${new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(new Date())}</span><span>${shown(data.reportNumber, "Relatório técnico ILPI")} · Versão ${shown(data.version, "1.0")}</span><span>Página 1 de __OCTN_TOTAL__</span></div></section>`;
 
-  const page2 = reportPage(data, "Controle do documento", "Finalidade, escopo e metodologia", `<div class="report-grid">${reportField("Número do relatório", data.reportNumber)}${reportField("Versão / status", `${data.version || "1.0"} · ${data.status || "Em elaboração"}`)}${reportField("Contratante", data.institutionName)}${reportField("Solicitante", data.requestedBy || data.institutionManager)}${reportField("Responsável técnica", data.nutritionist)}${reportField("Registro profissional", data.crn ? `CRN ${data.crn}` : "Não informado")}</div><h3>Finalidade da contratação</h3><p class="report-paragraph">${shown(data.requestPurpose)}</p><h3>Escopo da avaliação</h3><p class="report-paragraph">${shown(data.assessmentScope)}</p><h3>Metodologia e fontes de evidência</h3><p class="report-paragraph">${shown(data.methodology)}</p>${data.documentsReviewed?.trim() ? `<h3>Documentos e registros consultados</h3><p class="report-paragraph">${shown(data.documentsReviewed)}</p>` : ""}<p class="report-note"><strong>Natureza do documento:</strong> relatório técnico consultivo baseado nas informações e evidências obtidas na visita. Não equivale a licença, certificação ou inspeção sanitária oficial.</p><p class="report-note"><strong>Sigilo:</strong> documento confidencial destinado à contratante. Dados de saúde, imagens e identificações devem ter acesso restrito.</p>`, 2, totalPages);
+  const page2 = reportPage(data, "Controle do documento", "Finalidade, escopo e metodologia", `<div class="report-grid">${reportField("Número do relatório", data.reportNumber)}${reportField("Versão / status", `${data.version || "1.0"} · ${data.status || "Em elaboração"}`)}${reportField("Contratante", data.institutionName)}${reportField("Solicitante", data.requestedBy || data.institutionManager)}${reportField("Nutricionista consultora", data.nutritionist)}${reportField("Registro profissional", data.crn ? `CRN ${data.crn}` : "Não informado")}</div><h3>Finalidade da contratação</h3><p class="report-paragraph">${shown(data.requestPurpose)}</p><h3>Escopo da avaliação</h3><p class="report-paragraph">${shown(data.assessmentScope)}</p><h3>Metodologia e fontes de evidência</h3><p class="report-paragraph">${shown(data.methodology)}</p>${data.documentsReviewed?.trim() ? `<h3>Documentos e registros consultados</h3><p class="report-paragraph">${shown(data.documentsReviewed)}</p>` : ""}<p class="report-note"><strong>Natureza do documento:</strong> relatório técnico decorrente de consultoria nutricional independente e pontual, baseado nas informações e evidências obtidas na visita. A nutricionista autora não assume responsabilidade técnica pela ILPI, não integra sua equipe permanente e não mantém vínculo empregatício com a instituição. O documento não equivale a licença, certificação ou inspeção sanitária oficial, e a execução das adequações permanece sob responsabilidade da gestão e dos profissionais formalmente designados.</p><p class="report-note"><strong>Sigilo:</strong> documento confidencial destinado à contratante. Dados de saúde, imagens e identificações devem ter acesso restrito.</p>`, 2, totalPages);
 
   const page3Overview = reportPage(data, "Resumo executivo", "Visão geral do diagnóstico", `<p class="report-paragraph">${executiveSummary}</p><div class="metric-grid"><div class="metric"><span>Total de residentes</span><strong>${shown(data.totalResidents, "—")}</strong></div><div class="metric"><span>Residentes acamados</span><strong>${shown(data.bedriddenResidents, "—")}</strong></div><div class="metric"><span>Perda de peso recente</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Refeições por dia</span><strong>${shown(data.mealsPerDay, "—")}</strong></div></div><h3>Identificação da instituição</h3><div class="report-grid">${reportField("Nome da instituição", data.institutionName, true)}${reportField("Endereço", data.address, true)}${reportField("Responsável", data.institutionManager)}${reportField("Telefone", data.phone)}${reportField("Início das atividades", formatDate(data.activityStart))}${reportField("Data da visita", formatDate(data.visitDate))}</div><h3>Caracterização</h3>${reportTable(["Indicador", "Quantidade"], [["Total de residentes", data.totalResidents], ["Idosos independentes", data.independentResidents], ["Idosos parcialmente dependentes", data.partialResidents], ["Idosos dependentes", data.dependentResidents], ["Idosos acamados", data.bedriddenResidents], ["Funcionários envolvidos na alimentação", data.foodEmployees]])}`, 3, totalPages);
 
@@ -949,9 +960,18 @@ function buildReportHtml(data) {
   const observationRows = observationItems.map((item, index) => [item, data[`observation${index}Status`], data[`observation${index}Note`]]).filter((row) => row[1] || row[2]);
   const page6 = reportedKitchenRows.length ? reportPage(data, "Seção 06", "Visita técnica ao serviço de alimentação", `<div class="metric-grid"><div class="metric"><span>Itens registrados</span><strong>${reportedKitchenRows.length}</strong></div><div class="metric"><span>Respostas conformes</span><strong>${applicable.length ? compliant : "—"}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div><div class="metric"><span>Índice descritivo</span><strong>${compliance}</strong></div></div>${reportTable(["Item avaliado", "Avaliação"], reportedKitchenRows)}<p class="report-note">O índice considera somente as respostas “Sim” e “Não” registradas na visita.</p>`, 6, totalPages) : null;
 
-  const findingRows = (data.findings || []).filter((finding) => finding.finding).map((finding, index) => [`AT-${String(index + 1).padStart(2, "0")}`, finding.area, finding.classification, finding.finding, finding.evidence, finding.reference, finding.guidance, finding.priority]);
-  const findingChunks = Array.from({ length: Math.ceil(findingRows.length / 3) }, (_, index) => findingRows.slice(index * 3, index * 3 + 3));
-  const findingsPages = findingChunks.map((chunk, index) => reportPage(data, index ? `Síntese técnica · continuação ${index + 1}` : "Síntese técnica", "Achados e orientações", `${index ? "" : '<p class="report-paragraph">Os achados abaixo resultam dos dados e relatos registrados no levantamento. Cada orientação está vinculada à respectiva evidência.</p>'}<div class="report-table-wrap findings-report-table">${reportTable(["ID", "Área", "Classificação", "Achado", "Evidência / fonte", "Referência", "Orientação", "Prioridade"], chunk)}</div>${index === findingChunks.length - 1 ? '<p class="report-note"><strong>Referências:</strong> os fundamentos técnicos ou normativos são apresentados somente quando relacionados ao achado descrito.</p>' : ""}`, 8 + index, totalPages, "findings-report-page"));
+  const findingCards = (data.findings || []).filter((finding) => finding.finding).map((finding, index) =>
+    '<article class="finding-report-card">' +
+      '<header><strong>AT-' + String(index + 1).padStart(2, "0") + ' · ' + shown(finding.area, "Área não informada") + '</strong><span>' + shown(finding.classification, "Sem classificação") + ' · ' + shown(finding.priority, "Sem prioridade") + '</span></header>' +
+      '<div class="finding-card-section"><b>Achado</b><p>' + shown(finding.finding) + '</p></div>' +
+      '<div class="finding-card-meta">' +
+        '<div><b>Evidência / fonte</b><p>' + shown(finding.evidence, "Não informada") + '</p></div>' +
+        '<div><b>Referência</b><p>' + shown(finding.reference, "Não informada") + '</p></div>' +
+      '</div>' +
+      '<div class="finding-card-section"><b>Orientação</b><p>' + shown(finding.guidance, "Não informada") + '</p></div>' +
+    '</article>'
+  ).join("");
+  const findingsPage = findingCards ? reportPage(data, "Síntese técnica", "Achados e orientações", '<p class="report-paragraph">Os achados resultam dos dados, documentos, registros fotográficos e relatos disponíveis no levantamento. Cada orientação está vinculada à respectiva evidência.</p><div class="findings-summary-grid">' + findingCards + '</div><p class="report-note"><strong>Referências:</strong> os fundamentos técnicos ou normativos são apresentados somente quando relacionados ao achado descrito.</p>', 8, totalPages, "findings-report-page") : null;
 
   const hasCookInterview = [data.cookName, data.cookExperience, data.cookTraining, data.cookPlanning, data.cookDifficulties, data.mostAcceptedFoods, data.mostRejectedFoods, data.foodPurchases, data.specialDietDifficulties, data.missingResources].some((value) => String(value || "").trim());
   const page7 = hasCookInterview ? reportPage(data, "Seção 07", "Entrevista com a cozinheira", `<div class="report-grid">${reportField("Nome", data.cookName)}${reportField("Tempo de experiência", data.cookExperience)}${reportField("Capacitação em Boas Práticas", data.cookTraining)}${reportField("Planejamento das refeições", data.cookPlanning)}${reportField("Principais dificuldades", data.cookDifficulties, true)}${reportField("Alimentos com maior aceitação", data.mostAcceptedFoods)}${reportField("Alimentos com maior rejeição", data.mostRejectedFoods)}${reportField("Compras dos alimentos", data.foodPurchases, true)}${reportField("Dificuldade com dietas especiais", data.specialDietDifficulties)}${reportField("Equipamentos ou recursos ausentes", data.missingResources)}</div><p class="report-note"><strong>Fonte:</strong> informações relatadas durante a entrevista realizada na visita.</p>`, 7, totalPages) : null;
@@ -964,27 +984,109 @@ function buildReportHtml(data) {
   const opinionPage = reportPage(data, "Seção 10", "Parecer diagnóstico inicial", `<h3>Síntese diagnóstica</h3><p class="report-paragraph">${shown(data.diagnosticOpinion)}</p>${data.strengths?.trim() ? `<h3>Pontos fortes observados</h3><p class="report-paragraph">${shown(data.strengths)}</p>` : ""}${data.limitations?.trim() ? `<h3>Limitações do levantamento</h3><p class="report-paragraph">${shown(data.limitations)}</p>` : ""}<p class="report-note"><strong>Natureza do parecer:</strong> diagnóstico inicial baseado nas informações e evidências disponíveis na data da visita. Os achados devem ser reavaliados após as adequações e a complementação documental.</p>`, 9, totalPages);
   const actionPlanPages = actionChunks.map((chunk, index) => {
     const isFirstPage = index === 0;
-    const isLastPage = index === actionChunks.length - 1;
     const generalGuidance = isFirstPage ? "<h3>Orientações gerais</h3><p class=\"report-paragraph\">" + shown(data.recommendations) + "</p>" : "";
-    const signatures = isLastPage ? "<div class=\"signature-block\"><div><strong>" + shown(data.nutritionist, "Nutricionista responsável") + "</strong><span>" + shown(data.crn, "CRN") + "</span></div><div><strong>" + shown(data.institutionManager, "Responsável pela instituição") + "</strong><span>Ciência e recebimento</span></div></div>" : "";
     const kicker = isFirstPage ? "Seção 11" : "Seção 11 · continuação " + (index + 1);
     const title = isFirstPage ? "Recomendações e plano de ação" : "Plano de ação · continuação";
     const table = chunk.length ? reportTable(["Ação recomendada", "Prioridade", "Responsável", "Prazo", "Status"], chunk) : "";
-    return reportPage(data, kicker, title, generalGuidance + table + signatures, 10 + index, totalPages, "action-plan-report-page");
+    return reportPage(data, kicker, title, generalGuidance + table, 10 + index, totalPages, "action-plan-report-page");
   });
 
   const annexPages = annexChunks.map((chunk, chunkIndex) => {
+    const isFinalReportPage = chunkIndex === annexChunks.length - 1;
     const content = chunk.length
       ? `<div class="annex-report-grid">${chunk.map((annex, index) => `<article class="annex-report-item"><div class="annex-report-heading"><strong>ANX-${String(chunkIndex * 2 + index + 1).padStart(2, "0")} · ${shown(annex.title, "Anexo sem título")}</strong><span>${shown(annex.type)}${annex.date ? ` · ${formatDate(annex.date)}` : ""}</span></div>${annex.dataUrl ? `<img src="${escapeAttribute(annex.dataUrl)}" alt="${escapeAttribute(annex.title || "Registro fotográfico")}" />` : `<div class="annex-file-placeholder"><strong>${shown(annex.fileName, "Arquivo não incorporado")}</strong><span>${annex.fileName ? "Documento relacionado ao relatório" : "Espaço reservado para inclusão do arquivo"}</span></div>`}<p>${shown(annex.description, "Descrição não informada")}</p><small>Referência: ${shown(annex.code, "Não informada")}</small></article>`).join("")}</div>`
       : `<div class="annex-empty-report"><strong>Área reservada para anexos e evidências complementares</strong><p>Nenhum anexo foi incorporado nesta versão. Quando disponíveis, relacionar e identificar de forma sequencial:</p><ul><li>registros fotográficos autorizados;</li><li>instrumentos de mapeamento e checklists preenchidos;</li><li>documentos e controles consultados;</li><li>planilhas, indicadores e evidências de adequação.</li></ul><p>Cada anexo deverá indicar data, autoria ou fonte, local/processo retratado e relação com o respectivo achado técnico.</p></div>`;
-    return reportPage(data, "Anexos", chunk.length ? `Evidências complementares · bloco ${chunkIndex + 1}` : "Área reservada para evidências", content, 12 + chunkIndex, totalPages);
+    const finalSignatures = isFinalReportPage ? "<div class=\"signature-block final-signature-block\"><div><strong>" + shown(data.nutritionist, "Nutricionista consultora") + "</strong><span>Nutricionista · CRN " + shown(data.crn, "não informado") + "</span></div><div><strong>" + shown(data.institutionManager, "Responsável pela instituição") + "</strong><span>Ciência e recebimento · Data: ____/____/________</span></div></div>" : "";
+    return reportPage(data, "Anexos", chunk.length ? `Evidências complementares · bloco ${chunkIndex + 1}` : "Área reservada para evidências", content + finalSignatures, 12 + chunkIndex, totalPages, isFinalReportPage ? "final-report-page" : "");
   });
 
-  const reportPages = [page2, page3Overview, page3, page4, page5, page6, ...findingsPages, page7, page8, opinionPage, ...actionPlanPages, ...annexPages].filter(Boolean);
-  totalPages = 1 + reportPages.length;
+  const contentPages = [page2, page3Overview, page3, page4, page5, page6, findingsPage, page7, page8, opinionPage, ...actionPlanPages, ...annexPages].filter(Boolean);
+  const cleanReportText = (value) => String(value || "").replace(/<[^>]+>/g, "").replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#039;", "'");
+  const tocEntries = [
+    { kicker: "Documento", title: "Capa — Diagnóstico Institucional e Nutricional", page: 1 },
+    { kicker: "Organização", title: "Sumário", page: 2 },
+    ...contentPages.map((pageHtml, index) => {
+      const heading = pageHtml.match(/<h2><span>(.*?)<\/span>(.*?)<\/h2>/);
+      return {
+        kicker: cleanReportText(heading?.[1] || "Seção"),
+        title: cleanReportText(heading?.[2] || "Conteúdo do relatório"),
+        page: index + 3
+      };
+    })
+  ];
+  const tocItems = tocEntries.map((entry) =>
+    '<div class="toc-entry"><div><span>' + shown(entry.kicker) + '</span><strong>' + shown(entry.title) + '</strong></div><b>' + entry.page + '</b></div>'
+  ).join("");
+  totalPages = 2 + contentPages.length;
+  const tocPage = reportPage(data, "Organização do documento", "Sumário", '<p class="report-paragraph">Relação das páginas que compõem esta versão do relatório técnico.</p><div class="toc-list">' + tocItems + '</div>', 2, totalPages, "toc-report-page");
+  const reportPages = [tocPage, ...contentPages];
   return finalizeReportPages(cover, reportPages, totalPages);
 }
 
+function buildSummaryReportHtml(data) {
+  const priorityOrder = { Imediata: 0, Alta: 1, Moderada: 2, Baixa: 3 };
+  const findings = [...(data.findings || [])]
+    .filter((finding) => finding.finding)
+    .sort((a, b) => (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9));
+  const actions = [...(data.actions || [])]
+    .filter((action) => action.action)
+    .sort((a, b) => (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9));
+  const priorityFindings = findings.slice(0, 4);
+  const priorityActions = actions.slice(0, 4);
+  const immediateCount = findings.filter((finding) => finding.priority === "Imediata").length;
+  const highCount = findings.filter((finding) => finding.priority === "Alta").length;
+
+  const findingItems = priorityFindings.map((finding) =>
+    '<li><strong>' + shown(finding.area, "Área não informada") + ' · ' + shown(finding.priority, "Sem prioridade") + '</strong><span>' + shown(finding.finding) + '</span></li>'
+  ).join("");
+  const actionItems = priorityActions.map((action) =>
+    '<li><strong>' + shown(action.action) + '</strong><span>' + shown(action.responsible, "Responsável a definir") + ' · ' + shown(action.deadline, "Prazo a definir") + ' · ' + shown(action.status, "Pendente") + '</span></li>'
+  ).join("");
+
+  const narrative =
+    'A visita técnica realizada em ' + formatDate(data.visitDate) +
+    ' caracterizou a instituição com ' + shown(data.totalResidents, "quantitativo não informado") +
+    ' residentes, sendo ' + shown(data.independentResidents, "—") + ' independentes, ' +
+    shown(data.partialResidents, "—") + ' parcialmente dependentes e ' +
+    shown(data.dependentResidents, "—") + ' dependentes, incluindo ' +
+    shown(data.bedriddenResidents, "—") + ' pessoa(s) acamada(s). Foram informados ' +
+    shown(data.health4Count, "—") + ' caso(s) de perda de peso recente. Na rotina alimentar, foram registradas ' +
+    shown(data.mealsPerDay, "—") + ' refeições diárias, cardápio planejado: ' +
+    shown(data.plannedMenu, "não informado") + ', registro de aceitação: ' +
+    shown(data.acceptanceRecord, "não informado") + ' e dietas especiais: ' +
+    shown(data.specialDiets, "não informado") +
+    '. O diagnóstico aponta necessidade de intervenção coordenada nos eixos nutricional, sanitário, documental, estrutural e de gestão, com comprovação das adequações e reavaliação técnica.';
+
+  const content =
+    '<div class="summary-identification">' +
+      '<div class="summary-id-wide"><span>Instituição</span><strong>' + shown(data.institutionName) + '</strong><small>' + shown(data.address) + '</small></div>' +
+      '<div><span>Relatório</span><strong>' + shown(data.reportNumber) + '</strong><small>Versão ' + shown(data.version, "1.0") + '</small></div>' +
+      '<div><span>Visita técnica</span><strong>' + formatDate(data.visitDate) + '</strong><small>' + shown(data.issueCity, "Local não informado") + '</small></div>' +
+      '<div><span>Nutricionista consultora</span><strong>' + shown(data.nutritionist) + '</strong><small>CRN ' + shown(data.crn) + '</small></div>' +
+    '</div>' +
+    '<section class="summary-section"><h3>Síntese descritiva</h3><p>' + narrative + '</p></section>' +
+    '<div class="summary-metrics">' +
+      '<div><span>Residentes</span><strong>' + shown(data.totalResidents, "—") + '</strong></div>' +
+      '<div><span>Acamados</span><strong>' + shown(data.bedriddenResidents, "—") + '</strong></div>' +
+      '<div><span>Perda de peso</span><strong>' + shown(data.health4Count, "—") + '</strong></div>' +
+      '<div><span>Prioridade imediata</span><strong>' + immediateCount + '</strong></div>' +
+      '<div><span>Prioridade alta</span><strong>' + highCount + '</strong></div>' +
+    '</div>' +
+    '<div class="summary-columns">' +
+      '<section class="summary-panel"><h3>Principais achados</h3><ol>' + (findingItems || '<li><span>Nenhum achado registrado.</span></li>') + '</ol></section>' +
+      '<section class="summary-panel"><h3>Encaminhamentos prioritários</h3><ol>' + (actionItems || '<li><span>Nenhuma ação registrada.</span></li>') + '</ol></section>' +
+    '</div>' +
+    '<p class="summary-reference"><strong>Bases principais:</strong> RDC Anvisa nº 502/2021; RDC Anvisa nº 216/2004; Lei nº 8.234/1991; Lei nº 10.741/2003; Resolução CFN nº 600/2018.</p>' +
+    '<p class="summary-digital-note"><strong>Natureza da atuação:</strong> consultoria nutricional independente e pontual, sem assunção de responsabilidade técnica, vínculo empregatício ou integração da nutricionista à equipe permanente da ILPI. Este resumo destina-se à impressão econômica; o PDF completo contém metodologia, evidências, referências, orientações, plano de ação e anexos.</p>' +
+    '<div class="summary-signatures">' +
+      '<div><span class="signature-line"></span><strong>' + shown(data.nutritionist, "Nutricionista consultora") + '</strong><small>Nutricionista · CRN ' + shown(data.crn, "não informado") + '</small></div>' +
+      '<div><span class="signature-line"></span><strong>' + shown(data.institutionManager, "Responsável pela instituição") + '</strong><small>Ciência e recebimento · Data: ____/____/________</small></div>' +
+    '</div>';
+
+  return reportPage(data, "Resumo executivo para impressão", "Resumo técnico da visita à ILPI", content, 1, 1, "report-summary-page")
+    .replaceAll("__OCTN_PAGE__", "1")
+    .replaceAll("__OCTN_TOTAL__", "1");
+}
 async function waitForReportAssets(container) {
   const images = [...container.querySelectorAll("img")];
   await Promise.all(images.map((image) => {
@@ -1009,8 +1111,19 @@ async function printCurrentReport() {
   await waitForReportAssets(report);
   window.print();
 }
+async function printSummaryReport() {
+  const record = saveCurrentReport();
+  if (!record) return;
+  const report = document.getElementById("ilpi-report");
+  report.innerHTML = buildSummaryReportHtml(record.data);
+  document.body.classList.add("printing-ilpi");
+  document.title = (record.data.reportNumber || "Relatório ILPI") + " - Resumo - " + (record.data.institutionName || "OCTN");
+  await waitForReportAssets(report);
+  window.print();
+}
 
 document.getElementById("print-ilpi")?.addEventListener("click", printCurrentReport);
+document.getElementById("print-ilpi-summary")?.addEventListener("click", printSummaryReport);
 document.querySelectorAll("[data-print]").forEach((button) => button.addEventListener("click", printCurrentReport));
 window.addEventListener("afterprint", () => {
   document.body.classList.remove("printing-ilpi");
