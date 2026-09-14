@@ -407,8 +407,8 @@ function escapeAttribute(value) {
 function renderFixedRows(data = {}) {
   document.getElementById("health-rows").innerHTML = healthItems.map((item, index) => `<tr><td>${item}</td><td><input type="number" min="0" name="health${index}Count" value="${escapeAttribute(data[`health${index}Count`] || "")}" /></td><td><input name="health${index}Note" value="${escapeAttribute(data[`health${index}Note`] || "")}" /></td></tr>`).join("");
   document.getElementById("meal-rows").innerHTML = mealItems.map((item, index) => `<tr><td>${item}</td><td><input type="time" name="meal${index}Time" value="${escapeAttribute(data[`meal${index}Time`] || "")}" /></td><td><input name="meal${index}Note" value="${escapeAttribute(data[`meal${index}Note`] || "")}" /></td></tr>`).join("");
-  document.getElementById("kitchen-rows").innerHTML = kitchenItems.map((item, index) => `<tr><td>${item}</td><td><select name="kitchen${index}Status"><option value="">Selecione</option><option>Sim</option><option>Não</option><option>Não se Aplica</option></select></td></tr>`).join("");
-  document.getElementById("observation-rows").innerHTML = observationItems.map((item, index) => `<tr><td>${item}</td><td><select name="observation${index}Status"><option value="">Selecione</option><option>Adequado</option><option>Parcial</option><option>Inadequado</option></select></td><td><input name="observation${index}Note" /></td></tr>`).join("");
+  document.getElementById("kitchen-rows").innerHTML = kitchenItems.map((item, index) => `<tr><td>${item}</td><td><select name="kitchen${index}Status"><option value="">Selecione</option><option>Sim</option><option>Não</option><option>Não Avaliado</option><option>Não se Aplica</option></select></td></tr>`).join("");
+  document.getElementById("observation-rows").innerHTML = observationItems.map((item, index) => `<tr><td>${item}</td><td><select name="observation${index}Status"><option value="">Selecione</option><option>Adequado</option><option>Parcial</option><option>Inadequado</option><option>Não Avaliado</option><option>Não se Aplica</option></select></td><td><input name="observation${index}Note" /></td></tr>`).join("");
 }
 
 function addResidentRow(resident = {}) {
@@ -783,8 +783,8 @@ function reportFooter(data, page, total) {
   return `<footer class="report-page-footer"><span>${shown(data.nutritionist, "Nutricionista responsável")} · Documento técnico confidencial</span><span>${shown(data.institutionName, "ILPI")} · Página __OCTN_PAGE__ de __OCTN_TOTAL__</span></footer>`;
 }
 
-function reportPage(data, kicker, title, content, page, total) {
-  return `<section class="report-page">${reportHeader(data)}<h2><span>${kicker}</span>${title}</h2>${content}${reportFooter(data, page, total)}</section>`;
+function reportPage(data, kicker, title, content, page, total, className = "") {
+  return `<section class="report-page ${className}">${reportHeader(data)}<h2><span>${kicker}</span>${title}</h2>${content}${reportFooter(data, page, total)}</section>`;
 }
 
 function finalizeReportPages(cover, pages, totalPages) {
@@ -836,7 +836,8 @@ function buildReportHtml(data) {
   const page6 = reportedKitchenRows.length ? reportPage(data, "Seção 06", "Visita técnica ao serviço de alimentação", `<div class="metric-grid"><div class="metric"><span>Itens registrados</span><strong>${reportedKitchenRows.length}</strong></div><div class="metric"><span>Respostas conformes</span><strong>${applicable.length ? compliant : "—"}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div><div class="metric"><span>Índice descritivo</span><strong>${compliance}</strong></div></div>${reportTable(["Item avaliado", "Avaliação"], reportedKitchenRows)}<p class="report-note">O índice considera somente as respostas “Sim” e “Não” registradas na visita.</p>`, 6, totalPages) : null;
 
   const findingRows = (data.findings || []).filter((finding) => finding.finding).map((finding, index) => [`AT-${String(index + 1).padStart(2, "0")}`, finding.area, finding.classification, finding.finding, finding.evidence, finding.reference, finding.guidance, finding.priority]);
-  const findingsPage = findingRows.length ? reportPage(data, "Síntese técnica", "Achados e orientações", `<p class="report-paragraph">Os achados abaixo resultam dos dados e relatos registrados no levantamento. Cada orientação está vinculada à respectiva evidência.</p><div class="report-table-wrap findings-report-table">${reportTable(["ID", "Área", "Classificação", "Achado", "Evidência / fonte", "Referência", "Orientação", "Prioridade"], findingRows)}</div><p class="report-note"><strong>Referências:</strong> os fundamentos técnicos ou normativos são apresentados somente quando relacionados ao achado descrito.</p>`, 8, totalPages) : null;
+  const findingChunks = Array.from({ length: Math.ceil(findingRows.length / 3) }, (_, index) => findingRows.slice(index * 3, index * 3 + 3));
+  const findingsPages = findingChunks.map((chunk, index) => reportPage(data, index ? `Síntese técnica · continuação ${index + 1}` : "Síntese técnica", "Achados e orientações", `${index ? "" : '<p class="report-paragraph">Os achados abaixo resultam dos dados e relatos registrados no levantamento. Cada orientação está vinculada à respectiva evidência.</p>'}<div class="report-table-wrap findings-report-table">${reportTable(["ID", "Área", "Classificação", "Achado", "Evidência / fonte", "Referência", "Orientação", "Prioridade"], chunk)}</div>${index === findingChunks.length - 1 ? '<p class="report-note"><strong>Referências:</strong> os fundamentos técnicos ou normativos são apresentados somente quando relacionados ao achado descrito.</p>' : ""}`, 8 + index, totalPages, "findings-report-page"));
 
   const hasCookInterview = [data.cookName, data.cookExperience, data.cookTraining, data.cookPlanning, data.cookDifficulties, data.mostAcceptedFoods, data.mostRejectedFoods, data.foodPurchases, data.specialDietDifficulties, data.missingResources].some((value) => String(value || "").trim());
   const page7 = hasCookInterview ? reportPage(data, "Seção 07", "Entrevista com a cozinheira", `<div class="report-grid">${reportField("Nome", data.cookName)}${reportField("Tempo de experiência", data.cookExperience)}${reportField("Capacitação em Boas Práticas", data.cookTraining)}${reportField("Planejamento das refeições", data.cookPlanning)}${reportField("Principais dificuldades", data.cookDifficulties, true)}${reportField("Alimentos com maior aceitação", data.mostAcceptedFoods)}${reportField("Alimentos com maior rejeição", data.mostRejectedFoods)}${reportField("Compras dos alimentos", data.foodPurchases, true)}${reportField("Dificuldade com dietas especiais", data.specialDietDifficulties)}${reportField("Equipamentos ou recursos ausentes", data.missingResources)}</div><p class="report-note"><strong>Fonte:</strong> informações relatadas durante a entrevista realizada na visita.</p>`, 7, totalPages) : null;
@@ -854,7 +855,7 @@ function buildReportHtml(data) {
     return reportPage(data, "Anexos", chunk.length ? `Evidências complementares · bloco ${chunkIndex + 1}` : "Área reservada para evidências", content, 12 + chunkIndex, totalPages);
   });
 
-  const reportPages = [page2, page3Overview, page3, page4, page5, page6, findingsPage, page7, page8, page9, ...annexPages].filter(Boolean);
+  const reportPages = [page2, page3Overview, page3, page4, page5, page6, ...findingsPages, page7, page8, page9, ...annexPages].filter(Boolean);
   totalPages = 1 + reportPages.length;
   return finalizeReportPages(cover, reportPages, totalPages);
 }

@@ -2236,7 +2236,7 @@ footer {
   body.printing-ilpi #ilpi-report { display: block !important; }
   body.printing-ilpi #formularios { background: #fff; }
   body.printing-ilpi .ilpi-report { color: #202428; font: 9pt/1.45 Arial, sans-serif; }
-  body.printing-ilpi .report-page { position: relative; min-height: 277mm; padding: 15mm 16mm 19mm; break-after: page; background: #fff; }
+  body.printing-ilpi .report-page { position: relative; width: 210mm; height: 297mm; min-height: 297mm; max-height: 297mm; overflow: hidden; padding: 15mm 16mm 19mm; break-after: page; page-break-after: always; background: #fff; }
   body.printing-ilpi .report-page:last-child { break-after: auto; }
   body.printing-ilpi .report-cover { display: flex; min-height: 297mm; flex-direction: column; padding: 22mm 20mm 18mm; background: linear-gradient(145deg, #fff 0 57%, #f2f7f2 57% 100%); }
   .report-cover-brand { display: flex; align-items: center; justify-content: space-between; padding-bottom: 8mm; border-bottom: 1.5px solid #45a34c; }
@@ -2273,11 +2273,15 @@ footer {
   .report-table tbody tr:nth-child(even) td { background: #f7f9f8; }
   .findings-report-table .report-table { table-layout: fixed; }
   .findings-report-table .report-table th,
-  .findings-report-table .report-table td { padding: 1.5mm 1.2mm; font-size: 6.2pt; overflow-wrap: anywhere; }
+  .findings-report-table .report-table td { padding: 1.1mm .9mm; font: 5.7pt/1.25 Arial, sans-serif; overflow-wrap: anywhere; }
   .findings-report-table .report-table th:first-child { width: 9mm; }
   .findings-report-table .report-table th:nth-child(2) { width: 19mm; }
   .findings-report-table .report-table th:nth-child(3) { width: 20mm; }
   .findings-report-table .report-table th:last-child { width: 15mm; }
+  .findings-report-page .report-header { margin-bottom: 5mm; }
+  .findings-report-page h2 { margin-bottom: 3mm; font-size: 15pt; }
+  .findings-report-page .report-paragraph { margin-bottom: 2mm; font-size: 7.2pt; }
+  .findings-report-page .report-note { padding: 2mm 3mm; font-size: 6.6pt; }
   .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 5mm 0; }
   .metric { padding: 4mm; border-top: 1.2mm solid #45a34c; background: #f2f6f3; }
   .metric span, .metric strong { display: block; }
@@ -2289,7 +2293,7 @@ footer {
   .report-callout.green { border-color: #45a34c; }
   .report-callout strong { display: block; margin-bottom: 1mm; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; }
   .report-paragraph { margin: 0 0 4mm; text-align: justify; white-space: pre-wrap; }
-  .report-note { margin: 3mm 0 0; padding: 3mm 4mm; border: .3mm solid #dce3e0; background: #f8faf9; color: #555e62; font-size: 7.3pt; }
+  .report-note { margin: 3mm 0 0; padding: 3mm 4mm; border: .3mm solid #dce3e0; background: #f8faf9; color: #555e62; font-size: 7.3pt; break-inside: avoid; }
   .annex-report-grid { display: grid; gap: 5mm; }
   .annex-report-item { padding: 4mm; border: .3mm solid #dce3e0; border-top: 1mm solid #45a34c; break-inside: avoid; }
   .annex-report-heading { display: flex; justify-content: space-between; gap: 8mm; margin-bottom: 3mm; }
