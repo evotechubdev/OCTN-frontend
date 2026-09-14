@@ -37,6 +37,7 @@ const serviceGroups = [
       { id: "avaliacao-enteral", name: "Avaliação clínica enteral", unit: "avaliação", unitCents: 42856 },
       { id: "avaliacao-parenteral", name: "Avaliação clínica parenteral", unit: "avaliação", unitCents: 42856 },
       { id: "avaliacao-nutricional", name: "Avaliação nutricional", unit: "avaliação", unitCents: 21428, selected: true },
+      { id: "avaliacao-nutricional-individual", name: "Avaliação Nutricional Individual", unit: "avaliação individual", unitCents: 14990, referenceLabel: "referência SindNutriBA 2026–2027", referenceDetail: "Tabela SindNutriBA 2026–2027: Avaliação Nutricional Individual" },
       { id: "bioimpedancia", name: "Bioimpedância", unit: "avaliação", unitCents: 21428 },
       { id: "consulta-clinica", name: "Consulta clínica", unit: "consulta", unitCents: 21428 },
       { id: "consulta-convenio", name: "Consulta por convênio", unit: "consulta", unitCents: 10714 },
@@ -118,11 +119,11 @@ function renderServiceCatalog() {
               .map(
                 (service) => `
                   <div class="catalog-service" data-service-row>
-                    <label class="catalog-service-select" data-fnn-name="${fnnOfficialNames[service.id] ?? service.name}">
+                    <label class="catalog-service-select" data-reference="${service.referenceDetail ?? `Nome oficial na FNN: ${fnnOfficialNames[service.id] ?? service.name}`}">
                       <input type="checkbox" name="selected-service" value="${service.id}" ${service.selected ? "checked" : ""} />
                       <span>
                         <strong>${service.name}</strong>
-                        <small>Por ${service.unit} · referência FNN 2026</small>
+                        <small>Por ${service.unit} · ${service.referenceLabel ?? "referência FNN 2026"}</small>
                       </span>
                       <b>${currency.format(service.unitCents / 100)}</b>
                     </label>

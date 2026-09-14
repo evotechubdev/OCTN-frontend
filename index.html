@@ -489,7 +489,7 @@
             <div class="simulator-heading reveal">
               <span class="section-kicker">Simulador de honorários</span>
               <h2 id="simulator-title">Monte seu plano de serviços.</h2>
-              <p>Selecione a forma de contratação, marque quantos serviços desejar e ajuste a quantidade de cada item. Os valores seguem prioritariamente a referência nacional FNN 2026 indicada pelo CFN.</p>
+              <p>Selecione a forma de contratação, marque quantos serviços desejar e ajuste a quantidade de cada item. Os valores indicam a fonte utilizada em cada serviço, incluindo as referências FNN 2026 e SindNutriBA 2026–2027.</p>
             </div>
 
             <div class="simulator-layout">
@@ -510,7 +510,7 @@
 
                 <fieldset class="service-catalog-fieldset">
                   <legend>Serviços disponíveis</legend>
-                  <p class="field-help">Valores mínimos nacionais da FNN, vigentes de 01/01/2026 a 31/12/2026. Selecione um ou mais itens.</p>
+                  <p class="field-help">Valores de referência da FNN 2026 e do SindNutriBA 2026–2027, conforme identificação em cada item. Selecione um ou mais serviços.</p>
                   <div class="service-catalog" id="service-catalog"></div>
                 </fieldset>
 
@@ -535,7 +535,7 @@
                   <span id="summary-total-label">Mensalidade estimada</span>
                   <strong id="summary-total">R$ 214,28</strong>
                 </div>
-                <p class="unit-reference">Referência nacional FNN 2026: <strong>1 USN = R$ 107,14</strong></p>
+                <p class="unit-reference">Referências: <strong>FNN 2026 — 1 USN = R$ 107,14</strong> · SindNutriBA 2026–2027 nos itens identificados</p>
                 <ul class="summary-deliverables" id="summary-deliverables"></ul>
                 <div class="contract-document">
                   <div class="contract-document-header"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Instrumento particular</span></div>
@@ -563,12 +563,12 @@
                   <p class="contract-agreement">Por estarem de acordo, as partes assinam este instrumento em duas vias de igual teor.</p>
                   <p class="signature-place"><span class="handwrite-line handwrite-city"></span>, <span class="handwrite-line handwrite-day"></span> de <span class="handwrite-line handwrite-month"></span> de <span class="handwrite-line handwrite-year"></span>.</p>
                   <div class="contract-signatures">
-                    <div><span class="signature-line"></span><strong>Nutricionista responsável</strong><small>Nome: <span class="handwrite-line signature-detail"></span></small><small>CRN: <span class="handwrite-line signature-detail"></span></small></div>
-                    <div><span class="signature-line"></span><strong>Contratante</strong><small>Nome: <span class="handwrite-line signature-detail"></span></small><small>CPF/CNPJ: <span class="handwrite-line signature-detail"></span></small></div>
+                    <div><span class="contract-signature-stamp"><img src="./public/imagens_pub/assinatura-carimbo-nutricionista.jpg" alt="Assinatura e carimbo da nutricionista" /></span><span class="signature-line"></span><strong>Nutricionista responsável</strong><small>Nome: <span class="handwrite-line signature-detail"></span></small><small>CRN: <span class="handwrite-line signature-detail"></span></small></div>
+                    <div><span class="contract-signature-stamp" aria-hidden="true"></span><span class="signature-line"></span><strong>Contratante</strong><small>Nome: <span class="handwrite-line signature-detail"></span></small><small>CPF/CNPJ: <span class="handwrite-line signature-detail"></span></small></div>
                   </div>
                 </div>
                 <p class="summary-disclaimer">
-                  Estimativa baseada nos valores mínimos nacionais da FNN 2026. Deslocamento, insumos, complexidade, tributos e escopos adicionais podem alterar o valor final. Confira os dados e submeta a minuta à revisão jurídica antes da assinatura definitiva.
+                  Estimativa baseada nas referências FNN 2026 e SindNutriBA 2026–2027, conforme a fonte indicada em cada serviço. Deslocamento, insumos, complexidade, tributos e escopos adicionais podem alterar o valor final. Confira os dados e submeta a minuta à revisão jurídica antes da assinatura definitiva.
                 </p>
                 <p class="print-date">Emitida em <span id="simulation-date"></span>.</p>
                 <button class="button button-primary print-button" type="button" id="print-simulation">
@@ -587,7 +587,7 @@
               <h2 id="guidance-title">Valores claros, escopo responsável.</h2>
             </div>
             <div class="guidance-copy">
-              <p><strong>Referência nacional:</strong> a simulação prioriza a tabela de honorários 2026 da Federação Nacional dos Nutricionistas, fonte indicada pelo CFN para consulta de valores mínimos profissionais.</p>
+              <p><strong>Referências profissionais:</strong> a simulação utiliza a tabela nacional FNN 2026 e, para a Avaliação Nutricional Individual, o valor de R$ 149,90 informado na tabela 2026–2027 do SindNutriBA.</p>
               <p><strong>Plano mensal:</strong> as quantidades selecionadas se repetem mensalmente. No plano avulso, os itens são cobrados uma única vez.</p>
               <p><strong>Composição final:</strong> deslocamento, insumos, tributos, responsabilidade técnica, complexidade e particularidades do contratante devem ser validados na proposta definitiva.</p>
               <div class="reference-actions">
