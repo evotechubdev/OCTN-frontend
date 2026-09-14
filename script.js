@@ -343,7 +343,7 @@ const kitchenItems = [
   "Alimentos são armazenados de forma organizada",
   "Produtos possuem identificação e controle de validade",
   "Há separação entre alimentos crus e prontos para consumo",
-  "Alimentos não são armazenados diretamente no chão",
+  "Alimentos são armazenados diretamente no chão",
   "Manipuladora utiliza vestimenta adequada",
   "Higienização das mãos é realizada adequadamente",
   "Há rotina de higienização de frutas e hortaliças",
