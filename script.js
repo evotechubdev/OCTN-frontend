@@ -443,7 +443,8 @@ function renderFixedRows(data = {}) {
 
 function addResidentRow(resident = {}) {
   const row = document.createElement("tr");
-  row.innerHTML = `<td>${textInput("name", resident.name)}</td><td>${textInput("birthDate", resident.birthDate, "date")}</td><td>${textInput("diagnosis", resident.diagnosis)}</td><td>${selectInput("bedridden", ["Não", "Sim"], resident.bedridden)}</td><td>${selectInput("weightLoss", ["Não", "Sim"], resident.weightLoss)}</td><td>${textInput("specialDiet", resident.specialDiet)}</td><td>${selectInput("priority", ["Baixa", "Moderada", "Alta", "Imediata"], resident.priority || "Baixa")}</td><td><button class="remove-row" type="button" aria-label="Remover residente">×</button></td>`;
+  const specialDietValue = resident.specialDiet && resident.specialDiet !== "Não" ? "Sim" : "Não";
+  row.innerHTML = `<td>${textInput("name", resident.name)}</td><td>${textInput("birthDate", resident.birthDate, "date")}</td><td>${textInput("diagnosis", resident.diagnosis)}</td><td>${selectInput("bedridden", ["Não", "Sim"], resident.bedridden)}</td><td>${selectInput("weightLoss", ["Não", "Sim"], resident.weightLoss)}</td><td>${selectInput("specialDiet", ["Não", "Sim"], specialDietValue)}</td><td>${selectInput("priority", ["Baixa", "Moderada", "Alta", "Imediata"], resident.priority || "Baixa")}</td><td><button class="remove-row" type="button" aria-label="Remover residente">×</button></td>`;
   row.querySelector(".remove-row").addEventListener("click", () => { row.remove(); markDirty(); });
   document.getElementById("resident-rows").appendChild(row);
 }
@@ -600,7 +601,7 @@ function collectDynamicRows(containerId) {
       const row = document.querySelectorAll("#annex-rows .annex-editor-item")[index];
       return { ...item, fileName: row.dataset.fileName || "", fileType: row.dataset.fileType || "", dataUrl: row.dataset.fileData || "" };
     })
-    .filter((item) => containerId === "action-rows" ? item.action?.trim() : containerId === "finding-rows" ? item.finding?.trim() : containerId === "annex-rows" ? [item.title, item.description, item.fileName].some((value) => value?.trim()) : [item.name, item.birthDate, item.diagnosis, item.specialDiet].some((value) => value?.trim()));
+    .filter((item) => containerId === "action-rows" ? item.action?.trim() : containerId === "finding-rows" ? item.finding?.trim() : containerId === "annex-rows" ? [item.title, item.description, item.fileName].some((value) => value?.trim()) : [item.name, item.birthDate, item.diagnosis].some((value) => value?.trim()));
 }
 
 function collectFormData() {
