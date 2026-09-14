@@ -550,7 +550,7 @@ function createImportedReport() {
       foodPurchases: "Não informado durante o levantamento inicial.",
       specialDietDifficulties: "Não informado durante o levantamento inicial.",
       missingResources: "Não foram informados equipamentos ou recursos ausentes; foram registradas necessidades de reparos estruturais.",
-      immediatePriority: "Adequar a oferta para, no mínimo, seis refeições diárias e avaliar individualmente os quatro residentes com perda de peso recente.",
+      immediatePriority: "Adequar imediatamente a oferta para, no mínimo, seis refeições diárias; realizar avaliação nutricional individual dos residentes, com prioridade para os quatro casos de perda de peso recente; regularizar os documentos institucionais, sanitários e individuais dos residentes; e iniciar a implantação do cardápio, dos controles e das métricas de padronização.",
       shortPriority: "Elaborar cardápio planejado, formalizar as dietas especiais e implantar registro de aceitação alimentar.",
       mediumPriority: "Implantar indicadores de acompanhamento nutricional e revisar periodicamente o plano de cuidado alimentar da instituição.",
       diagnosticOpinion: "O levantamento inicial evidencia riscos nutricionais, sanitários, assistenciais e de gestão que exigem intervenção estruturada. Entre os 12 residentes, foi informada perda de peso recente em quatro pessoas (33,3%), além de elevada ocorrência de hipertensão, casos de diabetes, dependência funcional e residentes acamados, condições que demandam avaliação nutricional individual e acompanhamento registrado. A instituição oferece cinco refeições diárias, abaixo do mínimo de seis para ILPI, não apresentou cardápio planejado e reconhece a existência de dietas especiais ainda sem formalização suficiente. No serviço de alimentação, foram relatadas falhas de identificação e validade, ausência de registros de temperatura, armazenamento de alimentos no chão, inadequações estruturais e falta de treinamento documentado. Somam-se a isso pendências sanitárias e documentais, ausência de padronização dos processos e de Plano de Trabalho. As prioridades imediatas são regularizar a documentação, garantir seis refeições diárias, avaliar os residentes com perda de peso e corrigir os riscos higiênico-sanitários da cozinha.",
@@ -560,10 +560,11 @@ function createImportedReport() {
       annexRevision: 2,
       completionRevision: 1,
       consultancyRevision: 1,
+      summaryPriorityRevision: 1,
       recommendations: "Recomenda-se que a instituição execute as adequações de forma escalonada, priorizando os riscos sanitários, nutricionais, assistenciais e documentais que podem comprometer a segurança e a qualidade do cuidado aos residentes. A gestão deve formalizar responsáveis e prazos, cabendo à gestão designar ou contratar profissional habilitado para conduzir a avaliação individual, o planejamento do cardápio, a definição das dietas especiais e os controles do serviço de alimentação. Todas as medidas adotadas devem ser comprovadas por registros, documentos e fotografias, acompanhadas semanalmente nos primeiros 30 dias e reavaliadas tecnicamente após a implantação, com atualização contínua do plano de ação.",
       findings: [
-        { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Alta" },
-        { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "Não foi apresentado cardápio planejado para as refeições da instituição.", evidence: "Informação prestada pela responsável durante a visita de 10/09/2026.", reference: "Lei nº 8.234/1991, art. 3º, II; Resolução CFN nº 600/2018, Anexo II, item I.A.1.1.1.1", guidance: "Elaborar e implantar cardápio sob responsabilidade de nutricionista, com base no diagnóstico nutricional da clientela e contemplando necessidades, consistências, hábitos alimentares e viabilidade operacional.", priority: "Alta" },
+        { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Imediata" },
+        { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "Não foi apresentado cardápio planejado para as refeições da instituição.", evidence: "Informação prestada pela responsável durante a visita de 10/09/2026.", reference: "Lei nº 8.234/1991, art. 3º, II; Resolução CFN nº 600/2018, Anexo II, item I.A.1.1.1.1", guidance: "Elaborar e implantar cardápio sob responsabilidade de nutricionista, com base no diagnóstico nutricional da clientela e contemplando necessidades, consistências, hábitos alimentares e viabilidade operacional.", priority: "Imediata" },
         { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "A rotina informada registra cinco refeições diárias, abaixo do mínimo de seis exigido para ILPI.", evidence: "Relato da responsável e cinco horários de refeições registrados no levantamento inicial de 10/09/2026.", reference: "RDC Anvisa nº 502/2021, art. 44", guidance: "Adequar imediatamente a rotina para, no mínimo, seis refeições diárias e alinhar o total informado, os horários, o cardápio e a prática efetiva.", priority: "Imediata" },
         { area: "Documentação", classification: "Risco crítico", finding: "Não foram apresentados os documentos sanitários da instituição, e os registros individuais dos residentes estão incompletos.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, arts. 8º, 13 e 33; Lei nº 10.741/2003, art. 50, XV", guidance: "Regularizar e manter atualizados, organizados e de fácil acesso o alvará sanitário, os documentos institucionais e os registros individuais de cada residente.", priority: "Imediata" },
         { area: "Cozinha / boas práticas", classification: "Não conformidade", finding: "Foram observados alimentos prontos sem identificação e prazo de validade, ausência de registros de temperatura e alimentos armazenados em caixas diretamente no chão.", evidence: "Observação direta, registros fotográficos FOTO-01 a FOTO-05 e informações prestadas pela responsável durante a visita de 10/09/2026.", reference: "RDC Anvisa nº 502/2021, arts. 45 e 46, II e III; RDC Anvisa nº 216/2004, Anexo, itens 4.7.6, 4.8.18, 4.9.1 e 4.9.2", guidance: "Identificar os alimentos com nome, datas de preparo e validade; monitorar e registrar as temperaturas; armazenar os produtos fora do chão, em estrados ou prateleiras adequados; e implantar as rotinas correspondentes.", priority: "Imediata" },
@@ -574,8 +575,8 @@ function createImportedReport() {
       residents: [], actions: [
         { action: "Regularizar o alvará sanitário, organizar os documentos institucionais e completar os registros individuais dos residentes.", priority: "Imediata", responsible: "Gestão e responsável legal da instituição", deadline: "7 dias", status: "Pendente" },
         { action: "Adequar a rotina para, no mínimo, seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista designado pela instituição", deadline: "7 dias", status: "Pendente" },
-        { action: "Realizar avaliação nutricional individual dos quatro residentes com perda de peso recente e registrar diagnóstico, prescrição e evolução.", priority: "Alta", responsible: "Nutricionista designado pela instituição", deadline: "15 dias", status: "Pendente" },
-        { action: "Elaborar e implantar cardápio planejado, incluindo consistências, dietas especiais e necessidades clínicas.", priority: "Alta", responsible: "Nutricionista designado pela instituição", deadline: "30 dias", status: "Pendente" },
+        { action: "Realizar avaliação nutricional individual dos quatro residentes com perda de peso recente e registrar diagnóstico, prescrição e evolução.", priority: "Imediata", responsible: "Nutricionista designado pela instituição", deadline: "15 dias", status: "Pendente" },
+        { action: "Elaborar e implantar cardápio planejado, incluindo consistências, dietas especiais, necessidades clínicas, controles e métricas de padronização.", priority: "Imediata", responsible: "Nutricionista designado pela instituição", deadline: "30 dias", status: "Pendente" },
         { action: "Identificar os alimentos, controlar datas de preparo e validade, registrar temperaturas e retirar os produtos do chão.", priority: "Imediata", responsible: "Gestão e equipe da cozinha", deadline: "48 horas", status: "Pendente" },
         { action: "Organizar o fluxo entre armazenamento e preparo e executar reparos em pisos, paredes e instalações elétricas e hidráulicas.", priority: "Alta", responsible: "Gestão e manutenção", deadline: "30 dias", status: "Pendente" },
         { action: "Elaborar e implantar o Manual de Boas Práticas e os Procedimentos Operacionais Padronizados.", priority: "Alta", responsible: "Gestão e nutricionista designado pela instituição", deadline: "30 dias", status: "Pendente" },
@@ -608,6 +609,7 @@ function seedLocalDatabase() {
     const storedAnnexRevision = Number(imported.data.annexRevision || 0);
     const storedCompletionRevision = Number(imported.data.completionRevision || 0);
     const storedConsultancyRevision = Number(imported.data.consultancyRevision || 0);
+    const storedSummaryPriorityRevision = Number(imported.data.summaryPriorityRevision || 0);
     Object.entries(defaults).forEach(([key, value]) => {
       if (imported.data[key] === undefined) imported.data[key] = value;
     });
@@ -678,6 +680,21 @@ function seedLocalDatabase() {
       });
       if (imported.data.recommendations?.includes("enquanto a nutricionista coordena")) imported.data.recommendations = defaults.recommendations;
       imported.data.consultancyRevision = defaults.consultancyRevision;
+    }
+    if (storedSummaryPriorityRevision < defaults.summaryPriorityRevision) {
+      const weightLossFinding = imported.data.findings?.find((finding) => finding.area === "Assistência ao residente" && finding.finding?.toLocaleLowerCase("pt-BR").includes("perda de peso recente"));
+      const menuFinding = imported.data.findings?.find((finding) => finding.area === "Alimentação e nutrição" && finding.finding?.toLocaleLowerCase("pt-BR").includes("cardápio planejado"));
+      if (weightLossFinding) weightLossFinding.priority = defaults.findings[0].priority;
+      if (menuFinding) menuFinding.priority = defaults.findings[1].priority;
+      const nutritionAction = imported.data.actions?.find((action) => action.action?.startsWith("Realizar avaliação nutricional individual dos quatro residentes"));
+      const menuAction = imported.data.actions?.find((action) => action.action?.startsWith("Elaborar e implantar cardápio planejado"));
+      if (nutritionAction) {
+        nutritionAction.priority = defaults.actions[2].priority;
+        nutritionAction.responsible = defaults.actions[2].responsible;
+      }
+      if (menuAction) Object.assign(menuAction, { action: defaults.actions[3].action, priority: defaults.actions[3].priority, responsible: defaults.actions[3].responsible });
+      if (imported.data.immediatePriority?.includes("avaliar individualmente os quatro residentes")) imported.data.immediatePriority = defaults.immediatePriority;
+      imported.data.summaryPriorityRevision = defaults.summaryPriorityRevision;
     }
     persistReports(reports);
   }
@@ -754,7 +771,7 @@ function saveCurrentReport() {
   const index = reports.findIndex((report) => report.id === currentReportId);
   const now = new Date().toISOString();
   if (index >= 0) {
-    ["contentRevision", "annexRevision", "completionRevision", "consultancyRevision"].forEach((key) => {
+    ["contentRevision", "annexRevision", "completionRevision", "consultancyRevision", "summaryPriorityRevision"].forEach((key) => {
       if (reports[index].data[key] !== undefined) data[key] = reports[index].data[key];
     });
   }
@@ -1031,18 +1048,17 @@ function buildSummaryReportHtml(data) {
   const actions = [...(data.actions || [])]
     .filter((action) => action.action)
     .sort((a, b) => (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9));
-  const priorityFindings = findings.slice(0, 4);
-  const priorityActions = actions.slice(0, 4);
-  const immediateCount = findings.filter((finding) => finding.priority === "Imediata").length;
+  const immediateActions = actions.filter((action) => action.priority === "Imediata").slice(0, 6);
   const highCount = findings.filter((finding) => finding.priority === "Alta").length;
+  const mealCount = Number(data.mealsPerDay || 0);
 
-  const findingItems = priorityFindings.map((finding) =>
-    '<li><strong>' + shown(finding.area, "Área não informada") + ' · ' + shown(finding.priority, "Sem prioridade") + '</strong><span>' + shown(finding.finding) + '</span></li>'
-  ).join("");
-  const actionItems = priorityActions.map((action) =>
-    '<li><strong>' + shown(action.action) + '</strong><span>' + shown(action.responsible, "Responsável a definir") + ' · ' + shown(action.deadline, "Prazo a definir") + ' · ' + shown(action.status, "Pendente") + '</span></li>'
+  const immediateItems = immediateActions.map((action) =>
+    '<li><strong>' + shown(action.action) + '</strong><span>' + shown(action.responsible, "Responsável a definir") + ' · Prazo: ' + shown(action.deadline, "a definir") + ' · ' + shown(action.status, "Pendente") + '</span></li>'
   ).join("");
 
+  const mealAlert = mealCount > 0 && mealCount < 6
+    ? '<div class="summary-noncompliance"><strong>NÃO CONFORME · OFERTA DIÁRIA DE REFEIÇÕES</strong><p>A instituição informou ' + shown(data.mealsPerDay) + ' refeições diárias. O art. 44 da RDC Anvisa nº 502/2021 estabelece a oferta mínima de seis refeições por dia. O art. 45 da mesma resolução determina a observância das Boas Práticas aplicáveis à manipulação, preparação, armazenamento e distribuição dos alimentos, em conformidade com a RDC Anvisa nº 216/2004.</p></div>'
+    : "";
   const narrative =
     'A visita técnica realizada em ' + formatDate(data.visitDate) +
     ' caracterizou a instituição com ' + shown(data.totalResidents, "quantitativo não informado") +
@@ -1069,17 +1085,16 @@ function buildSummaryReportHtml(data) {
       '<div><span>Residentes</span><strong>' + shown(data.totalResidents, "—") + '</strong></div>' +
       '<div><span>Acamados</span><strong>' + shown(data.bedriddenResidents, "—") + '</strong></div>' +
       '<div><span>Perda de peso</span><strong>' + shown(data.health4Count, "—") + '</strong></div>' +
-      '<div><span>Prioridade imediata</span><strong>' + immediateCount + '</strong></div>' +
+      '<div><span>Prioridade imediata</span><strong>' + immediateActions.length + '</strong></div>' +
       '<div><span>Prioridade alta</span><strong>' + highCount + '</strong></div>' +
     '</div>' +
-    '<div class="summary-columns">' +
-      '<section class="summary-panel"><h3>Principais achados</h3><ol>' + (findingItems || '<li><span>Nenhum achado registrado.</span></li>') + '</ol></section>' +
-      '<section class="summary-panel"><h3>Encaminhamentos prioritários</h3><ol>' + (actionItems || '<li><span>Nenhuma ação registrada.</span></li>') + '</ol></section>' +
-    '</div>' +
-    '<p class="summary-reference"><strong>Bases principais:</strong> RDC Anvisa nº 502/2021; RDC Anvisa nº 216/2004; Lei nº 8.234/1991; Lei nº 10.741/2003; Resolução CFN nº 600/2018.</p>' +
-    '<p class="summary-digital-note"><strong>Natureza da atuação:</strong> consultoria nutricional independente e pontual, sem assunção de responsabilidade técnica, vínculo empregatício ou integração da nutricionista à equipe permanente da ILPI. Este resumo destina-se à impressão econômica; o PDF completo contém metodologia, evidências, referências, orientações, plano de ação e anexos.</p>' +
+    mealAlert +
+    '<section class="summary-immediate-priority"><header><strong>PRIORIDADE IMEDIATA · ' + shown(data.institutionName, "Instituição") + '</strong><span>Medidas que não devem aguardar</span></header><ol>' +
+      (immediateItems || '<li><strong>Nenhuma ação imediata registrada.</strong></li>') +
+    '</ol></section>' +    '<p class="summary-reference"><strong>Bases principais:</strong> RDC Anvisa nº 502/2021; RDC Anvisa nº 216/2004; Lei nº 8.234/1991; Lei nº 10.741/2003; Resolução CFN nº 600/2018. Os demais achados, evidências e orientações constam no PDF completo.</p>' +
+    '<p class="summary-digital-note"><strong>Natureza da atuação:</strong> consultoria nutricional independente e pontual, sem assunção de responsabilidade técnica, vínculo empregatício ou integração da nutricionista à equipe permanente da ILPI. A execução e o acompanhamento das ações cabem à gestão e aos profissionais formalmente designados. O PDF completo contém metodologia, evidências, referências, orientações, plano de ação e anexos.</p>' +
     '<div class="summary-signatures">' +
-      '<div><span class="signature-line"></span><strong>' + shown(data.nutritionist, "Nutricionista consultora") + '</strong><small>Nutricionista · CRN ' + shown(data.crn, "não informado") + '</small></div>' +
+      '<div><span class="signature-line"></span><strong>' + shown(data.nutritionist, "Nutricionista consultora") + '</strong><small>Nutricionista consultora · CRN ' + shown(data.crn, "não informado") + '</small></div>' +
       '<div><span class="signature-line"></span><strong>' + shown(data.institutionManager, "Responsável pela instituição") + '</strong><small>Ciência e recebimento · Data: ____/____/________</small></div>' +
     '</div>';
 
