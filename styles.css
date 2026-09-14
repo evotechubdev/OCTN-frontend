@@ -2249,9 +2249,6 @@ footer {
   .toc-entry span { color: #47934d; font-size: 5.7pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
   .toc-entry strong { margin-top: .5mm; color: #29302d; font-size: 7pt; line-height: 1.25; }
   .toc-entry b { display: grid; width: 8mm; height: 8mm; flex: 0 0 8mm; place-items: center; border-radius: 50%; background: #2c3430; color: #fff; font-size: 7pt; }
-  .final-report-page .annex-report-grid { gap: 3mm; }
-  .final-report-page .annex-report-item img { height: 58mm; }
-  .final-report-page .final-signature-block { margin-top: 9mm; }
   .cover-footer span { flex: 1; }
   .cover-footer span:nth-child(2) { text-align: center; }
   .cover-footer span:last-child { text-align: right; }
@@ -2344,33 +2341,62 @@ footer {
   .report-table th { padding: 2.2mm; background: #263039; color: #fff; font-size: 6.5pt; letter-spacing: .05em; text-align: left; text-transform: uppercase; }
   .report-table td { padding: 2mm 2.2mm; border-bottom: .3mm solid #dfe4e6; color: #313638; font-size: 7.5pt; vertical-align: top; white-space: pre-wrap; }
   .report-table tbody tr:nth-child(even) td { background: #f7f9f8; }
-  body.printing-ilpi .findings-report-page { padding: 9mm 10mm 14mm; }
+  body.printing-ilpi .findings-report-page { padding: 8.5mm 9mm 13mm; }
   .findings-report-page .report-header { margin-bottom: 2.5mm; padding-bottom: 2mm; }
-  .findings-report-page .report-header img { width: 28mm; }
-  .findings-report-page h2 { margin-bottom: 2mm; font-size: 12.5pt; }
-  .findings-report-page h2 span { margin-bottom: .6mm; font-size: 5.8pt; }
-  .findings-report-page .report-paragraph { margin-bottom: 1.5mm; font-size: 5.8pt; line-height: 1.25; }
-  .findings-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm; align-items: start; }
-  .finding-report-card { overflow: hidden; border: .25mm solid #d8e0dc; border-top: .7mm solid #45a34c; break-inside: avoid; }
-  .finding-report-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 2mm; padding: 1.2mm 1.5mm; background: #f1f6f2; }
+  .findings-report-page .report-header img { width: 29mm; }
+  .findings-report-page h2 { margin-bottom: 2mm; font-size: 13.5pt; }
+  .findings-report-page h2 span { margin-bottom: .7mm; font-size: 6.3pt; }
+  .findings-report-page .report-paragraph { margin-bottom: 2.2mm; font-size: 7pt; line-height: 1.32; }
+  .findings-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.3mm; align-items: start; }
+  .finding-report-card { overflow: hidden; border: .25mm solid #d8e0dc; border-top: .75mm solid #45a34c; break-inside: avoid; }
+  .finding-report-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 2mm; padding: 1.5mm 1.75mm; background: #f1f6f2; }
   .finding-report-card > header strong,
   .finding-report-card > header span { display: block; }
-  .finding-report-card > header strong { color: #26302b; font-size: 5.4pt; line-height: 1.2; }
-  .finding-report-card > header span { color: #64706a; font-size: 4.8pt; line-height: 1.2; text-align: right; }
+  .finding-report-card > header strong { color: #26302b; font-size: 7pt; line-height: 1.23; }
+  .finding-report-card > header span { color: #64706a; font-size: 6.1pt; line-height: 1.23; text-align: right; }
   .finding-card-section,
-  .finding-card-meta > div { padding: .8mm 1.5mm; }
+  .finding-card-meta > div { padding: 1.2mm 1.75mm; }
   .finding-card-meta { display: grid; grid-template-columns: 1fr 1fr; border-top: .2mm solid #e3e8e5; border-bottom: .2mm solid #e3e8e5; }
   .finding-card-meta > div + div { border-left: .2mm solid #e3e8e5; }
-  .finding-report-card b { display: block; margin-bottom: .3mm; color: #397442; font-size: 4.6pt; letter-spacing: .04em; text-transform: uppercase; }
-  .finding-report-card p { margin: 0; color: #343b37; font-size: 5pt; line-height: 1.22; text-align: left; overflow-wrap: anywhere; }
-  .findings-report-page .report-note { margin-top: 1.5mm; padding: 1.2mm 2mm; font-size: 5.2pt; }
+  .finding-report-card b { display: block; margin-bottom: .45mm; color: #397442; font-size: 5.8pt; letter-spacing: .04em; text-transform: uppercase; }
+  .finding-report-card p { margin: 0; color: #343b37; font-size: 6.5pt; line-height: 1.27; text-align: left; overflow-wrap: anywhere; }
+  .findings-report-page .report-note { margin-top: 2.3mm; padding: 1.7mm 2.3mm; font-size: 6.3pt; }
+  body.printing-ilpi .action-plan-report-page { padding: 8mm 9mm 13mm; }
+  .action-plan-report-page .report-header { margin-bottom: 2mm; padding-bottom: 1.8mm; }
+  .action-plan-report-page .report-header img { width: 28mm; }
+  .action-plan-report-page h2 { margin-bottom: 2mm; font-size: 13pt; }
+  .action-plan-report-page h2 span { margin-bottom: .5mm; font-size: 5.8pt; }
+  .action-plan-report-page h3 { margin: 2mm 0 1.2mm; font-size: 8pt; }
+  .action-plan-report-page .action-plan-intro .report-paragraph { margin: 0 0 3.2mm; font-size: 7.8pt; line-height: 1.36; }
   .action-plan-report-page .report-table { table-layout: fixed; }
   .action-plan-report-page .report-table th:first-child { width: 45%; }
   .action-plan-report-page .report-table th:nth-child(2) { width: 11%; }
   .action-plan-report-page .report-table th:nth-child(3) { width: 19%; }
   .action-plan-report-page .report-table th:nth-child(4) { width: 11%; }
   .action-plan-report-page .report-table th:nth-child(5) { width: 14%; }
-  .action-plan-report-page .report-table td { overflow-wrap: anywhere; }
+  .action-plan-report-page .report-table th { padding: 1.8mm 1.6mm; font-size: 6.7pt; line-height: 1.2; }
+  .action-plan-report-page .report-table td { padding: 2.1mm 1.7mm; font-size: 7.45pt; line-height: 1.27; overflow-wrap: anywhere; }
+  body.printing-ilpi .signature-report-page { padding: 12mm 15mm 14mm; }
+  .signature-report-page .report-header { margin-bottom: 10mm; }
+  .signature-report-page h2 { margin-bottom: 8mm; font-size: 20pt; }
+  .signature-context { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 10mm; }
+  .signature-context > div { padding: 3.5mm 4mm; border-left: 1mm solid #45a34c; background: #f3f7f4; }
+  .signature-context span,
+  .signature-context strong { display: block; }
+  .signature-context span { margin-bottom: 1mm; color: #66716b; font-size: 6.5pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .signature-context strong { color: #27312c; font-size: 9pt; line-height: 1.3; }
+  .signature-term { padding: 7mm 8mm; border: .35mm solid #cfd9d3; background: #fafcfb; }
+  .signature-term h3 { margin: 0 0 4mm; color: #2f7839; font-size: 11pt; }
+  .signature-term p { margin: 0 0 4mm; color: #343b37; font-size: 9pt; line-height: 1.6; text-align: justify; }
+  .signature-term p:last-child { margin-bottom: 0; }
+  .signature-page-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 18mm; margin-top: 38mm; text-align: center; }
+  .signature-page-blocks > div { min-width: 0; }
+  .signature-page-blocks .signature-line { display: block; border-top: .35mm solid #3f4743; }
+  .signature-page-blocks strong,
+  .signature-page-blocks small { display: block; }
+  .signature-page-blocks strong { margin-top: 3mm; color: #27312c; font-size: 9pt; }
+  .signature-page-blocks small { margin-top: 1mm; color: #68716d; font-size: 7.2pt; line-height: 1.35; }
+  .signature-date-line { display: flex; justify-content: space-between; gap: 12mm; margin-top: 22mm; color: #4e5752; font-size: 8pt; }
   .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 5mm 0; }
   .metric { padding: 4mm; border-top: 1.2mm solid #45a34c; background: #f2f6f3; }
   .metric span, .metric strong { display: block; }
@@ -2403,5 +2429,5 @@ footer {
   .signature-block div { padding-top: 3mm; border-top: .3mm solid #404548; }
   .signature-block strong, .signature-block span { display: block; }
   .signature-block span { color: #6c7478; font-size: 7pt; }
-  .report-page-footer { position: absolute; right: 16mm; bottom: 8mm; left: 16mm; display: flex; justify-content: space-between; padding-top: 2mm; border-top: .3mm solid #dfe4e6; color: #788084; font-size: 6.5pt; }
+  .report-page-footer { position: absolute; right: 16mm; bottom: 8mm; left: 16mm; display: flex !important; justify-content: space-between; padding-top: 2mm; border-top: .3mm solid #dfe4e6; color: #788084; font-size: 6.5pt; }
 }
