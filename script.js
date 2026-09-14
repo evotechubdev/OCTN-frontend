@@ -407,14 +407,14 @@ function escapeAttribute(value) {
 function renderFixedRows(data = {}) {
   document.getElementById("health-rows").innerHTML = healthItems.map((item, index) => `<tr><td>${item}</td><td><input type="number" min="0" name="health${index}Count" value="${escapeAttribute(data[`health${index}Count`] || "")}" /></td><td><input name="health${index}Note" value="${escapeAttribute(data[`health${index}Note`] || "")}" /></td></tr>`).join("");
   document.getElementById("meal-rows").innerHTML = mealItems.map((item, index) => `<tr><td>${item}</td><td><input type="time" name="meal${index}Time" value="${escapeAttribute(data[`meal${index}Time`] || "")}" /></td><td><input name="meal${index}Note" value="${escapeAttribute(data[`meal${index}Note`] || "")}" /></td></tr>`).join("");
-  document.getElementById("kitchen-rows").innerHTML = kitchenItems.map((item, index) => `<tr><td>${item}</td><td><select name="kitchen${index}Status"><option value="">Selecione</option><option>S</option><option>N</option><option>NA</option></select></td><td><input name="kitchen${index}Note" /></td></tr>`).join("");
+  document.getElementById("kitchen-rows").innerHTML = kitchenItems.map((item, index) => `<tr><td>${item}</td><td><select name="kitchen${index}Status"><option value="">Selecione</option><option>Sim</option><option>Não</option><option>Não se Aplica</option></select></td></tr>`).join("");
   document.getElementById("observation-rows").innerHTML = observationItems.map((item, index) => `<tr><td>${item}</td><td><select name="observation${index}Status"><option value="">Selecione</option><option>Adequado</option><option>Parcial</option><option>Inadequado</option></select></td><td><input name="observation${index}Note" /></td></tr>`).join("");
 }
 
 function addResidentRow(resident = {}) {
   const row = document.createElement("tr");
   const requiresSpecialDietValue = resident.requiresSpecialDiet || (resident.specialDiet && resident.specialDiet !== "Não" ? "Sim" : "Não");
-  row.innerHTML = `<td>${textInput("name", resident.name)}</td><td>${textInput("birthDate", resident.birthDate, "date")}</td><td>${textInput("diagnosis", resident.diagnosis)}</td><td>${selectInput("bedridden", ["Não", "Sim"], resident.bedridden)}</td><td>${selectInput("weightLoss", ["Não", "Sim"], resident.weightLoss)}</td><td>${selectInput("requiresSpecialDiet", ["Não", "Sim"], requiresSpecialDietValue)}</td><td>${selectInput("priority", ["Baixa", "Moderada", "Alta", "Imediata"], resident.priority || "Baixa")}</td><td><button class="remove-row" type="button" aria-label="Remover residente">×</button></td>`;
+  row.innerHTML = `<td>${textInput("name", resident.name)}</td><td>${textInput("birthDate", resident.birthDate, "date")}</td><td>${textInput("diagnosis", resident.diagnosis)}</td><td>${selectInput("bedridden", ["Não", "Sim"], resident.bedridden)}</td><td>${selectInput("weightLoss", ["Não", "Sim"], resident.weightLoss)}</td><td>${selectInput("requiresSpecialDiet", ["Não", "Sim"], requiresSpecialDietValue)}</td><td>${selectInput("pastyDiet", ["Não", "Sim"], resident.pastyDiet || "Não")}</td><td>${selectInput("priority", ["Baixa", "Moderada", "Alta", "Imediata"], resident.priority || "Baixa")}</td><td><button class="remove-row" type="button" aria-label="Remover residente">×</button></td>`;
   row.querySelector(".remove-row").addEventListener("click", () => { row.remove(); markDirty(); });
   document.getElementById("resident-rows").appendChild(row);
 }
@@ -588,9 +588,12 @@ function collectFormData() {
 function setFormValues(data) {
   [...ilpiForm.elements].forEach((element) => {
     if (!element.name || element.type === "hidden") return;
-    if (element.type === "radio") element.checked = data[element.name] === element.value;
+    const savedValue = /^kitchen\d+Status$/.test(element.name)
+      ? ({ S: "Sim", N: "Não", NA: "Não se Aplica" }[data[element.name]] || data[element.name])
+      : data[element.name];
+    if (element.type === "radio") element.checked = savedValue === element.value;
     else if (element.type === "checkbox") element.checked = data[element.name] === element.value;
-    else element.value = data[element.name] ?? "";
+    else element.value = savedValue ?? "";
   });
 }
 
@@ -781,11 +784,12 @@ function buildReportHtml(data) {
   const annexes = (data.annexes || []).filter((annex) => annex.title || annex.description || annex.fileName);
   const annexChunks = annexes.length ? Array.from({ length: Math.ceil(annexes.length / 2) }, (_, index) => annexes.slice(index * 2, index * 2 + 2)) : [[]];
   let totalPages = 0;
-  const kitchenRows = kitchenItems.map((item, index) => [item, data[`kitchen${index}Status`], data[`kitchen${index}Note`]]);
-  const reportedKitchenRows = kitchenRows.filter((row) => row[1] || row[2]);
-  const applicable = kitchenRows.filter((row) => row[1] === "S" || row[1] === "N");
-  const compliant = applicable.filter((row) => row[1] === "S").length;
-  const nonCompliant = applicable.filter((row) => row[1] === "N").length;
+  const kitchenStatusLabels = { S: "Sim", N: "Não", NA: "Não se Aplica" };
+  const kitchenRows = kitchenItems.map((item, index) => [item, kitchenStatusLabels[data[`kitchen${index}Status`]] || data[`kitchen${index}Status`]]);
+  const reportedKitchenRows = kitchenRows.filter((row) => row[1]);
+  const applicable = kitchenRows.filter((row) => row[1] === "Sim" || row[1] === "Não");
+  const compliant = applicable.filter((row) => row[1] === "Sim").length;
+  const nonCompliant = applicable.filter((row) => row[1] === "Não").length;
   const compliance = applicable.length ? `${Math.round((compliant / applicable.length) * 100)}%` : "—";
   const highPriorityResidents = (data.residents || []).filter((resident) => resident.priority === "Alta" || resident.priority === "Imediata").length;
   const total = Number(data.totalResidents || 0);
@@ -807,11 +811,11 @@ function buildReportHtml(data) {
 
   const page4 = reportPage(data, "Seção 04", "Rotina alimentar da instituição", `<div class="report-grid">${reportField("Refeições oferecidas por dia", data.mealsPerDay)}${reportField("Existe cardápio planejado", data.plannedMenu)}${reportField("Quem define as refeições", data.mealPlanner, true)}${reportField("Existem dietas especiais", data.specialDiets)}${data.acceptanceRecord ? reportField("Há registro de aceitação alimentar", data.acceptanceRecord) : ""}${data.specialDietsDetails ? reportField("Dietas especiais / critérios", data.specialDietsDetails, true) : ""}</div><h3>Distribuição diária das refeições</h3>${reportTable(["Refeição", "Horário", "Preparação / observações"], mealRows)}${Number(data.mealsPerDay || 0) > 0 && Number(data.mealsPerDay) < 6 ? `<div class="report-callout red"><strong>Não conformidade normativa</strong>A instituição informou ${shown(data.mealsPerDay)} refeições diárias. Os arts. 44 e 45 da RDC Anvisa nº 502/2021 estabelecem oferta mínima de seis refeições por dia, além da observância das Boas Práticas da RDC nº 216/2004.</div>` : ""}${Number(data.mealsPerDay || 0) && scheduledMealCount !== Number(data.mealsPerDay) ? `<p class="report-note"><strong>Conferência do registro:</strong> foram preenchidos ${scheduledMealCount} horários, enquanto o total informado é de ${shown(data.mealsPerDay)} refeições. Ajustar o registro para refletir a rotina efetivamente praticada.</p>` : ""}`, 4, totalPages);
 
-  const residentRows = (data.residents || []).filter((resident) => resident.name || resident.diagnosis).map((resident) => [resident.name, formatDate(resident.birthDate), resident.diagnosis, resident.bedridden, resident.weightLoss, resident.requiresSpecialDiet || (resident.specialDiet && resident.specialDiet !== "Não" ? "Sim" : "Não"), resident.priority]);
-  const page5 = residentRows.length ? reportPage(data, "Seção 05", "Levantamento geral dos residentes", `<div class="metric-grid"><div class="metric"><span>Registros individualizados</span><strong>${residentRows.length}</strong></div><div class="metric"><span>Prioridade alta/imediata</span><strong>${highPriorityResidents}</strong></div><div class="metric"><span>Perda de peso informada</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Uso de suplemento</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Nome / identificação", "Data de nascimento", "Diagnóstico", "Acamado", "Perda de peso", "Requer dieta especial?", "Prioridade"], residentRows)}<p class="report-note"><strong>Critério e confidencialidade:</strong> “Requer dieta especial?” registra a avaliação da nutricionista sobre a necessidade de conduta dietética específica, não apenas a dieta oferecida atualmente. Esta página contém dados de saúde e deve ter acesso restrito a pessoas autorizadas.</p>`, 5, totalPages) : null;
+  const residentRows = (data.residents || []).filter((resident) => resident.name || resident.diagnosis).map((resident) => [resident.name, formatDate(resident.birthDate), resident.diagnosis, resident.bedridden, resident.weightLoss, resident.requiresSpecialDiet || (resident.specialDiet && resident.specialDiet !== "Não" ? "Sim" : "Não"), resident.pastyDiet || "Não", resident.priority]);
+  const page5 = residentRows.length ? reportPage(data, "Seção 05", "Levantamento geral dos residentes", `<div class="metric-grid"><div class="metric"><span>Registros individualizados</span><strong>${residentRows.length}</strong></div><div class="metric"><span>Prioridade alta/imediata</span><strong>${highPriorityResidents}</strong></div><div class="metric"><span>Perda de peso informada</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Uso de suplemento</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Nome / identificação", "Data de nascimento", "Diagnóstico", "Acamado", "Perda de peso", "Dieta Especial", "Dieta Pastosa", "Prioridade"], residentRows)}<p class="report-note"><strong>Critério e confidencialidade:</strong> “Dieta Especial” registra a avaliação da nutricionista sobre a necessidade de conduta dietética específica, não apenas a dieta oferecida atualmente. Esta página contém dados de saúde e deve ter acesso restrito a pessoas autorizadas.</p>`, 5, totalPages) : null;
 
   const observationRows = observationItems.map((item, index) => [item, data[`observation${index}Status`], data[`observation${index}Note`]]).filter((row) => row[1] || row[2]);
-  const page6 = reportedKitchenRows.length ? reportPage(data, "Seção 06", "Visita técnica ao serviço de alimentação", `<div class="metric-grid"><div class="metric"><span>Itens registrados</span><strong>${reportedKitchenRows.length}</strong></div><div class="metric"><span>Respostas conformes</span><strong>${applicable.length ? compliant : "—"}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div><div class="metric"><span>Índice descritivo</span><strong>${compliance}</strong></div></div>${reportTable(["Item avaliado", "S / N / NA", "Observações / evidência"], reportedKitchenRows)}<p class="report-note"><strong>Critério:</strong> S = sim; N = não; NA = não se aplica. O índice considera somente respostas S e N registradas na visita.</p>`, 6, totalPages) : null;
+  const page6 = reportedKitchenRows.length ? reportPage(data, "Seção 06", "Visita técnica ao serviço de alimentação", `<div class="metric-grid"><div class="metric"><span>Itens registrados</span><strong>${reportedKitchenRows.length}</strong></div><div class="metric"><span>Respostas conformes</span><strong>${applicable.length ? compliant : "—"}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div><div class="metric"><span>Índice descritivo</span><strong>${compliance}</strong></div></div>${reportTable(["Item avaliado", "Avaliação"], reportedKitchenRows)}<p class="report-note">O índice considera somente as respostas “Sim” e “Não” registradas na visita.</p>`, 6, totalPages) : null;
 
   const findingRows = (data.findings || []).filter((finding) => finding.finding).map((finding, index) => [`AT-${String(index + 1).padStart(2, "0")}`, finding.area, finding.classification, finding.finding, finding.evidence, finding.reference, finding.guidance, finding.priority]);
   const findingsPage = findingRows.length ? reportPage(data, "Síntese técnica", "Achados e orientações", `<p class="report-paragraph">Os achados abaixo resultam dos dados e relatos registrados no levantamento. Cada orientação está vinculada à respectiva evidência.</p><div class="report-table-wrap findings-report-table">${reportTable(["ID", "Área", "Classificação", "Achado", "Evidência / fonte", "Referência", "Orientação", "Prioridade"], findingRows)}</div><p class="report-note"><strong>Referências:</strong> os fundamentos técnicos ou normativos são apresentados somente quando relacionados ao achado descrito.</p>`, 8, totalPages) : null;
