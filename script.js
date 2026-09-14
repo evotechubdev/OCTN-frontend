@@ -510,7 +510,7 @@ function createImportedReport() {
       requestedBy: "Joseane Carvalho Lima", requestPurpose: "Produzir diagnóstico técnico da instituição e orientar melhorias relacionadas à assistência nutricional e ao serviço de alimentação.",
       assessmentScope: "Caracterização da ILPI, perfil geral de saúde e dependência dos residentes, rotina alimentar, organização do serviço de alimentação e definição preliminar de prioridades.",
       methodology: "Entrevista com a responsável, levantamento de informações institucionais, observação técnica em visita de campo e registro estruturado dos dados coletados.",
-      documentsReviewed: "",
+      documentsReviewed: "Memorial descritivo do terreno e planta baixa/localização do terreno, apresentados em registro fotográfico e incorporados aos anexos DOC-01 e DOC-02.",
       institutionName: "Geronvida", address: "Rua Geraldo Brasil, nº 3, Cajazeiras 11, Salvador/BA, CEP 41347-278",
       institutionManager: "Joseane Carvalho Lima", phone: "(71) 99983-6631", activityStart: "2026-02-10", visitDate: "2026-09-10",
       nutritionist: "Grazielle Matos", crn: "17272", totalResidents: "12", independentResidents: "4",
@@ -523,23 +523,40 @@ function createImportedReport() {
       mediumPriority: "Implantar indicadores de acompanhamento nutricional e revisar periodicamente o plano de cuidado alimentar da instituição.",
       diagnosticOpinion: "O levantamento inicial evidencia riscos nutricionais, sanitários, assistenciais e de gestão que exigem intervenção estruturada. Entre os 12 residentes, foi informada perda de peso recente em quatro pessoas (33,3%), além de elevada ocorrência de hipertensão, casos de diabetes, dependência funcional e residentes acamados, condições que demandam avaliação nutricional individual e acompanhamento registrado. A instituição oferece cinco refeições diárias, abaixo do mínimo de seis para ILPI, não apresentou cardápio planejado e reconhece a existência de dietas especiais ainda sem formalização suficiente. No serviço de alimentação, foram relatadas falhas de identificação e validade, ausência de registros de temperatura, armazenamento de alimentos no chão, inadequações estruturais e falta de treinamento documentado. Somam-se a isso pendências sanitárias e documentais, ausência de padronização dos processos e de Plano de Trabalho. As prioridades imediatas são regularizar a documentação, garantir seis refeições diárias, avaliar os residentes com perda de peso e corrigir os riscos higiênico-sanitários da cozinha.",
       strengths: "A responsável participou do levantamento e forneceu informações sobre a rotina institucional e o perfil de saúde dos residentes, permitindo o mapeamento inicial das necessidades. A instituição mantém cinco horários de refeições definidos, identifica a existência de dietas especiais e reconhece residentes com maior vulnerabilidade nutricional. Também foram informados os quantitativos por grau de dependência e as principais condições de saúde, constituindo uma base inicial para avaliações individualizadas, planejamento do cardápio e acompanhamento das adequações.",
-      limitations: "O diagnóstico retrata a visita de 10/09/2026 e baseia-se principalmente em entrevista, informações fornecidas pela responsável e observações pontuais. Não foram apresentados para análise completa o alvará e os demais documentos sanitários, os registros individuais integrais dos residentes, prontuários, prescrições, exames, histórico antropométrico, cardápio planejado, controles de temperatura, comprovantes de treinamento, Manual de Boas Práticas ou POP. Foram incorporados registros fotográficos como evidências complementares, porém eles representam somente as condições observadas no momento da visita e não substituem a verificação documental nem o acompanhamento integral das etapas de produção e distribuição das refeições. Portanto, os quantitativos e as condições clínicas informadas precisam de confirmação documental e avaliação individual, e os achados devem ser reavaliados após as adequações.",
-      recommendations: "1. Regularizar o alvará sanitário, organizar os documentos institucionais e completar os registros individuais dos residentes.\n2. Adequar imediatamente a oferta para, no mínimo, seis refeições diárias, com horários e registros coerentes com a rotina praticada.\n3. Realizar avaliação nutricional individual dos quatro residentes com perda de peso recente, registrar diagnóstico, prescrição e evolução e acompanhar peso e aceitação alimentar.\n4. Elaborar e implantar cardápio planejado por nutricionista, incluindo consistências, dietas especiais e necessidades associadas às condições clínicas identificadas.\n5. Identificar os alimentos com nome, datas de preparo e validade, implantar controle documentado de temperaturas e manter todos os produtos fora do chão.\n6. Organizar o fluxo entre armazenamento e preparo e executar os reparos necessários em pisos, paredes e instalações elétricas e hidráulicas.\n7. Elaborar e implantar o Manual de Boas Práticas e os POP, capacitar periodicamente os manipuladores e arquivar os comprovantes dos treinamentos.\n8. Elaborar o Plano de Trabalho e o plano de ação institucional, definindo responsáveis, prazos, situação e evidências de conclusão.\n9. Registrar fotograficamente e documentalmente as adequações e realizar nova avaliação técnica para verificar o cumprimento das medidas.",
+      limitations: "O diagnóstico retrata a visita de 10/09/2026 e baseia-se principalmente em entrevista, informações fornecidas pela responsável e observações pontuais. Não foram apresentados para análise completa o alvará e os demais documentos sanitários, os registros individuais integrais dos residentes, prontuários, prescrições, exames, histórico antropométrico, cardápio planejado, controles de temperatura, comprovantes de treinamento, Manual de Boas Práticas ou POP. Foram incorporados registros fotográficos do armazenamento de alimentos e reproduções fotográficas do memorial descritivo e da planta baixa/localização do terreno como evidências complementares. Essas imagens representam as condições e os documentos apresentados no momento da visita e não substituem a verificação dos originais nem o acompanhamento integral das etapas de produção e distribuição das refeições. Portanto, os quantitativos e as condições clínicas informadas precisam de confirmação documental e avaliação individual, e os achados devem ser reavaliados após as adequações.",
+      contentRevision: 4,
+      annexRevision: 2,
+      recommendations: "Recomenda-se que a instituição execute as adequações de forma escalonada, priorizando os riscos sanitários, nutricionais, assistenciais e documentais que podem comprometer a segurança e a qualidade do cuidado aos residentes. A gestão deve formalizar responsáveis e prazos, enquanto a nutricionista coordena a avaliação individual, o planejamento do cardápio, a definição das dietas especiais e os controles do serviço de alimentação. Todas as medidas adotadas devem ser comprovadas por registros, documentos e fotografias, acompanhadas semanalmente nos primeiros 30 dias e reavaliadas tecnicamente após a implantação, com atualização contínua do plano de ação.",
       findings: [
         { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Alta" },
         { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "Não foi apresentado cardápio planejado para as refeições da instituição.", evidence: "Informação prestada pela responsável durante a visita de 10/09/2026.", reference: "Lei nº 8.234/1991, art. 3º, II; Resolução CFN nº 600/2018, Anexo II, item I.A.1.1.1.1", guidance: "Elaborar e implantar cardápio sob responsabilidade de nutricionista, com base no diagnóstico nutricional da clientela e contemplando necessidades, consistências, hábitos alimentares e viabilidade operacional.", priority: "Alta" },
         { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "A rotina informada registra cinco refeições diárias, abaixo do mínimo de seis exigido para ILPI.", evidence: "Relato da responsável e cinco horários de refeições registrados no levantamento inicial de 10/09/2026.", reference: "RDC Anvisa nº 502/2021, art. 44", guidance: "Adequar imediatamente a rotina para, no mínimo, seis refeições diárias e alinhar o total informado, os horários, o cardápio e a prática efetiva.", priority: "Imediata" },
         { area: "Documentação", classification: "Risco crítico", finding: "Não foram apresentados os documentos sanitários da instituição, e os registros individuais dos residentes estão incompletos.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, arts. 8º, 13 e 33; Lei nº 10.741/2003, art. 50, XV", guidance: "Regularizar e manter atualizados, organizados e de fácil acesso o alvará sanitário, os documentos institucionais e os registros individuais de cada residente.", priority: "Imediata" },
-        { area: "Cozinha / boas práticas", classification: "Não conformidade", finding: "Foram observados alimentos prontos sem identificação e prazo de validade, ausência de registros de temperatura e alimentos armazenados em caixas diretamente no chão.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, arts. 45 e 46, II e III; RDC Anvisa nº 216/2004, Anexo, itens 4.7.6, 4.8.18, 4.9.1 e 4.9.2", guidance: "Identificar os alimentos com nome, datas de preparo e validade; monitorar e registrar as temperaturas; armazenar os produtos fora do chão, em estrados ou prateleiras adequados; e implantar as rotinas correspondentes.", priority: "Imediata" },
-        { area: "Estrutura física", classification: "Não conformidade", finding: "Não há organização adequada entre as áreas de armazenamento e preparo; há alimentos no chão e instalações elétricas, hidráulicas, paredes e pisos necessitando de reparos.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, art. 45; RDC Anvisa nº 216/2004, Anexo, itens 4.1.2, 4.1.3, 4.1.9 e 4.7.6", guidance: "Organizar o fluxo entre armazenamento e preparo para prevenir contaminação cruzada, retirar os alimentos do chão e reparar pisos, paredes e instalações elétricas e hidráulicas.", priority: "Alta" },
+        { area: "Cozinha / boas práticas", classification: "Não conformidade", finding: "Foram observados alimentos prontos sem identificação e prazo de validade, ausência de registros de temperatura e alimentos armazenados em caixas diretamente no chão.", evidence: "Observação direta, registros fotográficos FOTO-01 a FOTO-05 e informações prestadas pela responsável durante a visita de 10/09/2026.", reference: "RDC Anvisa nº 502/2021, arts. 45 e 46, II e III; RDC Anvisa nº 216/2004, Anexo, itens 4.7.6, 4.8.18, 4.9.1 e 4.9.2", guidance: "Identificar os alimentos com nome, datas de preparo e validade; monitorar e registrar as temperaturas; armazenar os produtos fora do chão, em estrados ou prateleiras adequados; e implantar as rotinas correspondentes.", priority: "Imediata" },
+        { area: "Estrutura física", classification: "Não conformidade", finding: "Não há organização adequada entre as áreas de armazenamento e preparo; há alimentos no chão e instalações elétricas, hidráulicas, paredes e pisos necessitando de reparos.", evidence: "Observação direta, registros fotográficos FOTO-01 a FOTO-05 e informações prestadas pela responsável durante a visita de 10/09/2026.", reference: "RDC Anvisa nº 502/2021, art. 45; RDC Anvisa nº 216/2004, Anexo, itens 4.1.2, 4.1.3, 4.1.9 e 4.7.6", guidance: "Organizar o fluxo entre armazenamento e preparo para prevenir contaminação cruzada, retirar os alimentos do chão e reparar pisos, paredes e instalações elétricas e hidráulicas.", priority: "Alta" },
         { area: "Equipe", classification: "Não conformidade", finding: "Não foram comprovados treinamento periódico dos manipuladores nem padronização documentada dos processos de alimentação.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, art. 46; RDC Anvisa nº 216/2004, Anexo, itens 4.6.7, 4.11.1 a 4.11.3 e 4.12.1 a 4.12.2", guidance: "Elaborar e implantar o Manual de Boas Práticas e os POP, definir responsabilidades, capacitar periodicamente os manipuladores e manter registros comprobatórios dos treinamentos.", priority: "Alta" },
         { area: "Gestão", classification: "Não conformidade", finding: "Não foi apresentado Plano de Trabalho nem instrumento para planejar, acompanhar e revisar as ações institucionais.", evidence: "Relato registrado no levantamento inicial de 10/09/2026 e entrevista com a responsável durante a visita.", reference: "RDC Anvisa nº 502/2021, arts. 31 e 32", guidance: "Elaborar o Plano de Trabalho institucional e desdobrá-lo em plano de ação com responsáveis, prazos, situação e revisão periódica, considerando a participação dos residentes.", priority: "Moderada" }
       ],
       residents: [], actions: [
-        { action: "Adequar a rotina para no mínimo seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista", deadline: "7 dias", status: "Pendente" },
-        { action: "Realizar avaliação nutricional dos residentes com perda de peso recente.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
-        { action: "Elaborar e implantar cardápio planejado e dietas especiais formalizadas.", priority: "Alta", responsible: "Nutricionista e gestão", deadline: "30 dias", status: "Pendente" }
-      ], annexes: [], reviewConfirmed: ""
+        { action: "Regularizar o alvará sanitário, organizar os documentos institucionais e completar os registros individuais dos residentes.", priority: "Imediata", responsible: "Gestão e responsável técnica", deadline: "7 dias", status: "Pendente" },
+        { action: "Adequar a rotina para, no mínimo, seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista", deadline: "7 dias", status: "Pendente" },
+        { action: "Realizar avaliação nutricional individual dos quatro residentes com perda de peso recente e registrar diagnóstico, prescrição e evolução.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
+        { action: "Elaborar e implantar cardápio planejado, incluindo consistências, dietas especiais e necessidades clínicas.", priority: "Alta", responsible: "Nutricionista", deadline: "30 dias", status: "Pendente" },
+        { action: "Identificar os alimentos, controlar datas de preparo e validade, registrar temperaturas e retirar os produtos do chão.", priority: "Imediata", responsible: "Gestão e equipe da cozinha", deadline: "48 horas", status: "Pendente" },
+        { action: "Organizar o fluxo entre armazenamento e preparo e executar reparos em pisos, paredes e instalações elétricas e hidráulicas.", priority: "Alta", responsible: "Gestão e manutenção", deadline: "30 dias", status: "Pendente" },
+        { action: "Elaborar e implantar o Manual de Boas Práticas e os Procedimentos Operacionais Padronizados.", priority: "Alta", responsible: "Nutricionista e gestão", deadline: "30 dias", status: "Pendente" },
+        { action: "Capacitar os manipuladores em boas práticas e manter registros comprobatórios dos treinamentos.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
+        { action: "Elaborar o Plano de Trabalho e acompanhar as ações com responsáveis, prazos, status e evidências.", priority: "Moderada", responsible: "Gestão e equipe multiprofissional", deadline: "30 dias", status: "Pendente" },
+        { action: "Registrar as adequações e realizar nova avaliação técnica para verificar o cumprimento das medidas.", priority: "Moderada", responsible: "Nutricionista e responsável técnica", deadline: "60 dias", status: "Pendente" }
+      ], annexes: [
+        { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 1", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-01", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-1.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-1.jpg" },
+        { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 2", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-02", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-2.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-2.jpg" },
+        { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 3", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-03", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-3.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-3.jpg" },
+        { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 4", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-04", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-4.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-4.jpg" },
+        { type: "Registro fotográfico", title: "Armazenamento de alimentos — registro 5", date: "2026-09-10", code: "AT-05 / AT-06 · FOTO-05", description: "Evidência fotográfica complementar das condições de armazenamento de alimentos observadas na visita, relacionada aos achados de boas práticas e estrutura física.", fileName: "armazenamento-alimento-5.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/armazenamento-alimento-5.jpg" },
+        { type: "Documento consultado", title: "Memorial descritivo do terreno", date: "2026-09-10", code: "DOC-01", description: "Registro fotográfico do memorial descritivo do terreno, incorporado como documentação complementar da estrutura e da caracterização física da instituição.", fileName: "memorial-descritivo-terreno.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/memorial-descritivo-terreno.jpg" },
+        { type: "Documento consultado", title: "Planta baixa e localização do terreno", date: "2026-09-10", code: "DOC-02", description: "Registro fotográfico da planta baixa e da localização do terreno, incorporado como documentação complementar da estrutura física da instituição.", fileName: "planta-baixa-localizacao-terreno.jpg", fileType: "image/jpeg", dataUrl: "public/imagens_campo/planta-baixa-localizacao-terreno.jpg" }
+      ], reviewConfirmed: ""
     }
   };
 }
@@ -553,6 +570,8 @@ function seedLocalDatabase() {
   const imported = reports.find((report) => report.id === "ilpi-gerovinda-2026-09-10");
   if (imported) {
     const defaults = createImportedReport().data;
+    const storedContentRevision = Number(imported.data.contentRevision || 0);
+    const storedAnnexRevision = Number(imported.data.annexRevision || 0);
     Object.entries(defaults).forEach(([key, value]) => {
       if (imported.data[key] === undefined) imported.data[key] = value;
     });
@@ -560,28 +579,46 @@ function seedLocalDatabase() {
     Object.keys(imported.data).filter((key) => key.startsWith("normative")).forEach((key) => delete imported.data[key]);
     if (imported.data.methodology?.includes("Os itens não avaliados ou sem evidência disponível")) imported.data.methodology = defaults.methodology;
     if (imported.data.documentsReviewed?.startsWith("Nenhum documento complementar")) imported.data.documentsReviewed = "";
-    const normalizedFinding = (finding) => finding.finding?.toLocaleLowerCase("pt-BR") || "";
-    const findingMigrations = [
-      { match: (finding) => finding.area === "Assistência ao residente" && normalizedFinding(finding).includes("perda de peso recente"), replacement: defaults.findings[0] },
-      { match: (finding) => finding.area === "Alimentação e nutrição" && normalizedFinding(finding).includes("cardápio planejado"), replacement: defaults.findings[1] },
-      { match: (finding) => finding.area === "Alimentação e nutrição" && normalizedFinding(finding).includes("mínimo de seis"), replacement: defaults.findings[2] },
-      { match: (finding) => finding.area === "Documentação" && normalizedFinding(finding).includes("documentos"), replacement: defaults.findings[3] },
-      { match: (finding) => finding.area === "Cozinha / boas práticas" && normalizedFinding(finding).includes("alimentos prontos"), replacement: defaults.findings[4] },
-      { match: (finding) => finding.area === "Estrutura física" && normalizedFinding(finding).includes("armazenamento e preparo"), replacement: defaults.findings[5] },
-      { match: (finding) => finding.area === "Equipe" && normalizedFinding(finding).includes("treinamento"), replacement: defaults.findings[6] },
-      { match: (finding) => finding.area === "Gestão" && (normalizedFinding(finding).includes("mapa de ações") || normalizedFinding(finding).includes("plano de trabalho")), replacement: defaults.findings[7] }
-    ];
-    findingMigrations.forEach(({ match, replacement }) => {
-      const finding = imported.data.findings?.find(match);
-      if (finding) Object.assign(finding, replacement);
-    });
-    const oldMealAction = imported.data.actions?.find((action) => action.action === "Validar e corrigir o quantitativo diário de refeições.");
-    if (oldMealAction) Object.assign(oldMealAction, defaults.actions[0]);
     if (imported.data.immediatePriority?.includes("validar a divergência entre o número de refeições")) imported.data.immediatePriority = defaults.immediatePriority;
-    imported.data.diagnosticOpinion = defaults.diagnosticOpinion;
-    imported.data.strengths = defaults.strengths;
-    imported.data.limitations = defaults.limitations;
-    imported.data.recommendations = defaults.recommendations;
+
+    if (storedContentRevision < defaults.contentRevision) {
+      const normalizedFinding = (finding) => finding.finding?.toLocaleLowerCase("pt-BR") || "";
+      const findingMigrations = [
+        { match: (finding) => finding.area === "Assistência ao residente" && normalizedFinding(finding).includes("perda de peso recente"), replacement: defaults.findings[0] },
+        { match: (finding) => finding.area === "Alimentação e nutrição" && normalizedFinding(finding).includes("cardápio planejado"), replacement: defaults.findings[1] },
+        { match: (finding) => finding.area === "Alimentação e nutrição" && normalizedFinding(finding).includes("mínimo de seis"), replacement: defaults.findings[2] },
+        { match: (finding) => finding.area === "Documentação" && normalizedFinding(finding).includes("documentos"), replacement: defaults.findings[3] },
+        { match: (finding) => finding.area === "Cozinha / boas práticas" && normalizedFinding(finding).includes("alimentos prontos"), replacement: defaults.findings[4] },
+        { match: (finding) => finding.area === "Estrutura física" && normalizedFinding(finding).includes("armazenamento e preparo"), replacement: defaults.findings[5] },
+        { match: (finding) => finding.area === "Equipe" && normalizedFinding(finding).includes("treinamento"), replacement: defaults.findings[6] },
+        { match: (finding) => finding.area === "Gestão" && (normalizedFinding(finding).includes("mapa de ações") || normalizedFinding(finding).includes("plano de trabalho")), replacement: defaults.findings[7] }
+      ];
+      findingMigrations.forEach(({ match, replacement }) => {
+        const finding = imported.data.findings?.find(match);
+        if (finding) Object.assign(finding, replacement);
+      });
+      imported.data.actions = defaults.actions.map((action) => ({ ...action }));
+      imported.data.diagnosticOpinion = defaults.diagnosticOpinion;
+      imported.data.strengths = defaults.strengths;
+      imported.data.limitations = defaults.limitations;
+      imported.data.recommendations = defaults.recommendations;
+      imported.data.contentRevision = defaults.contentRevision;
+    }
+    if (storedAnnexRevision < defaults.annexRevision) {
+      const existingAnnexes = Array.isArray(imported.data.annexes) ? imported.data.annexes : [];
+      defaults.annexes.forEach((defaultAnnex) => {
+        const alreadyIncluded = existingAnnexes.some((annex) => annex.code === defaultAnnex.code || annex.fileName === defaultAnnex.fileName);
+        if (!alreadyIncluded) existingAnnexes.push({ ...defaultAnnex });
+      });
+      imported.data.annexes = existingAnnexes;
+      if (!String(imported.data.documentsReviewed || "").trim()) imported.data.documentsReviewed = defaults.documentsReviewed;
+      if (imported.data.limitations?.includes("Foram incorporados registros fotográficos como evidências complementares")) imported.data.limitations = defaults.limitations;
+      const storageFinding = imported.data.findings?.find((finding) => finding.area === "Cozinha / boas práticas" && finding.finding?.toLocaleLowerCase("pt-BR").includes("alimentos prontos"));
+      const structureFinding = imported.data.findings?.find((finding) => finding.area === "Estrutura física" && finding.finding?.toLocaleLowerCase("pt-BR").includes("armazenamento e preparo"));
+      if (storageFinding) storageFinding.evidence = defaults.findings[4].evidence;
+      if (structureFinding) structureFinding.evidence = defaults.findings[5].evidence;
+      imported.data.annexRevision = defaults.annexRevision;
+    }
     persistReports(reports);
   }
 }
@@ -851,8 +888,18 @@ function buildReportHtml(data) {
   const page8 = observationRows.length || hasPriorities ? reportPage(data, observationRows.length ? "Observação e prioridades" : "Prioridades", observationRows.length ? "Observação da refeição e prioridades" : "Demandas e prioridades identificadas", `${observationRows.length ? `<h3>Observação da refeição</h3>${reportTable(["Aspecto observado", "Avaliação", "Observações"], observationRows)}` : ""}${hasPriorities ? `<h3>Demandas priorizadas</h3><div class="report-callout red"><strong>Prioridade imediata</strong>${shown(data.immediatePriority)}</div><div class="report-callout yellow"><strong>Curto prazo · até 30 dias</strong>${shown(data.shortPriority)}</div><div class="report-callout green"><strong>Médio prazo · 31 a 90 dias</strong>${shown(data.mediumPriority)}</div>` : ""}`, 8, totalPages) : null;
 
   const actionRows = (data.actions || []).filter((action) => action.action).map((action) => [action.action, action.priority, action.responsible, action.deadline, action.status]);
+  const actionChunks = actionRows.length ? Array.from({ length: Math.ceil(actionRows.length / 4) }, (_, index) => actionRows.slice(index * 4, index * 4 + 4)) : [[]];
   const opinionPage = reportPage(data, "Seção 10", "Parecer diagnóstico inicial", `<h3>Síntese diagnóstica</h3><p class="report-paragraph">${shown(data.diagnosticOpinion)}</p>${data.strengths?.trim() ? `<h3>Pontos fortes observados</h3><p class="report-paragraph">${shown(data.strengths)}</p>` : ""}${data.limitations?.trim() ? `<h3>Limitações do levantamento</h3><p class="report-paragraph">${shown(data.limitations)}</p>` : ""}<p class="report-note"><strong>Natureza do parecer:</strong> diagnóstico inicial baseado nas informações e evidências disponíveis na data da visita. Os achados devem ser reavaliados após as adequações e a complementação documental.</p>`, 9, totalPages);
-  const actionPlanPage = reportPage(data, "Seção 11", "Recomendações e plano de ação", `<h3>Orientações gerais</h3><p class="report-paragraph">${shown(data.recommendations)}</p>${actionRows.length ? reportTable(["Ação recomendada", "Prioridade", "Responsável", "Prazo", "Status"], actionRows) : ""}<div class="signature-block"><div><strong>${shown(data.nutritionist, "Nutricionista responsável")}</strong><span>${shown(data.crn, "CRN")}</span></div><div><strong>${shown(data.institutionManager, "Responsável pela instituição")}</strong><span>Ciência e recebimento</span></div></div>`, 10, totalPages);
+  const actionPlanPages = actionChunks.map((chunk, index) => {
+    const isFirstPage = index === 0;
+    const isLastPage = index === actionChunks.length - 1;
+    const generalGuidance = isFirstPage ? "<h3>Orientações gerais</h3><p class=\"report-paragraph\">" + shown(data.recommendations) + "</p>" : "";
+    const signatures = isLastPage ? "<div class=\"signature-block\"><div><strong>" + shown(data.nutritionist, "Nutricionista responsável") + "</strong><span>" + shown(data.crn, "CRN") + "</span></div><div><strong>" + shown(data.institutionManager, "Responsável pela instituição") + "</strong><span>Ciência e recebimento</span></div></div>" : "";
+    const kicker = isFirstPage ? "Seção 11" : "Seção 11 · continuação " + (index + 1);
+    const title = isFirstPage ? "Recomendações e plano de ação" : "Plano de ação · continuação";
+    const table = chunk.length ? reportTable(["Ação recomendada", "Prioridade", "Responsável", "Prazo", "Status"], chunk) : "";
+    return reportPage(data, kicker, title, generalGuidance + table + signatures, 10 + index, totalPages, "action-plan-report-page");
+  });
 
   const annexPages = annexChunks.map((chunk, chunkIndex) => {
     const content = chunk.length
@@ -861,7 +908,7 @@ function buildReportHtml(data) {
     return reportPage(data, "Anexos", chunk.length ? `Evidências complementares · bloco ${chunkIndex + 1}` : "Área reservada para evidências", content, 12 + chunkIndex, totalPages);
   });
 
-  const reportPages = [page2, page3Overview, page3, page4, page5, page6, ...findingsPages, page7, page8, opinionPage, actionPlanPage, ...annexPages].filter(Boolean);
+  const reportPages = [page2, page3Overview, page3, page4, page5, page6, ...findingsPages, page7, page8, opinionPage, ...actionPlanPages, ...annexPages].filter(Boolean);
   totalPages = 1 + reportPages.length;
   return finalizeReportPages(cover, reportPages, totalPages);
 }
