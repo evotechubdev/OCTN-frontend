@@ -2265,7 +2265,7 @@ footer {
   .summary-immediate-priority li span { display: block; }
   .summary-immediate-priority li strong { font-size: 5.9pt; line-height: 1.25; }
   .summary-immediate-priority li span { margin-top: .3mm; color: #6a716d; font-size: 5.3pt; line-height: 1.2; }
-  .report-summary-page .summary-signatures { margin-top: 6mm; }
+  .report-summary-page .summary-signatures { margin-top: 13mm; }
   body.printing-ilpi .report-summary-page { padding: 10mm 13mm 15mm; font-size: 7pt; line-height: 1.32; }
   .report-summary-page .report-header { margin-bottom: 3mm; padding-bottom: 2.5mm; }
   .report-summary-page .report-header img { width: 30mm; }
@@ -2302,7 +2302,11 @@ footer {
   .summary-reference,
   .summary-digital-note { margin: 2.5mm 0 0; padding: 1.8mm 2.2mm; border-left: .8mm solid #7f8c85; background: #f6f8f7; color: #525b57; font-size: 5.8pt; }
   .summary-digital-note { border-color: #45a34c; background: #f1f7f2; }
+  .summary-signature-section { margin-top: 5mm; padding-top: 3mm; border-top: .4mm solid #cfd8d3; break-inside: avoid; }
+  .summary-signature-section h3 { margin: 0; color: #2f7839; font: 700 9pt "Manrope", Arial, sans-serif; letter-spacing: .02em; }
   .summary-signatures { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; margin-top: 9mm; text-align: center; break-inside: avoid; }
+  .summary-signatures .signature-stamp-space { display: flex; height: 25mm; align-items: flex-end; justify-content: center; }
+  .summary-signatures .signature-stamp-space img { display: block; width: auto; max-width: 45mm; max-height: 25mm; object-fit: contain; }
   .summary-signatures .signature-line { display: block; border-top: .3mm solid #3e4541; }
   .summary-signatures strong,
   .summary-signatures small { display: block; }
@@ -2389,8 +2393,10 @@ footer {
   .signature-term h3 { margin: 0 0 4mm; color: #2f7839; font-size: 11pt; }
   .signature-term p { margin: 0 0 4mm; color: #343b37; font-size: 9pt; line-height: 1.6; text-align: justify; }
   .signature-term p:last-child { margin-bottom: 0; }
-  .signature-page-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 18mm; margin-top: 38mm; text-align: center; }
+  .signature-page-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 18mm; margin-top: 22mm; text-align: center; }
   .signature-page-blocks > div { min-width: 0; }
+  .signature-page-blocks .signature-stamp-space { display: flex; height: 30mm; align-items: flex-end; justify-content: center; }
+  .signature-page-blocks .signature-stamp-space img { display: block; width: auto; max-width: 55mm; max-height: 30mm; object-fit: contain; }
   .signature-page-blocks .signature-line { display: block; border-top: .35mm solid #3f4743; }
   .signature-page-blocks strong,
   .signature-page-blocks small { display: block; }
