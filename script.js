@@ -515,9 +515,41 @@ function createImportedReport() {
       institutionManager: "Joseane Carvalho Lima", phone: "(71) 99983-6631", activityStart: "2026-02-10", visitDate: "2026-09-10",
       nutritionist: "Grazielle Matos", crn: "17272", totalResidents: "12", independentResidents: "4",
       partialResidents: "2", dependentResidents: "6", bedriddenResidents: "3", foodEmployees: "1",
-      health0Count: "4", health1Count: "12", health2Count: "2", health3Count: "0", health4Count: "4", health5Count: "1", health6Count: "0", health7Count: "1",
-      mealsPerDay: "5", plannedMenu: "Não", mealPlanner: "Cozinheira ou Joseane", acceptanceRecord: "", specialDiets: "Sim", specialDietsDetails: "Demência e Alzheimer — especificar a adaptação dietética adotada.",
-      meal0Time: "08:00", meal1Time: "10:00", meal2Time: "12:00", meal3Time: "15:00", meal4Time: "18:30", meal5Time: "",
+      health0Count: "4", health0Note: "Quatro casos informados pela responsável no levantamento inicial.",
+      health1Count: "12", health1Note: "Doze casos informados pela responsável no levantamento inicial.",
+      health2Count: "2", health2Note: "Dois casos informados pela responsável no levantamento inicial.",
+      health3Count: "0", health3Note: "Nenhum caso informado no levantamento inicial.",
+      health4Count: "4", health4Note: "Quatro casos de perda de peso recente informados pela responsável.",
+      health5Count: "1", health5Note: "Um caso informado pela responsável no levantamento inicial.",
+      health6Count: "0", health6Note: "Nenhum caso informado no levantamento inicial.",
+      health7Count: "1", health7Note: "Um caso de uso de suplemento nutricional informado pela responsável.",
+      health8Count: "0", health8Note: "Nenhuma outra condição relevante foi informada no levantamento inicial.",
+      mealsPerDay: "5", plannedMenu: "Não", mealPlanner: "Cozinheira ou Joseane", acceptanceRecord: "Não", specialDiets: "Sim", specialDietsDetails: "Demência e Alzheimer — especificar a adaptação dietética adotada.",
+      meal0Time: "08:00", meal0Note: "Horário informado no levantamento inicial; preparação específica não detalhada.",
+      meal1Time: "10:00", meal1Note: "Horário informado no levantamento inicial; preparação específica não detalhada.",
+      meal2Time: "12:00", meal2Note: "Horário informado no levantamento inicial; preparação específica não detalhada.",
+      meal3Time: "15:00", meal3Note: "Horário informado no levantamento inicial; preparação específica não detalhada.",
+      meal4Time: "18:30", meal4Note: "Horário informado no levantamento inicial; preparação específica não detalhada.",
+      meal5Time: "", meal5Note: "Ceia não ofertada na rotina informada de cinco refeições diárias.",
+      kitchen0Status: "Não", kitchen1Status: "Não Avaliado", kitchen2Status: "Não", kitchen3Status: "Não Avaliado", kitchen4Status: "Não",
+      kitchen5Status: "Não", kitchen6Status: "Não Avaliado", kitchen7Status: "Sim", kitchen8Status: "Não Avaliado", kitchen9Status: "Não Avaliado",
+      kitchen10Status: "Não Avaliado", kitchen11Status: "Não Avaliado", kitchen12Status: "Não", kitchen13Status: "Não", kitchen14Status: "Não",
+      observation0Status: "Não Avaliado", observation0Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation1Status: "Não Avaliado", observation1Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation2Status: "Não Avaliado", observation2Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation3Status: "Não Avaliado", observation3Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation4Status: "Não Avaliado", observation4Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation5Status: "Não Avaliado", observation5Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation6Status: "Não Avaliado", observation6Note: "Aspecto não avaliado durante o levantamento inicial.",
+      observation7Status: "Não Avaliado", observation7Note: "Aspecto não avaliado durante o levantamento inicial.",
+      cookName: "Não informado", cookExperience: "Não informado", cookTraining: "Não",
+      cookPlanning: "As refeições são definidas pela cozinheira ou por Joseane, conforme informação registrada no levantamento inicial.",
+      cookDifficulties: "Foram identificadas falta de treinamento e ausência de padronização documentada dos processos.",
+      mostAcceptedFoods: "Não informado durante o levantamento inicial.",
+      mostRejectedFoods: "Não informado durante o levantamento inicial.",
+      foodPurchases: "Não informado durante o levantamento inicial.",
+      specialDietDifficulties: "Não informado durante o levantamento inicial.",
+      missingResources: "Não foram informados equipamentos ou recursos ausentes; foram registradas necessidades de reparos estruturais.",
       immediatePriority: "Adequar a oferta para, no mínimo, seis refeições diárias e avaliar individualmente os quatro residentes com perda de peso recente.",
       shortPriority: "Elaborar cardápio planejado, formalizar as dietas especiais e implantar registro de aceitação alimentar.",
       mediumPriority: "Implantar indicadores de acompanhamento nutricional e revisar periodicamente o plano de cuidado alimentar da instituição.",
@@ -526,6 +558,7 @@ function createImportedReport() {
       limitations: "O diagnóstico retrata a visita de 10/09/2026 e baseia-se principalmente em entrevista, informações fornecidas pela responsável e observações pontuais. Não foram apresentados para análise completa o alvará e os demais documentos sanitários, os registros individuais integrais dos residentes, prontuários, prescrições, exames, histórico antropométrico, cardápio planejado, controles de temperatura, comprovantes de treinamento, Manual de Boas Práticas ou POP. Foram incorporados registros fotográficos do armazenamento de alimentos e reproduções fotográficas do memorial descritivo e da planta baixa/localização do terreno como evidências complementares. Essas imagens representam as condições e os documentos apresentados no momento da visita e não substituem a verificação dos originais nem o acompanhamento integral das etapas de produção e distribuição das refeições. Portanto, os quantitativos e as condições clínicas informadas precisam de confirmação documental e avaliação individual, e os achados devem ser reavaliados após as adequações.",
       contentRevision: 4,
       annexRevision: 2,
+      completionRevision: 1,
       recommendations: "Recomenda-se que a instituição execute as adequações de forma escalonada, priorizando os riscos sanitários, nutricionais, assistenciais e documentais que podem comprometer a segurança e a qualidade do cuidado aos residentes. A gestão deve formalizar responsáveis e prazos, enquanto a nutricionista coordena a avaliação individual, o planejamento do cardápio, a definição das dietas especiais e os controles do serviço de alimentação. Todas as medidas adotadas devem ser comprovadas por registros, documentos e fotografias, acompanhadas semanalmente nos primeiros 30 dias e reavaliadas tecnicamente após a implantação, com atualização contínua do plano de ação.",
       findings: [
         { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Alta" },
@@ -572,6 +605,7 @@ function seedLocalDatabase() {
     const defaults = createImportedReport().data;
     const storedContentRevision = Number(imported.data.contentRevision || 0);
     const storedAnnexRevision = Number(imported.data.annexRevision || 0);
+    const storedCompletionRevision = Number(imported.data.completionRevision || 0);
     Object.entries(defaults).forEach(([key, value]) => {
       if (imported.data[key] === undefined) imported.data[key] = value;
     });
@@ -618,6 +652,22 @@ function seedLocalDatabase() {
       if (storageFinding) storageFinding.evidence = defaults.findings[4].evidence;
       if (structureFinding) structureFinding.evidence = defaults.findings[5].evidence;
       imported.data.annexRevision = defaults.annexRevision;
+    }
+    if (storedCompletionRevision < defaults.completionRevision) {
+      const completionFields = [
+        "acceptanceRecord",
+        "health0Note", "health1Note", "health2Note", "health3Note", "health4Note", "health5Note", "health6Note", "health7Note", "health8Count", "health8Note",
+        "meal0Note", "meal1Note", "meal2Note", "meal3Note", "meal4Note", "meal5Note",
+        "cookName", "cookExperience", "cookTraining", "cookPlanning", "cookDifficulties", "mostAcceptedFoods", "mostRejectedFoods", "foodPurchases", "specialDietDifficulties", "missingResources"
+      ];
+      for (let index = 0; index < kitchenItems.length; index += 1) completionFields.push("kitchen" + index + "Status");
+      for (let index = 0; index < observationItems.length; index += 1) {
+        completionFields.push("observation" + index + "Status", "observation" + index + "Note");
+      }
+      completionFields.forEach((key) => {
+        if (!String(imported.data[key] || "").trim()) imported.data[key] = defaults[key];
+      });
+      imported.data.completionRevision = defaults.completionRevision;
     }
     persistReports(reports);
   }
@@ -693,6 +743,11 @@ function saveCurrentReport() {
   const reports = getReports();
   const index = reports.findIndex((report) => report.id === currentReportId);
   const now = new Date().toISOString();
+  if (index >= 0) {
+    ["contentRevision", "annexRevision", "completionRevision"].forEach((key) => {
+      if (reports[index].data[key] !== undefined) data[key] = reports[index].data[key];
+    });
+  }
   const record = { id: currentReportId, createdAt: index >= 0 ? reports[index].createdAt : now, updatedAt: now, data };
   if (index >= 0) reports[index] = record; else reports.unshift(record);
   persistReports(reports);
@@ -732,10 +787,27 @@ function markDirty() {
 
 function updateFormInsights() {
   if (!ilpiForm) return;
-  const basicFields = [...ilpiForm.querySelectorAll('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]), select, textarea')];
+  const offeredMealCount = Number(ilpiForm.elements.mealsPerDay.value || 0);
+  const allBasicFields = [...ilpiForm.querySelectorAll('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]), select, textarea')];
+  const basicFields = allBasicFields.filter((field) => {
+    const residentRow = field.closest("#resident-rows tr");
+    if (residentRow && !residentRow.querySelector('[data-field="name"]')?.value.trim() && !residentRow.querySelector('[data-field="birthDate"]')?.value.trim() && !residentRow.querySelector('[data-field="diagnosis"]')?.value.trim()) return false;
+    const actionRow = field.closest("#action-rows tr");
+    if (actionRow && !actionRow.querySelector('[data-field="action"]')?.value.trim()) return false;
+    const findingRow = field.closest("#finding-rows tr");
+    if (findingRow && !findingRow.querySelector('[data-field="finding"]')?.value.trim()) return false;
+    const annexRow = field.closest(".annex-editor-item");
+    if (annexRow && !annexRow.querySelector('[data-field="title"]')?.value.trim() && !annexRow.querySelector('[data-field="description"]')?.value.trim() && !annexRow.dataset.fileName) return false;
+    if (/^health\d+Note$/.test(field.name)) return false;
+    const mealMatch = field.name?.match(/^meal(\d+)(Time|Note)$/);
+    if (mealMatch) return mealMatch[2] === "Time" && Number(mealMatch[1]) < offeredMealCount;
+    if (/^observation\d+Note$/.test(field.name)) return false;
+    if (field.name === "specialDietsDetails" && ilpiForm.elements.specialDiets.value !== "Sim") return false;
+    return true;
+  });
   const radioNames = [...new Set([...ilpiForm.querySelectorAll('input[type="radio"]')].map((input) => input.name))];
   const completedBasics = basicFields.filter((field) => field.value.trim()).length;
-  const completedRadios = radioNames.filter((name) => ilpiForm.querySelector(`input[name="${name}"]:checked`)).length;
+  const completedRadios = radioNames.filter((name) => ilpiForm.querySelector('input[name="' + name + '"]:checked')).length;
   const total = basicFields.length + radioNames.length;
   const percent = total ? Math.round(((completedBasics + completedRadios) / total) * 100) : 0;
   document.getElementById("form-progress").style.width = `${percent}%`;
@@ -848,8 +920,8 @@ function buildReportHtml(data) {
   const kitchenRows = kitchenItems.map((item, index) => [item, kitchenStatusLabels[data[`kitchen${index}Status`]] || data[`kitchen${index}Status`]]);
   const reportedKitchenRows = kitchenRows.filter((row) => row[1]);
   const applicable = kitchenRows.filter((row) => row[1] === "Sim" || row[1] === "Não");
-  const compliant = applicable.filter((row) => row[1] === "Sim").length;
-  const nonCompliant = applicable.filter((row) => row[1] === "Não").length;
+  const compliant = applicable.filter(([item, status]) => item === "Alimentos são armazenados diretamente no chão" ? status === "Não" : status === "Sim").length;
+  const nonCompliant = applicable.length - compliant;
   const compliance = applicable.length ? `${Math.round((compliant / applicable.length) * 100)}%` : "—";
   const highPriorityResidents = (data.residents || []).filter((resident) => resident.priority === "Alta" || resident.priority === "Imediata").length;
   const total = Number(data.totalResidents || 0);
