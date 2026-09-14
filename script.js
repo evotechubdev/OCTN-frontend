@@ -353,6 +353,35 @@ const kitchenItems = [
   "A cozinheira recebeu treinamento em boas práticas"
 ];
 const observationItems = ["Apresentação da refeição", "Temperatura adequada", "Consistência adequada", "Porcionamento", "Aceitação pelos residentes", "Auxílio durante a alimentação", "Posicionamento dos idosos", "Ambiente durante a refeição"];
+const normativeItems = [
+  { code: "REG-01", group: "Governança e equipe", requirement: "Alvará sanitário vigente e compatível com a atividade", reference: "RDC 502/2021, art. 8º" },
+  { code: "REG-02", group: "Governança e equipe", requirement: "Constituição legal, inscrição no conselho competente e regimento interno", reference: "RDC 502/2021, arts. 7º e 9º" },
+  { code: "REG-03", group: "Governança e equipe", requirement: "Responsável técnico com formação superior, vínculo formal e carga mínima de 20 horas semanais", reference: "RDC 502/2021, arts. 10, 11 e 16, I" },
+  { code: "REG-04", group: "Governança e equipe", requirement: "Contrato escrito de prestação de serviço com cada residente ou responsável", reference: "RDC 502/2021, art. 12" },
+  { code: "REG-05", group: "Governança e equipe", requirement: "Documentação institucional organizada, atualizada e disponível à fiscalização", reference: "RDC 502/2021, arts. 13 e 17" },
+  { code: "REG-06", group: "Governança e equipe", requirement: "Contratos e alvarás dos serviços terceirizados disponíveis", reference: "RDC 502/2021, art. 14" },
+  { code: "REG-07", group: "Governança e equipe", requirement: "Dimensionamento de cuidadores conforme os graus de dependência e os turnos", reference: "RDC 502/2021, art. 16, II" },
+  { code: "REG-08", group: "Governança e equipe", requirement: "Equipe de apoio dimensionada; alimentação com 1 trabalhador para cada 20 residentes e cobertura de 2 turnos de 8 horas", reference: "RDC 502/2021, arts. 15 e 16" },
+  { code: "REG-09", group: "Governança e equipe", requirement: "Programa de educação permanente em gerontologia para os trabalhadores", reference: "RDC 502/2021, art. 18" },
+  { code: "REG-10", group: "Governança e equipe", requirement: "Atuação e carga horária do nutricionista compatíveis com assistência clínica e produção de refeições", reference: "Resolução CFN 600/2018, anexos aplicáveis" },
+  { code: "REG-11", group: "Estrutura e assistência", requirement: "Projeto arquitetônico aprovado e estrutura física acessível, segura e conservada", reference: "RDC 502/2021, arts. 19 a 30" },
+  { code: "REG-12", group: "Estrutura e assistência", requirement: "Dormitórios, banheiros, salas e áreas de convivência atendem aos requisitos aplicáveis", reference: "RDC 502/2021, art. 29, I a VI" },
+  { code: "REG-13", group: "Estrutura e assistência", requirement: "Refeitório, cozinha e despensa adequados ao número de usuários e ao processo", reference: "RDC 502/2021, art. 29, VII e VIII" },
+  { code: "REG-14", group: "Estrutura e assistência", requirement: "Lavanderia, depósito de limpeza, vestiários, sanitários de funcionários e abrigo de resíduos adequados", reference: "RDC 502/2021, art. 29, IX a XIV; RDC 222/2018" },
+  { code: "REG-15", group: "Estrutura e assistência", requirement: "Plano de trabalho elaborado com participação dos residentes e compatível com os direitos assegurados", reference: "RDC 502/2021, arts. 31 e 32" },
+  { code: "REG-16", group: "Estrutura e assistência", requirement: "Registro individual completo e atualizado de todos os residentes", reference: "RDC 502/2021, art. 33 e art. 37, II" },
+  { code: "REG-17", group: "Estrutura e assistência", requirement: "Plano de Atenção Integral à Saúde completo, compatível e atualizado a cada 2 anos", reference: "RDC 502/2021, arts. 36 e 37" },
+  { code: "REG-18", group: "Estrutura e assistência", requirement: "Avaliação anual da implantação e efetividade do Plano de Atenção à Saúde", reference: "RDC 502/2021, art. 38" },
+  { code: "REG-19", group: "Estrutura e assistência", requirement: "Comprovação do esquema vacinal dos residentes conforme o PNI", reference: "RDC 502/2021, art. 39" },
+  { code: "REG-20", group: "Estrutura e assistência", requirement: "Medicamentos armazenados e administrados com prescrição, controle e segurança", reference: "RDC 502/2021, art. 40" },
+  { code: "REG-21", group: "Estrutura e assistência", requirement: "Rotinas de cuidado escritas e fluxo de encaminhamento para intercorrências", reference: "RDC 502/2021, arts. 41 a 43" },
+  { code: "REG-22", group: "Alimentação, higiene e monitoramento", requirement: "Oferta mínima de 6 refeições diárias e processo de alimentação conforme as Boas Práticas", reference: "RDC 502/2021, arts. 44 e 45; RDC 216/2004" },
+  { code: "REG-23", group: "Alimentação, higiene e monitoramento", requirement: "Normas e rotinas técnicas escritas para limpeza, armazenamento, preparo, vetores e resíduos", reference: "RDC 502/2021, art. 46; RDC 216/2004" },
+  { code: "REG-24", group: "Alimentação, higiene e monitoramento", requirement: "Ambientes limpos e rotinas de higienização disponíveis e compatíveis com a operação", reference: "RDC 502/2021, arts. 51 e 53" },
+  { code: "REG-25", group: "Alimentação, higiene e monitoramento", requirement: "Notificações compulsórias e comunicação de eventos sentinela realizadas nos fluxos previstos", reference: "RDC 502/2021, arts. 54, 55 e 57" },
+  { code: "REG-26", group: "Alimentação, higiene e monitoramento", requirement: "Seis indicadores de desempenho apurados e consolidado anual enviado à Vigilância Sanitária em janeiro", reference: "RDC 502/2021, arts. 58 a 60 e Anexo" }
+];
+const normativeStatuses = ["Não avaliado", "Conforme", "Parcialmente conforme", "Não conforme", "Não se aplica"];
 
 function isAuthenticated() {
   return sessionStorage.getItem("octn.admin.session") === "authenticated";
@@ -409,6 +438,7 @@ function renderFixedRows(data = {}) {
   document.getElementById("meal-rows").innerHTML = mealItems.map((item, index) => `<tr><td>${item}</td><td><input type="time" name="meal${index}Time" value="${escapeAttribute(data[`meal${index}Time`] || "")}" /></td><td><input name="meal${index}Note" value="${escapeAttribute(data[`meal${index}Note`] || "")}" /></td></tr>`).join("");
   document.getElementById("kitchen-rows").innerHTML = kitchenItems.map((item, index) => `<tr><td>${item}</td><td><select name="kitchen${index}Status"><option value="">Selecione</option><option>S</option><option>N</option><option>NA</option></select></td><td><input name="kitchen${index}Note" /></td></tr>`).join("");
   document.getElementById("observation-rows").innerHTML = observationItems.map((item, index) => `<tr><td>${item}</td><td><select name="observation${index}Status"><option value="">Selecione</option><option>Adequado</option><option>Parcial</option><option>Inadequado</option><option>Não observado</option></select></td><td><input name="observation${index}Note" /></td></tr>`).join("");
+  document.getElementById("normative-rows").innerHTML = normativeItems.map((item, index) => `<tr><td><strong>${item.code}</strong><span>${item.requirement}</span><small>${item.group}</small></td><td>${item.reference}</td><td><select name="normative${index}Status">${normativeStatuses.map((status) => `<option value="${status}">${status}</option>`).join("")}</select></td><td><textarea name="normative${index}Evidence" rows="2" placeholder="Documento, data, registro ou observação objetiva"></textarea></td></tr>`).join("");
 }
 
 function addResidentRow(resident = {}) {
@@ -516,8 +546,10 @@ function createImportedReport() {
       partialResidents: "2", dependentResidents: "6", bedriddenResidents: "3", foodEmployees: "1",
       health0Count: "4", health1Count: "12", health2Count: "2", health3Count: "0", health4Count: "4", health5Count: "1", health6Count: "0", health7Count: "1",
       mealsPerDay: "4", plannedMenu: "Não", mealPlanner: "Cozinheira ou Joseane", acceptanceRecord: "", specialDiets: "Sim", specialDietsDetails: "Demência e Alzheimer — especificar a adaptação dietética adotada.",
+      normative7Status: "Não avaliado", normative7Evidence: "Foi informado 1 trabalhador para 12 residentes, sem evidência da cobertura em 2 turnos de 8 horas.",
+      normative21Status: "Não conforme", normative21Evidence: "A responsável informou oferta de 4 refeições/dia; o formulário registra 5 horários. O mínimo normativo é de 6 refeições diárias.",
       meal0Time: "08:00", meal1Time: "10:00", meal2Time: "12:00", meal3Time: "15:00", meal4Time: "18:30", meal5Time: "",
-      immediatePriority: "Avaliar individualmente os quatro residentes com perda de peso recente e validar a divergência entre o número de refeições informado e os horários registrados.",
+      immediatePriority: "Adequar a oferta para, no mínimo, seis refeições diárias e avaliar individualmente os quatro residentes com perda de peso recente.",
       shortPriority: "Elaborar cardápio planejado, formalizar as dietas especiais e implantar registro de aceitação alimentar.",
       mediumPriority: "Implantar indicadores de acompanhamento nutricional e revisar periodicamente o plano de cuidado alimentar da instituição.",
       diagnosticOpinion: "Os dados iniciais indicam demanda relevante de acompanhamento nutricional, especialmente pela ocorrência informada de perda de peso recente, diabetes mellitus, hipertensão arterial e dependência funcional. A ausência de cardápio planejado e a necessidade de detalhar as dietas especiais exigem organização técnica. Este parecer é preliminar e deverá ser consolidado após a conclusão da avaliação da cozinha, entrevista, observação da refeição, levantamento individual e análise documental.",
@@ -526,10 +558,10 @@ function createImportedReport() {
       findings: [
         { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Quatro residentes com perda de peso recente foram informados.", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Avaliação nutricional individual e plano assistencial", guidance: "Realizar triagem e avaliação nutricional individual, investigar causas e definir acompanhamento.", priority: "Alta" },
         { area: "Alimentação e nutrição", classification: "Oportunidade de melhoria", finding: "A instituição informou não possuir cardápio planejado.", evidence: "Entrevista com a responsável durante a visita.", reference: "Planejamento técnico da alimentação coletiva", guidance: "Elaborar cardápio por nutricionista, contemplando necessidades, consistências, variedade e viabilidade operacional.", priority: "Alta" },
-        { area: "Documentação", classification: "Informação relevante", finding: "Foram informadas quatro refeições diárias, porém existem cinco horários de refeições registrados.", evidence: "Comparação dos dados da rotina alimentar no formulário de campo.", reference: "Consistência e rastreabilidade dos registros", guidance: "Validar a rotina real e corrigir o quantitativo antes da emissão final.", priority: "Imediata" }
+        { area: "Alimentação e nutrição", classification: "Não conformidade", finding: "A oferta informada de quatro refeições diárias é inferior ao mínimo de seis refeições previsto para ILPI.", evidence: "Relato da responsável e registro da rotina alimentar em 10/09/2026; há cinco horários preenchidos, que também devem ser conferidos.", reference: "RDC Anvisa nº 502/2021, arts. 44 e 45", guidance: "Adequar imediatamente a rotina para ao menos seis refeições por dia, atualizar os horários e manter cardápio e registros coerentes com a prática.", priority: "Imediata" }
       ],
       residents: [], actions: [
-        { action: "Validar e corrigir o quantitativo diário de refeições.", priority: "Imediata", responsible: "Responsável da instituição", deadline: "7 dias", status: "Pendente" },
+        { action: "Adequar a rotina para no mínimo seis refeições diárias e formalizar os respectivos horários.", priority: "Imediata", responsible: "Gestão e nutricionista", deadline: "7 dias", status: "Pendente" },
         { action: "Realizar avaliação nutricional dos residentes com perda de peso recente.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
         { action: "Elaborar e implantar cardápio planejado e dietas especiais formalizadas.", priority: "Alta", responsible: "Nutricionista e gestão", deadline: "30 dias", status: "Pendente" }
       ], annexes: [], reviewConfirmed: ""
@@ -550,6 +582,11 @@ function seedLocalDatabase() {
       if (imported.data[key] === undefined) imported.data[key] = value;
     });
     if (imported.data.institutionName === "Gerovinda") imported.data.institutionName = "Geronvida";
+    const mealFinding = imported.data.findings?.find((finding) => finding.finding?.includes("quatro refeições diárias") && finding.reference === "Consistência e rastreabilidade dos registros");
+    if (mealFinding) Object.assign(mealFinding, defaults.findings[2]);
+    const oldMealAction = imported.data.actions?.find((action) => action.action === "Validar e corrigir o quantitativo diário de refeições.");
+    if (oldMealAction) Object.assign(oldMealAction, defaults.actions[0]);
+    if (imported.data.immediatePriority?.includes("validar a divergência entre o número de refeições")) imported.data.immediatePriority = defaults.immediatePriority;
     persistReports(reports);
   }
 }
@@ -581,6 +618,7 @@ function setFormValues(data) {
     if (!element.name || element.type === "hidden") return;
     if (element.type === "radio") element.checked = data[element.name] === element.value;
     else if (element.type === "checkbox") element.checked = data[element.name] === element.value;
+    else if (element.name.startsWith("normative") && data[element.name] === undefined) element.value = element.name.endsWith("Status") ? "Não avaliado" : "";
     else element.value = data[element.name] ?? "";
   });
 }
@@ -678,14 +716,33 @@ function updateFormInsights() {
   const scheduledMeals = mealItems.filter((_, index) => ilpiForm.elements[`meal${index}Time`]?.value).length;
   const informedMeals = Number(ilpiForm.elements.mealsPerDay.value || 0);
   const mealNote = document.getElementById("meal-count-note");
-  mealNote.classList.toggle("warning", Boolean(informedMeals && scheduledMeals !== informedMeals));
-  mealNote.textContent = informedMeals ? (scheduledMeals === informedMeals ? `Conferência: ${scheduledMeals} horários preenchidos para ${informedMeals} refeições diárias.` : `Atenção: há ${scheduledMeals} horários preenchidos, mas foram informadas ${informedMeals} refeições diárias.`) : "Informe o número de refeições diárias para ativar a conferência automática.";
+  const mealMessages = [];
+  if (informedMeals && informedMeals < 6) {
+    mealMessages.push(`Não conformidade: a RDC Anvisa nº 502/2021 exige no mínimo 6 refeições diárias; foram informadas ${informedMeals}.`);
+    const normativeMealStatus = ilpiForm.elements.normative21Status;
+    const normativeMealEvidence = ilpiForm.elements.normative21Evidence;
+    if (normativeMealStatus) normativeMealStatus.value = "Não conforme";
+    if (normativeMealEvidence && !normativeMealEvidence.value.trim()) normativeMealEvidence.value = `Informadas ${informedMeals} refeições diárias no levantamento; mínimo normativo de 6.`;
+  }
+  if (informedMeals && scheduledMeals !== informedMeals) mealMessages.push(`Conferir registro: há ${scheduledMeals} horários preenchidos para ${informedMeals} refeições informadas.`);
+  if (informedMeals && scheduledMeals === informedMeals && informedMeals >= 6) mealMessages.push(`Conferência: ${scheduledMeals} horários preenchidos e mínimo normativo atendido.`);
+  mealNote.classList.toggle("warning", Boolean(informedMeals && (informedMeals < 6 || scheduledMeals !== informedMeals)));
+  mealNote.textContent = mealMessages.join(" ") || "Informe o número de refeições diárias para ativar a conferência normativa.";
+  const mealsNormIndex = normativeItems.findIndex((item) => item.code === "REG-22");
+  const mealsNormStatus = ilpiForm.elements[`normative${mealsNormIndex}Status`];
+  const mealsNormEvidence = ilpiForm.elements[`normative${mealsNormIndex}Evidence`];
+  if (informedMeals > 0 && informedMeals < 6 && (!mealsNormStatus.value || mealsNormStatus.value === "Não avaliado")) {
+    mealsNormStatus.value = "Não conforme";
+    if (!mealsNormEvidence.value) mealsNormEvidence.value = `Oferta informada de ${informedMeals} refeições diárias, inferior ao mínimo de 6.`;
+  }
 
   const data = collectFormData();
-  const kitchenStatuses = kitchenItems.map((_, index) => data[`kitchen${index}Status`]);
-  const applicable = kitchenStatuses.filter((status) => status === "S" || status === "N");
-  const compliance = applicable.length ? Math.round((applicable.filter((status) => status === "S").length / applicable.length) * 100) : 0;
-  document.getElementById("review-cards").innerHTML = `<div class="review-card"><span>Preenchimento geral</span><strong>${percent}%</strong></div><div class="review-card"><span>Conformidade observada</span><strong>${applicable.length ? `${compliance}%` : "Aguardando avaliação"}</strong></div><div class="review-card"><span>Achados registrados</span><strong>${data.findings.length}</strong></div><div class="review-card"><span>Plano de ação / anexos</span><strong>${data.actions.length} / ${data.annexes.length}</strong></div>`;
+  const normativeResults = normativeItems.map((_, index) => data[`normative${index}Status`] || "Não avaliado");
+  const verifiedNorms = normativeResults.filter((status) => !["Não avaliado", "Não se aplica"].includes(status)).length;
+  const pendingNorms = normativeResults.filter((status) => status === "Não avaliado").length;
+  const adverseNorms = normativeResults.filter((status) => status === "Não conforme" || status === "Parcialmente conforme").length;
+  document.getElementById("normative-note").textContent = `${verifiedNorms} de ${normativeItems.length} requisitos verificados · ${adverseNorms} pendência(s) de conformidade · ${pendingNorms} não avaliado(s).`;
+  document.getElementById("review-cards").innerHTML = `<div class="review-card"><span>Preenchimento geral</span><strong>${percent}%</strong></div><div class="review-card"><span>Requisitos verificados</span><strong>${verifiedNorms} / ${normativeItems.length}</strong></div><div class="review-card"><span>Não conformes / parciais</span><strong>${adverseNorms}</strong></div><div class="review-card"><span>Plano de ação / anexos</span><strong>${data.actions.length} / ${data.annexes.length}</strong></div>`;
 }
 
 function setupSectionNavigation() {
@@ -768,7 +825,8 @@ function reportTable(headers, rows, emptyText = "Sem registros informados") {
 function buildReportHtml(data) {
   const annexes = (data.annexes || []).filter((annex) => annex.title || annex.description || annex.fileName);
   const annexChunks = annexes.length ? Array.from({ length: Math.ceil(annexes.length / 2) }, (_, index) => annexes.slice(index * 2, index * 2 + 2)) : [[]];
-  const totalPages = 11 + annexChunks.length;
+  const normativeGroups = [...new Set(normativeItems.map((item) => item.group))];
+  const totalPages = 11 + normativeGroups.length + annexChunks.length;
   const kitchenRows = kitchenItems.map((item, index) => [item, data[`kitchen${index}Status`], data[`kitchen${index}Note`]]);
   const applicable = kitchenRows.filter((row) => row[1] === "S" || row[1] === "N");
   const compliant = applicable.filter((row) => row[1] === "S").length;
@@ -779,20 +837,32 @@ function buildReportHtml(data) {
   const diabetes = Number(data.health0Count || 0);
   const hypertension = Number(data.health1Count || 0);
   const weightLoss = Number(data.health4Count || 0);
-  const executiveSummary = `A visita técnica realizada em ${formatDate(data.visitDate)} caracterizou uma instituição com ${shown(data.totalResidents, "quantitativo não informado")} residentes e ${shown(data.foodEmployees, "quantitativo não informado")} profissional(is) envolvido(s) na alimentação. Foram informados ${diabetes} caso(s) de diabetes mellitus, ${hypertension} de hipertensão arterial e ${weightLoss} de perda de peso recente. Na avaliação inicial do serviço de alimentação, ${applicable.length} item(ns) foram classificados como aplicáveis, com índice descritivo de ${compliance} de respostas conformes. Os achados devem ser interpretados em conjunto com o parecer e o plano de ação.`;
+  const normativeRows = normativeItems.map((item, index) => ({ ...item, status: data[`normative${index}Status`] || "Não avaliado", evidence: data[`normative${index}Evidence`] || "" }));
+  const normativeEvaluated = normativeRows.filter((item) => !["Não avaliado", "Não se aplica"].includes(item.status)).length;
+  const normativeCompliant = normativeRows.filter((item) => item.status === "Conforme").length;
+  const normativePartial = normativeRows.filter((item) => item.status === "Parcialmente conforme").length;
+  const normativeNonCompliant = normativeRows.filter((item) => item.status === "Não conforme").length;
+  const normativePending = normativeRows.filter((item) => item.status === "Não avaliado").length;
+  const executiveSummary = `A visita técnica realizada em ${formatDate(data.visitDate)} caracterizou uma instituição com ${shown(data.totalResidents, "quantitativo não informado")} residentes e ${shown(data.foodEmployees, "quantitativo não informado")} profissional(is) envolvido(s) na alimentação. Na matriz regulatória, ${normativeEvaluated} de ${normativeItems.length} requisitos foram verificados: ${normativeCompliant} conforme(s), ${normativePartial} parcial(is) e ${normativeNonCompliant} não conforme(s); ${normativePending} permanecem não avaliados. Foram informados ${diabetes} caso(s) de diabetes mellitus, ${hypertension} de hipertensão arterial e ${weightLoss} de perda de peso recente. As pendências devem ser lidas em conjunto com os achados e o plano de ação.`;
 
   const cover = `<section class="report-page report-cover"><div class="report-cover-brand"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Consultoria Técnica Nutricional</span></div><div class="report-cover-title"><span class="report-type">Relatório técnico</span><h1>Diagnóstico Institucional e Nutricional — ILPI</h1><p>${shown(data.subtitle, "Avaliação do serviço de alimentação, do perfil assistencial e das prioridades nutricionais")}</p><table class="cover-client"><tr><td>Contratante</td><td>${shown(data.institutionName)}</td></tr><tr><td>Solicitante</td><td>${shown(data.requestedBy || data.institutionManager)}</td></tr><tr><td>Data da visita</td><td>${formatDate(data.visitDate)}</td></tr><tr><td>Responsável técnica</td><td>${shown(data.nutritionist)} · CRN ${shown(data.crn)}</td></tr></table></div><div class="cover-footer"><span>${shown(data.issueCity, "Brasil")} · ${new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(new Date())}</span><span>${shown(data.reportNumber, "OCTN · ILPI")} · Versão ${shown(data.version, "1.0")}</span></div></section>`;
 
   const page2 = reportPage(data, "Controle do documento", "Finalidade, escopo e metodologia", `<div class="report-grid">${reportField("Número do relatório", data.reportNumber)}${reportField("Versão / status", `${data.version || "1.0"} · ${data.status || "Em elaboração"}`)}${reportField("Contratante", data.institutionName)}${reportField("Solicitante", data.requestedBy || data.institutionManager)}${reportField("Responsável técnica", data.nutritionist)}${reportField("Registro profissional", data.crn ? `CRN ${data.crn}` : "Não informado")}</div><h3>Finalidade da contratação</h3><p class="report-paragraph">${shown(data.requestPurpose)}</p><h3>Escopo da avaliação</h3><p class="report-paragraph">${shown(data.assessmentScope)}</p><h3>Metodologia e fontes de evidência</h3><p class="report-paragraph">${shown(data.methodology)}</p><h3>Documentos e registros consultados</h3><p class="report-paragraph">${shown(data.documentsReviewed)}</p><p class="report-note"><strong>Natureza do documento:</strong> relatório técnico consultivo baseado nas evidências disponíveis na data da visita. Não equivale a licença, certificação ou inspeção sanitária oficial. A aplicabilidade de cada requisito deve considerar a legislação estadual e municipal vigente.</p><p class="report-note"><strong>Sigilo e proteção de dados:</strong> documento confidencial destinado à contratante. Dados de saúde, imagens e identificações devem ter acesso restrito e tratamento compatível com a LGPD.</p>`, 2, totalPages);
 
-  const page3Overview = reportPage(data, "Resumo executivo", "Visão geral do diagnóstico", `<p class="report-paragraph">${executiveSummary}</p><div class="metric-grid"><div class="metric"><span>Residentes</span><strong>${shown(data.totalResidents, "—")}</strong></div><div class="metric"><span>Residentes acamados</span><strong>${shown(data.bedriddenResidents, "—")}</strong></div><div class="metric"><span>Conformidade descritiva</span><strong>${compliance}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div></div><h3>Identificação da instituição</h3><div class="report-grid">${reportField("Nome da instituição", data.institutionName, true)}${reportField("Endereço", data.address, true)}${reportField("Responsável", data.institutionManager)}${reportField("Telefone", data.phone)}${reportField("Início das atividades", formatDate(data.activityStart))}${reportField("Data da visita", formatDate(data.visitDate))}${reportField("CNPJ", data.cnpj)}${reportField("E-mail", data.email)}</div><h3>Caracterização</h3>${reportTable(["Indicador", "Quantidade"], [["Total de residentes", data.totalResidents], ["Idosos independentes", data.independentResidents], ["Idosos parcialmente dependentes", data.partialResidents], ["Idosos dependentes", data.dependentResidents], ["Idosos acamados", data.bedriddenResidents], ["Funcionários envolvidos na alimentação", data.foodEmployees]])}<p class="report-note"><strong>Nota técnica:</strong> o percentual apresentado é um indicador descritivo deste levantamento inicial. Não constitui certificação, licenciamento sanitário ou substituição de inspeção oficial.</p>`, 3, totalPages);
+  const page3Overview = reportPage(data, "Resumo executivo", "Visão geral do diagnóstico", `<p class="report-paragraph">${executiveSummary}</p><div class="metric-grid"><div class="metric"><span>Requisitos verificados</span><strong>${normativeEvaluated}/${normativeItems.length}</strong></div><div class="metric"><span>Conformes</span><strong>${normativeCompliant}</strong></div><div class="metric"><span>Parciais</span><strong>${normativePartial}</strong></div><div class="metric"><span>Não conformes</span><strong>${normativeNonCompliant}</strong></div></div><h3>Identificação da instituição</h3><div class="report-grid">${reportField("Nome da instituição", data.institutionName, true)}${reportField("Endereço", data.address, true)}${reportField("Responsável", data.institutionManager)}${reportField("Telefone", data.phone)}${reportField("Início das atividades", formatDate(data.activityStart))}${reportField("Data da visita", formatDate(data.visitDate))}${reportField("CNPJ", data.cnpj)}${reportField("E-mail", data.email)}</div><h3>Caracterização</h3>${reportTable(["Indicador", "Quantidade"], [["Total de residentes", data.totalResidents], ["Idosos independentes", data.independentResidents], ["Idosos parcialmente dependentes", data.partialResidents], ["Idosos dependentes", data.dependentResidents], ["Idosos acamados", data.bedriddenResidents], ["Funcionários envolvidos na alimentação", data.foodEmployees]])}<p class="report-note"><strong>Leitura correta:</strong> requisito “não avaliado” é uma pendência de verificação, não evidência de conformidade. Esta matriz consultiva não substitui alvará ou inspeção da autoridade sanitária.</p>`, 3, totalPages);
+
+  const normativePages = normativeGroups.map((group, groupIndex) => {
+    const rows = normativeRows.filter((item) => item.group === group).map((item) => [item.code, item.requirement, item.status, item.evidence, item.reference]);
+    const groupPending = normativeRows.filter((item) => item.group === group && item.status === "Não avaliado").length;
+    return reportPage(data, `Conformidade normativa · ${groupIndex + 1}/${normativeGroups.length}`, group, `<div class="normative-report-table">${reportTable(["ID", "Requisito verificável", "Situação", "Evidência objetiva", "Fundamento"], rows)}</div><p class="report-note"><strong>Critério de registro:</strong> “conforme” exige evidência suficiente; “parcialmente conforme” indica atendimento incompleto; “não conforme” indica requisito não atendido; “não avaliado” (${groupPending} neste bloco) permanece como pendência documental ou de inspeção; “não se aplica” deve ser justificado.</p>`, 4 + groupIndex, totalPages);
+  });
 
   const healthRows = healthItems.map((item, index) => [item, data[`health${index}Count`], data[`health${index}Note`]]);
   const mealRows = mealItems.map((item, index) => [item, data[`meal${index}Time`], data[`meal${index}Note`]]);
   const scheduledMealCount = mealItems.filter((_, index) => data[`meal${index}Time`]).length;
   const page3 = reportPage(data, "Seção 03", "Perfil de saúde dos residentes", `<div class="metric-grid"><div class="metric"><span>Diabetes mellitus</span><strong>${shown(data.health0Count, "—")}</strong></div><div class="metric"><span>Hipertensão arterial</span><strong>${shown(data.health1Count, "—")}</strong></div><div class="metric"><span>Perda de peso recente</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Suplemento nutricional</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Condição / característica", "Nº de idosos", "Observações"], healthRows)}${total && (diabetes > total || hypertension > total || weightLoss > total) ? '<p class="report-note"><strong>Conferência necessária:</strong> há uma condição clínica com quantitativo superior ao total de residentes informado.</p>' : ""}<p class="report-note"><strong>Leitura técnica:</strong> os quantitativos desta seção representam prevalências informadas na visita e não substituem avaliação nutricional individual ou consulta aos prontuários.</p>`, 3, totalPages);
 
-  const page4 = reportPage(data, "Seção 04", "Rotina alimentar da instituição", `<div class="report-grid">${reportField("Refeições oferecidas por dia", data.mealsPerDay)}${reportField("Existe cardápio planejado", data.plannedMenu)}${reportField("Quem define as refeições", data.mealPlanner, true)}${reportField("Existem dietas especiais", data.specialDiets)}${reportField("Há registro de aceitação alimentar", data.acceptanceRecord)}${reportField("Dietas especiais / critérios", data.specialDietsDetails, true)}</div><h3>Distribuição diária das refeições</h3>${reportTable(["Refeição", "Horário", "Preparação / observações"], mealRows)}${Number(data.mealsPerDay || 0) && scheduledMealCount !== Number(data.mealsPerDay) ? `<p class="report-note"><strong>Conferência necessária:</strong> foram registrados ${scheduledMealCount} horários, enquanto o total informado é de ${shown(data.mealsPerDay)} refeições diárias. Recomenda-se validar o quantitativo antes da emissão definitiva.</p>` : ""}`, 4, totalPages);
+  const page4 = reportPage(data, "Seção 04", "Rotina alimentar da instituição", `<div class="report-grid">${reportField("Refeições oferecidas por dia", data.mealsPerDay)}${reportField("Existe cardápio planejado", data.plannedMenu)}${reportField("Quem define as refeições", data.mealPlanner, true)}${reportField("Existem dietas especiais", data.specialDiets)}${reportField("Há registro de aceitação alimentar", data.acceptanceRecord)}${reportField("Dietas especiais / critérios", data.specialDietsDetails, true)}</div><h3>Distribuição diária das refeições</h3>${reportTable(["Refeição", "Horário", "Preparação / observações"], mealRows)}${Number(data.mealsPerDay || 0) > 0 && Number(data.mealsPerDay) < 6 ? `<div class="report-callout red"><strong>Não conformidade normativa</strong>A instituição informou ${shown(data.mealsPerDay)} refeições diárias. Os arts. 44 e 45 da RDC Anvisa nº 502/2021 estabelecem oferta mínima de seis refeições por dia, além da observância das Boas Práticas da RDC nº 216/2004.</div>` : ""}${Number(data.mealsPerDay || 0) && scheduledMealCount !== Number(data.mealsPerDay) ? `<p class="report-note"><strong>Conferência do registro:</strong> foram preenchidos ${scheduledMealCount} horários, enquanto o total informado é de ${shown(data.mealsPerDay)} refeições. Ajustar o registro para refletir a rotina efetivamente praticada.</p>` : ""}`, 4, totalPages);
 
   const residentRows = (data.residents || []).filter((resident) => resident.name || resident.diagnosis).map((resident) => [resident.name, resident.age, resident.diagnosis, resident.bedridden, resident.weightLoss, resident.specialDiet, resident.priority]);
   const page5 = reportPage(data, "Seção 05", "Levantamento geral dos residentes", `<div class="metric-grid"><div class="metric"><span>Registros individualizados</span><strong>${residentRows.length}</strong></div><div class="metric"><span>Prioridade alta/imediata</span><strong>${highPriorityResidents}</strong></div><div class="metric"><span>Perda de peso informada</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Uso de suplemento</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Nome / identificação", "Idade", "Diagnóstico", "Acamado", "Perda de peso", "Dieta especial", "Prioridade"], residentRows)}<p class="report-note"><strong>Confidencialidade:</strong> esta página contém dados relacionados à saúde. O documento deve ser compartilhado apenas com pessoas autorizadas e armazenado conforme as políticas de privacidade aplicáveis.</p>`, 5, totalPages);
@@ -817,7 +887,7 @@ function buildReportHtml(data) {
     return reportPage(data, "Anexos", chunk.length ? `Evidências complementares · bloco ${chunkIndex + 1}` : "Área reservada para evidências", content, 12 + chunkIndex, totalPages);
   });
 
-  return finalizeReportPages(cover, [page2, page3Overview, page3, page4, page5, page6, findingsPage, page7, page8, page9, ...annexPages], totalPages);
+  return finalizeReportPages(cover, [page2, page3Overview, ...normativePages, page3, page4, page5, page6, findingsPage, page7, page8, page9, ...annexPages], totalPages);
 }
 
 function printCurrentReport() {

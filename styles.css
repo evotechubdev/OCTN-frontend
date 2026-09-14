@@ -2186,6 +2186,22 @@ footer {
 .final-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px; }
 .ilpi-report { display: none; }
 .findings-table { min-width: 1500px !important; }
+.normative-legend { display: flex; flex-wrap: wrap; gap: 10px 18px; padding: 13px 15px; border: 1px solid #dde5e1; background: #f7faf8; color: #55605a; font-size: .72rem; }
+.normative-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.status-dot { width: 9px; height: 9px; border-radius: 50%; background: #9aa3a7; }
+.status-dot.compliant { background: #3e9850; }
+.status-dot.partial { background: #d69a2b; }
+.status-dot.noncompliant { background: #b8433b; }
+.status-dot.pending { background: #879197; }
+.normative-table { min-width: 1220px !important; }
+.normative-table td:first-child { width: 36%; }
+.normative-table td:first-child strong, .normative-table td:first-child span, .normative-table td:first-child small { display: block; }
+.normative-table td:first-child strong { color: var(--green-600); font-size: .66rem; letter-spacing: .07em; }
+.normative-table td:first-child span { margin: 3px 0; font-weight: 600; }
+.normative-table td:first-child small { color: #7a8387; font-weight: 500; }
+.normative-table td:nth-child(2) { width: 18%; color: #596267; }
+.normative-table td:nth-child(3) { width: 190px; }
+.normative-table td:nth-child(4) { width: 34%; }
 .annex-list { display: grid; gap: 14px; }
 .annex-editor-item { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 18px; padding: 22px 55px 22px 22px; border: 1px solid #dce3e5; border-left: 4px solid var(--green-500); border-radius: 4px; background: #f9fbfa; }
 .annex-editor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -2278,6 +2294,13 @@ footer {
   .findings-report-table .report-table th:nth-child(2) { width: 19mm; }
   .findings-report-table .report-table th:nth-child(3) { width: 20mm; }
   .findings-report-table .report-table th:last-child { width: 15mm; }
+  .normative-report-table .report-table { table-layout: fixed; }
+  .normative-report-table .report-table th,
+  .normative-report-table .report-table td { padding: 1.7mm 1.5mm; font-size: 6.6pt; overflow-wrap: anywhere; }
+  .normative-report-table .report-table th:first-child { width: 12mm; }
+  .normative-report-table .report-table th:nth-child(2) { width: 51mm; }
+  .normative-report-table .report-table th:nth-child(3) { width: 25mm; }
+  .normative-report-table .report-table th:nth-child(5) { width: 39mm; }
   .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 5mm 0; }
   .metric { padding: 4mm; border-top: 1.2mm solid #45a34c; background: #f2f6f3; }
   .metric span, .metric strong { display: block; }
@@ -2289,7 +2312,7 @@ footer {
   .report-callout.green { border-color: #45a34c; }
   .report-callout strong { display: block; margin-bottom: 1mm; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; }
   .report-paragraph { margin: 0 0 4mm; text-align: justify; white-space: pre-wrap; }
-  .report-note { margin: 3mm 0 0; padding: 4mm; border: .3mm solid #dce3e0; background: #f8faf9; color: #555e62; font-size: 7.3pt; }
+  .report-note { margin: 3mm 0 0; padding: 3mm 4mm; border: .3mm solid #dce3e0; background: #f8faf9; color: #555e62; font-size: 7.3pt; }
   .annex-report-grid { display: grid; gap: 5mm; }
   .annex-report-item { padding: 4mm; border: .3mm solid #dce3e0; border-top: 1mm solid #45a34c; break-inside: avoid; }
   .annex-report-heading { display: flex; justify-content: space-between; gap: 8mm; margin-bottom: 3mm; }
