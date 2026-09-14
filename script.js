@@ -562,6 +562,7 @@ function createImportedReport() {
       consultancyRevision: 1,
       summaryPriorityRevision: 1,
       reportNumberRevision: 1,
+      mealCountRevision: 1,
       recommendations: "Recomenda-se que a instituição execute as adequações de forma escalonada, priorizando os riscos sanitários, nutricionais, assistenciais e documentais que podem comprometer a segurança e a qualidade do cuidado aos residentes. A gestão deve formalizar responsáveis e prazos, cabendo à gestão designar ou contratar profissional habilitado para conduzir a avaliação individual, o planejamento do cardápio, a definição das dietas especiais e os controles do serviço de alimentação. Todas as medidas adotadas devem ser comprovadas por registros, documentos e fotografias, acompanhadas semanalmente nos primeiros 30 dias e reavaliadas tecnicamente após a implantação, com atualização contínua do plano de ação.",
       findings: [
         { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Foi informada perda de peso recente em quatro dos 12 residentes (33,3% do total).", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Resolução CFN nº 600/2018, Anexo II, itens II.C.1.2, II.C.1.3 e II.C.1.5", guidance: "Realizar avaliação nutricional individual, elaborar diagnóstico e prescrição dietética quando indicada e registrar a evolução nutricional no prontuário.", priority: "Imediata" },
@@ -612,6 +613,7 @@ function seedLocalDatabase() {
     const storedConsultancyRevision = Number(imported.data.consultancyRevision || 0);
     const storedSummaryPriorityRevision = Number(imported.data.summaryPriorityRevision || 0);
     const storedReportNumberRevision = Number(imported.data.reportNumberRevision || 0);
+    const storedMealCountRevision = Number(imported.data.mealCountRevision || 0);
     Object.entries(defaults).forEach(([key, value]) => {
       if (imported.data[key] === undefined) imported.data[key] = value;
     });
@@ -702,6 +704,24 @@ function seedLocalDatabase() {
       if (imported.data.reportNumber === "OCTN-ILPI-2026-001") imported.data.reportNumber = defaults.reportNumber;
       imported.data.reportNumberRevision = defaults.reportNumberRevision;
     }
+    if (storedMealCountRevision < defaults.mealCountRevision) {
+      if (Number(imported.data.mealsPerDay) === 4) imported.data.mealsPerDay = "5";
+      const correctMealCountText = (value) => typeof value === "string"
+        ? value.replace(/\b4\s+refeições\b/gi, "5 refeições").replace(/\bquatro\s+refeições\b/gi, "cinco refeições")
+        : value;
+      ["diagnosticOpinion", "strengths", "limitations", "recommendations", "immediatePriority", "shortPriority", "mediumPriority"].forEach((key) => {
+        imported.data[key] = correctMealCountText(imported.data[key]);
+      });
+      imported.data.findings?.forEach((finding) => {
+        ["finding", "evidence", "reference", "guidance"].forEach((key) => {
+          finding[key] = correctMealCountText(finding[key]);
+        });
+      });
+      imported.data.actions?.forEach((action) => {
+        action.action = correctMealCountText(action.action);
+      });
+      imported.data.mealCountRevision = defaults.mealCountRevision;
+    }
     persistReports(reports);
   }
 }
@@ -777,7 +797,7 @@ function saveCurrentReport() {
   const index = reports.findIndex((report) => report.id === currentReportId);
   const now = new Date().toISOString();
   if (index >= 0) {
-    ["contentRevision", "annexRevision", "completionRevision", "consultancyRevision", "summaryPriorityRevision", "reportNumberRevision"].forEach((key) => {
+    ["contentRevision", "annexRevision", "completionRevision", "consultancyRevision", "summaryPriorityRevision", "reportNumberRevision", "mealCountRevision"].forEach((key) => {
       if (reports[index].data[key] !== undefined) data[key] = reports[index].data[key];
     });
   }
