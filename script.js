@@ -425,13 +425,77 @@ function addActionRow(action = {}) {
   document.getElementById("action-rows").appendChild(row);
 }
 
+function addFindingRow(finding = {}) {
+  const row = document.createElement("tr");
+  row.innerHTML = `<td>${selectInput("area", ["Alimentação e nutrição", "Cozinha / boas práticas", "Assistência ao residente", "Documentação", "Estrutura física", "Equipe", "Gestão"], finding.area || "Alimentação e nutrição")}</td><td>${selectInput("classification", ["Risco crítico", "Risco assistencial", "Não conformidade", "Oportunidade de melhoria", "Boa prática observada", "Informação relevante"], finding.classification || "Oportunidade de melhoria")}</td><td>${textInput("finding", finding.finding)}</td><td>${textInput("evidence", finding.evidence)}</td><td>${textInput("reference", finding.reference)}</td><td>${textInput("guidance", finding.guidance)}</td><td>${selectInput("priority", ["Imediata", "Alta", "Moderada", "Baixa", "Não se aplica"], finding.priority || "Moderada")}</td><td><button class="remove-row" type="button" aria-label="Remover achado">×</button></td>`;
+  row.querySelector(".remove-row").addEventListener("click", () => { row.remove(); markDirty(); });
+  document.getElementById("finding-rows").appendChild(row);
+}
+
+function compressAnnexImage(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => {
+      const image = new Image();
+      image.onerror = reject;
+      image.onload = () => {
+        const maxWidth = 1400;
+        const maxHeight = 1050;
+        const scale = Math.min(1, maxWidth / image.width, maxHeight / image.height);
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(image.width * scale);
+        canvas.height = Math.round(image.height * scale);
+        canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", 0.78));
+      };
+      image.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function addAnnexRow(annex = {}) {
+  const item = document.createElement("article");
+  item.className = "annex-editor-item";
+  item.dataset.fileData = annex.dataUrl || "";
+  item.dataset.fileName = annex.fileName || "";
+  item.dataset.fileType = annex.fileType || "";
+  item.innerHTML = `<div class="annex-editor-grid"><label><span>Tipo de anexo</span>${selectInput("type", ["Registro fotográfico", "Instrumento de mapeamento", "Documento consultado", "Planilha / indicador", "Outro"], annex.type || "Registro fotográfico")}</label><label><span>Título / identificação</span>${textInput("title", annex.title)}</label><label><span>Data do registro</span>${textInput("date", annex.date, "date")}</label><label><span>Código / referência</span>${textInput("code", annex.code)}</label><label class="span-2"><span>Descrição e relação com o achado</span><textarea data-field="description" rows="3">${escapeHtml(annex.description || "")}</textarea></label><label class="annex-file"><span>Arquivo</span><input type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" /><small data-file-label>${escapeHtml(annex.fileName || "Nenhum arquivo selecionado")}</small></label></div><div class="annex-preview" ${annex.dataUrl ? "" : "hidden"}><img alt="Prévia do anexo" /></div><button class="remove-row annex-remove" type="button" aria-label="Remover anexo">×</button>`;
+  const preview = item.querySelector(".annex-preview");
+  if (annex.dataUrl) preview.querySelector("img").src = annex.dataUrl;
+  item.querySelector('input[type="file"]').addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    item.dataset.fileName = file.name;
+    item.dataset.fileType = file.type;
+    item.querySelector("[data-file-label]").textContent = file.name;
+    if (file.type.startsWith("image/")) {
+      item.dataset.fileData = await compressAnnexImage(file);
+      preview.hidden = false;
+      preview.querySelector("img").src = item.dataset.fileData;
+    } else {
+      item.dataset.fileData = "";
+      preview.hidden = true;
+    }
+    markDirty();
+  });
+  item.querySelector(".annex-remove").addEventListener("click", () => { item.remove(); markDirty(); });
+  document.getElementById("annex-rows").appendChild(item);
+}
+
 function getReports() {
   try { return JSON.parse(localStorage.getItem(ILPI_STORAGE_KEY)) || []; }
   catch { return []; }
 }
 
 function persistReports(reports) {
-  localStorage.setItem(ILPI_STORAGE_KEY, JSON.stringify(reports));
+  try {
+    localStorage.setItem(ILPI_STORAGE_KEY, JSON.stringify(reports));
+  } catch (error) {
+    alert("Não foi possível salvar: o armazenamento local está cheio. Remova ou reduza imagens dos anexos e tente novamente.");
+    throw error;
+  }
 }
 
 function createImportedReport() {
@@ -441,33 +505,73 @@ function createImportedReport() {
     updatedAt: new Date().toISOString(),
     data: {
       reportNumber: "OCTN-ILPI-2026-001", version: "1.0", status: "Em elaboração",
-      subtitle: "Diagnóstico inicial do serviço de alimentação e nutrição", issueCity: "Salvador/BA",
-      institutionName: "Gerovinda", address: "Rua Geraldo Brasil, nº 3, Cajazeiras 11, Salvador/BA, CEP 41347-278",
+      subtitle: "Diagnóstico institucional, nutricional e do serviço de alimentação", issueCity: "Salvador/BA",
+      requestedBy: "Joseane Carvalho Lima", requestPurpose: "Produzir diagnóstico técnico da instituição e orientar melhorias relacionadas à assistência nutricional e ao serviço de alimentação.",
+      assessmentScope: "Caracterização da ILPI, perfil geral de saúde e dependência dos residentes, rotina alimentar, organização do serviço de alimentação e definição preliminar de prioridades.",
+      methodology: "Entrevista com a responsável, levantamento de informações institucionais e observação técnica em visita de campo. Os itens não avaliados ou sem evidência disponível devem permanecer identificados como pendentes.",
+      documentsReviewed: "Nenhum documento complementar foi registrado nesta etapa. Incluir posteriormente os documentos efetivamente disponibilizados e consultados.",
+      institutionName: "Geronvida", address: "Rua Geraldo Brasil, nº 3, Cajazeiras 11, Salvador/BA, CEP 41347-278",
       institutionManager: "Joseane Carvalho Lima", phone: "(71) 99983-6631", activityStart: "2026-02-10", visitDate: "2026-09-10",
       nutritionist: "Grazielle Matos", crn: "17272", totalResidents: "12", independentResidents: "4",
       partialResidents: "2", dependentResidents: "6", bedriddenResidents: "3", foodEmployees: "1",
       health0Count: "4", health1Count: "12", health2Count: "2", health3Count: "0", health4Count: "4", health5Count: "1", health6Count: "0", health7Count: "1",
       mealsPerDay: "4", plannedMenu: "Não", mealPlanner: "Cozinheira ou Joseane", acceptanceRecord: "", specialDiets: "Sim", specialDietsDetails: "Demência e Alzheimer — especificar a adaptação dietética adotada.",
       meal0Time: "08:00", meal1Time: "10:00", meal2Time: "12:00", meal3Time: "15:00", meal4Time: "18:30", meal5Time: "",
-      residents: [], actions: [], reviewConfirmed: ""
+      immediatePriority: "Avaliar individualmente os quatro residentes com perda de peso recente e validar a divergência entre o número de refeições informado e os horários registrados.",
+      shortPriority: "Elaborar cardápio planejado, formalizar as dietas especiais e implantar registro de aceitação alimentar.",
+      mediumPriority: "Implantar indicadores de acompanhamento nutricional e revisar periodicamente o plano de cuidado alimentar da instituição.",
+      diagnosticOpinion: "Os dados iniciais indicam demanda relevante de acompanhamento nutricional, especialmente pela ocorrência informada de perda de peso recente, diabetes mellitus, hipertensão arterial e dependência funcional. A ausência de cardápio planejado e a necessidade de detalhar as dietas especiais exigem organização técnica. Este parecer é preliminar e deverá ser consolidado após a conclusão da avaliação da cozinha, entrevista, observação da refeição, levantamento individual e análise documental.",
+      limitations: "Até esta etapa, foram disponibilizados somente os dados do primeiro levantamento de campo. Não constam avaliação completa da cozinha, observação de refeição, registros individualizados, documentos institucionais nem anexos fotográficos.",
+      recommendations: "Priorizar triagem e avaliação nutricional dos residentes com perda de peso; conferir diagnósticos e prescrições nos prontuários; estruturar cardápio planejado; descrever corretamente consistências e dietas especiais; implantar controle de aceitação alimentar; concluir a verificação de boas práticas e manter evidências das adequações realizadas.",
+      findings: [
+        { area: "Assistência ao residente", classification: "Risco assistencial", finding: "Quatro residentes com perda de peso recente foram informados.", evidence: "Relato registrado no levantamento inicial de 10/09/2026.", reference: "Avaliação nutricional individual e plano assistencial", guidance: "Realizar triagem e avaliação nutricional individual, investigar causas e definir acompanhamento.", priority: "Alta" },
+        { area: "Alimentação e nutrição", classification: "Oportunidade de melhoria", finding: "A instituição informou não possuir cardápio planejado.", evidence: "Entrevista com a responsável durante a visita.", reference: "Planejamento técnico da alimentação coletiva", guidance: "Elaborar cardápio por nutricionista, contemplando necessidades, consistências, variedade e viabilidade operacional.", priority: "Alta" },
+        { area: "Documentação", classification: "Informação relevante", finding: "Foram informadas quatro refeições diárias, porém existem cinco horários de refeições registrados.", evidence: "Comparação dos dados da rotina alimentar no formulário de campo.", reference: "Consistência e rastreabilidade dos registros", guidance: "Validar a rotina real e corrigir o quantitativo antes da emissão final.", priority: "Imediata" }
+      ],
+      residents: [], actions: [
+        { action: "Validar e corrigir o quantitativo diário de refeições.", priority: "Imediata", responsible: "Responsável da instituição", deadline: "7 dias", status: "Pendente" },
+        { action: "Realizar avaliação nutricional dos residentes com perda de peso recente.", priority: "Alta", responsible: "Nutricionista", deadline: "15 dias", status: "Pendente" },
+        { action: "Elaborar e implantar cardápio planejado e dietas especiais formalizadas.", priority: "Alta", responsible: "Nutricionista e gestão", deadline: "30 dias", status: "Pendente" }
+      ], annexes: [], reviewConfirmed: ""
     }
   };
 }
 
 function seedLocalDatabase() {
-  if (localStorage.getItem(ILPI_STORAGE_KEY) === null) persistReports([createImportedReport()]);
+  if (localStorage.getItem(ILPI_STORAGE_KEY) === null) {
+    persistReports([createImportedReport()]);
+    return;
+  }
+  const reports = getReports();
+  const imported = reports.find((report) => report.id === "ilpi-gerovinda-2026-09-10");
+  if (imported) {
+    const defaults = createImportedReport().data;
+    Object.entries(defaults).forEach(([key, value]) => {
+      if (imported.data[key] === undefined) imported.data[key] = value;
+    });
+    if (imported.data.institutionName === "Gerovinda") imported.data.institutionName = "Geronvida";
+    persistReports(reports);
+  }
 }
 
 function collectDynamicRows(containerId) {
-  return [...document.querySelectorAll(`#${containerId} tr`)]
+  const selector = containerId === "annex-rows" ? ".annex-editor-item" : "tr";
+  return [...document.querySelectorAll(`#${containerId} ${selector}`)]
     .map((row) => Object.fromEntries([...row.querySelectorAll("[data-field]")].map((input) => [input.dataset.field, input.value])))
-    .filter((item) => containerId === "action-rows" ? item.action?.trim() : [item.name, item.age, item.diagnosis, item.specialDiet].some((value) => value?.trim()));
+    .map((item, index) => {
+      if (containerId !== "annex-rows") return item;
+      const row = document.querySelectorAll("#annex-rows .annex-editor-item")[index];
+      return { ...item, fileName: row.dataset.fileName || "", fileType: row.dataset.fileType || "", dataUrl: row.dataset.fileData || "" };
+    })
+    .filter((item) => containerId === "action-rows" ? item.action?.trim() : containerId === "finding-rows" ? item.finding?.trim() : containerId === "annex-rows" ? [item.title, item.description, item.fileName].some((value) => value?.trim()) : [item.name, item.age, item.diagnosis, item.specialDiet].some((value) => value?.trim()));
 }
 
 function collectFormData() {
   const data = Object.fromEntries(new FormData(ilpiForm).entries());
   data.residents = collectDynamicRows("resident-rows");
   data.actions = collectDynamicRows("action-rows");
+  data.findings = collectDynamicRows("finding-rows");
+  data.annexes = collectDynamicRows("annex-rows");
   data.reviewConfirmed = ilpiForm.elements.reviewConfirmed.checked ? "Sim" : "";
   return data;
 }
@@ -484,7 +588,7 @@ function setFormValues(data) {
 function defaultNewReportData() {
   const reports = getReports();
   const number = String(reports.length + 1).padStart(3, "0");
-  return { reportNumber: `OCTN-ILPI-${new Date().getFullYear()}-${number}`, version: "1.0", status: "Em elaboração", subtitle: "Diagnóstico inicial do serviço de alimentação e nutrição", issueCity: "Salvador/BA", nutritionist: "Grazielle Matos", crn: "17272", residents: [], actions: [] };
+  return { reportNumber: `OCTN-ILPI-${new Date().getFullYear()}-${number}`, version: "1.0", status: "Em elaboração", subtitle: "Diagnóstico institucional, nutricional e do serviço de alimentação", issueCity: "Salvador/BA", nutritionist: "Grazielle Matos", crn: "17272", residents: [], actions: [], findings: [], annexes: [] };
 }
 
 function openReport(report = null) {
@@ -497,6 +601,10 @@ function openReport(report = null) {
   (data.residents?.length ? data.residents : [{}, {}, {}, {}]).forEach(addResidentRow);
   document.getElementById("action-rows").innerHTML = "";
   (data.actions?.length ? data.actions : [{}, {}, {}]).forEach(addActionRow);
+  document.getElementById("finding-rows").innerHTML = "";
+  (data.findings?.length ? data.findings : [{}, {}, {}]).forEach(addFindingRow);
+  document.getElementById("annex-rows").innerHTML = "";
+  (data.annexes?.length ? data.annexes : [{}]).forEach(addAnnexRow);
   ilpiForm.elements.reportId.value = currentReportId;
   formsDashboard.hidden = true;
   ilpiWorkspace.hidden = false;
@@ -577,7 +685,7 @@ function updateFormInsights() {
   const kitchenStatuses = kitchenItems.map((_, index) => data[`kitchen${index}Status`]);
   const applicable = kitchenStatuses.filter((status) => status === "S" || status === "N");
   const compliance = applicable.length ? Math.round((applicable.filter((status) => status === "S").length / applicable.length) * 100) : 0;
-  document.getElementById("review-cards").innerHTML = `<div class="review-card"><span>Preenchimento geral</span><strong>${percent}%</strong></div><div class="review-card"><span>Conformidade observada</span><strong>${applicable.length ? `${compliance}%` : "Aguardando avaliação"}</strong></div><div class="review-card"><span>Plano de ação</span><strong>${data.actions.length} ${data.actions.length === 1 ? "ação" : "ações"}</strong></div>`;
+  document.getElementById("review-cards").innerHTML = `<div class="review-card"><span>Preenchimento geral</span><strong>${percent}%</strong></div><div class="review-card"><span>Conformidade observada</span><strong>${applicable.length ? `${compliance}%` : "Aguardando avaliação"}</strong></div><div class="review-card"><span>Achados registrados</span><strong>${data.findings.length}</strong></div><div class="review-card"><span>Plano de ação / anexos</span><strong>${data.actions.length} / ${data.annexes.length}</strong></div>`;
 }
 
 function setupSectionNavigation() {
@@ -599,6 +707,8 @@ document.getElementById("back-to-forms")?.addEventListener("click", () => {
 });
 document.getElementById("add-resident")?.addEventListener("click", () => { addResidentRow(); markDirty(); });
 document.getElementById("add-action")?.addEventListener("click", () => { addActionRow(); markDirty(); });
+document.getElementById("add-finding")?.addEventListener("click", () => { addFindingRow(); markDirty(); });
+document.getElementById("add-annex")?.addEventListener("click", () => { addAnnexRow(); markDirty(); });
 document.getElementById("save-ilpi")?.addEventListener("click", saveCurrentReport);
 document.querySelectorAll("[data-save]").forEach((button) => button.addEventListener("click", saveCurrentReport));
 ilpiForm?.addEventListener("input", markDirty);
@@ -637,11 +747,17 @@ function reportHeader(data) {
 }
 
 function reportFooter(data, page, total) {
-  return `<footer class="report-page-footer"><span>OCTN · Documento técnico confidencial</span><span>${shown(data.institutionName, "ILPI")} · Página ${page} de ${total}</span></footer>`;
+  return `<footer class="report-page-footer"><span>OCTN · Documento técnico confidencial</span><span>${shown(data.institutionName, "ILPI")} · Página __OCTN_PAGE__ de __OCTN_TOTAL__</span></footer>`;
 }
 
 function reportPage(data, kicker, title, content, page, total) {
   return `<section class="report-page">${reportHeader(data)}<h2><span>${kicker}</span>${title}</h2>${content}${reportFooter(data, page, total)}</section>`;
+}
+
+function finalizeReportPages(cover, pages, totalPages) {
+  let currentPage = 1;
+  const body = pages.join("").replaceAll("__OCTN_TOTAL__", String(totalPages)).replace(/__OCTN_PAGE__/g, () => String(++currentPage));
+  return cover + body;
 }
 
 function reportTable(headers, rows, emptyText = "Sem registros informados") {
@@ -650,7 +766,9 @@ function reportTable(headers, rows, emptyText = "Sem registros informados") {
 }
 
 function buildReportHtml(data) {
-  const totalPages = 7;
+  const annexes = (data.annexes || []).filter((annex) => annex.title || annex.description || annex.fileName);
+  const annexChunks = annexes.length ? Array.from({ length: Math.ceil(annexes.length / 2) }, (_, index) => annexes.slice(index * 2, index * 2 + 2)) : [[]];
+  const totalPages = 11 + annexChunks.length;
   const kitchenRows = kitchenItems.map((item, index) => [item, data[`kitchen${index}Status`], data[`kitchen${index}Note`]]);
   const applicable = kitchenRows.filter((row) => row[1] === "S" || row[1] === "N");
   const compliant = applicable.filter((row) => row[1] === "S").length;
@@ -663,27 +781,43 @@ function buildReportHtml(data) {
   const weightLoss = Number(data.health4Count || 0);
   const executiveSummary = `A visita técnica realizada em ${formatDate(data.visitDate)} caracterizou uma instituição com ${shown(data.totalResidents, "quantitativo não informado")} residentes e ${shown(data.foodEmployees, "quantitativo não informado")} profissional(is) envolvido(s) na alimentação. Foram informados ${diabetes} caso(s) de diabetes mellitus, ${hypertension} de hipertensão arterial e ${weightLoss} de perda de peso recente. Na avaliação inicial do serviço de alimentação, ${applicable.length} item(ns) foram classificados como aplicáveis, com índice descritivo de ${compliance} de respostas conformes. Os achados devem ser interpretados em conjunto com o parecer e o plano de ação.`;
 
-  const cover = `<section class="report-page report-cover"><div class="report-cover-brand"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Consultoria Técnica Nutricional</span></div><div class="report-cover-title"><span class="report-type">Relatório técnico</span><h1>Diagnóstico Nutricional Inicial — ILPI</h1><p>${shown(data.subtitle, "Avaliação inicial do serviço de alimentação, do perfil assistencial e das prioridades nutricionais")}</p><table class="cover-client"><tr><td>Instituição</td><td>${shown(data.institutionName)}</td></tr><tr><td>Responsável</td><td>${shown(data.institutionManager)}</td></tr><tr><td>Data da visita</td><td>${formatDate(data.visitDate)}</td></tr><tr><td>Nutricionista</td><td>${shown(data.nutritionist)} · ${shown(data.crn)}</td></tr></table></div><div class="cover-footer"><span>${shown(data.issueCity, "Brasil")} · ${new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(new Date())}</span><span>${shown(data.reportNumber, "OCTN · ILPI")} · Versão ${shown(data.version, "1.0")}</span></div></section>`;
+  const cover = `<section class="report-page report-cover"><div class="report-cover-brand"><img src="./public/imagens_pub/OCTN.png" alt="OCTN" /><span>Consultoria Técnica Nutricional</span></div><div class="report-cover-title"><span class="report-type">Relatório técnico</span><h1>Diagnóstico Institucional e Nutricional — ILPI</h1><p>${shown(data.subtitle, "Avaliação do serviço de alimentação, do perfil assistencial e das prioridades nutricionais")}</p><table class="cover-client"><tr><td>Contratante</td><td>${shown(data.institutionName)}</td></tr><tr><td>Solicitante</td><td>${shown(data.requestedBy || data.institutionManager)}</td></tr><tr><td>Data da visita</td><td>${formatDate(data.visitDate)}</td></tr><tr><td>Responsável técnica</td><td>${shown(data.nutritionist)} · CRN ${shown(data.crn)}</td></tr></table></div><div class="cover-footer"><span>${shown(data.issueCity, "Brasil")} · ${new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(new Date())}</span><span>${shown(data.reportNumber, "OCTN · ILPI")} · Versão ${shown(data.version, "1.0")}</span></div></section>`;
 
-  const page2 = reportPage(data, "Resumo executivo", "Visão geral do diagnóstico", `<p class="report-paragraph">${executiveSummary}</p><div class="metric-grid"><div class="metric"><span>Residentes</span><strong>${shown(data.totalResidents, "—")}</strong></div><div class="metric"><span>Residentes acamados</span><strong>${shown(data.bedriddenResidents, "—")}</strong></div><div class="metric"><span>Conformidade descritiva</span><strong>${compliance}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div></div><h3>Identificação da instituição</h3><div class="report-grid">${reportField("Nome da instituição", data.institutionName, true)}${reportField("Endereço", data.address, true)}${reportField("Responsável", data.institutionManager)}${reportField("Telefone", data.phone)}${reportField("Início das atividades", formatDate(data.activityStart))}${reportField("Data da visita", formatDate(data.visitDate))}${reportField("CNPJ", data.cnpj)}${reportField("E-mail", data.email)}</div><h3>Caracterização</h3>${reportTable(["Indicador", "Quantidade"], [["Total de residentes", data.totalResidents], ["Idosos independentes", data.independentResidents], ["Idosos parcialmente dependentes", data.partialResidents], ["Idosos dependentes", data.dependentResidents], ["Idosos acamados", data.bedriddenResidents], ["Funcionários envolvidos na alimentação", data.foodEmployees]])}<p class="report-note"><strong>Nota técnica:</strong> o percentual apresentado é um indicador descritivo deste levantamento inicial. Não constitui certificação, licenciamento sanitário ou substituição de inspeção oficial.</p>`, 2, totalPages);
+  const page2 = reportPage(data, "Controle do documento", "Finalidade, escopo e metodologia", `<div class="report-grid">${reportField("Número do relatório", data.reportNumber)}${reportField("Versão / status", `${data.version || "1.0"} · ${data.status || "Em elaboração"}`)}${reportField("Contratante", data.institutionName)}${reportField("Solicitante", data.requestedBy || data.institutionManager)}${reportField("Responsável técnica", data.nutritionist)}${reportField("Registro profissional", data.crn ? `CRN ${data.crn}` : "Não informado")}</div><h3>Finalidade da contratação</h3><p class="report-paragraph">${shown(data.requestPurpose)}</p><h3>Escopo da avaliação</h3><p class="report-paragraph">${shown(data.assessmentScope)}</p><h3>Metodologia e fontes de evidência</h3><p class="report-paragraph">${shown(data.methodology)}</p><h3>Documentos e registros consultados</h3><p class="report-paragraph">${shown(data.documentsReviewed)}</p><p class="report-note"><strong>Natureza do documento:</strong> relatório técnico consultivo baseado nas evidências disponíveis na data da visita. Não equivale a licença, certificação ou inspeção sanitária oficial. A aplicabilidade de cada requisito deve considerar a legislação estadual e municipal vigente.</p><p class="report-note"><strong>Sigilo e proteção de dados:</strong> documento confidencial destinado à contratante. Dados de saúde, imagens e identificações devem ter acesso restrito e tratamento compatível com a LGPD.</p>`, 2, totalPages);
+
+  const page3Overview = reportPage(data, "Resumo executivo", "Visão geral do diagnóstico", `<p class="report-paragraph">${executiveSummary}</p><div class="metric-grid"><div class="metric"><span>Residentes</span><strong>${shown(data.totalResidents, "—")}</strong></div><div class="metric"><span>Residentes acamados</span><strong>${shown(data.bedriddenResidents, "—")}</strong></div><div class="metric"><span>Conformidade descritiva</span><strong>${compliance}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div></div><h3>Identificação da instituição</h3><div class="report-grid">${reportField("Nome da instituição", data.institutionName, true)}${reportField("Endereço", data.address, true)}${reportField("Responsável", data.institutionManager)}${reportField("Telefone", data.phone)}${reportField("Início das atividades", formatDate(data.activityStart))}${reportField("Data da visita", formatDate(data.visitDate))}${reportField("CNPJ", data.cnpj)}${reportField("E-mail", data.email)}</div><h3>Caracterização</h3>${reportTable(["Indicador", "Quantidade"], [["Total de residentes", data.totalResidents], ["Idosos independentes", data.independentResidents], ["Idosos parcialmente dependentes", data.partialResidents], ["Idosos dependentes", data.dependentResidents], ["Idosos acamados", data.bedriddenResidents], ["Funcionários envolvidos na alimentação", data.foodEmployees]])}<p class="report-note"><strong>Nota técnica:</strong> o percentual apresentado é um indicador descritivo deste levantamento inicial. Não constitui certificação, licenciamento sanitário ou substituição de inspeção oficial.</p>`, 3, totalPages);
 
   const healthRows = healthItems.map((item, index) => [item, data[`health${index}Count`], data[`health${index}Note`]]);
   const mealRows = mealItems.map((item, index) => [item, data[`meal${index}Time`], data[`meal${index}Note`]]);
   const scheduledMealCount = mealItems.filter((_, index) => data[`meal${index}Time`]).length;
-  const page3 = reportPage(data, "Seções 03 e 04", "Perfil de saúde e rotina alimentar", `<h3>Perfil de saúde dos residentes</h3>${reportTable(["Condição / característica", "Nº de idosos", "Observações"], healthRows)}<h3>Organização da rotina alimentar</h3><div class="report-grid">${reportField("Refeições oferecidas por dia", data.mealsPerDay)}${reportField("Existe cardápio planejado", data.plannedMenu)}${reportField("Quem define as refeições", data.mealPlanner, true)}${reportField("Existem dietas especiais", data.specialDiets)}${reportField("Há registro de aceitação alimentar", data.acceptanceRecord)}${reportField("Dietas especiais / critérios", data.specialDietsDetails, true)}</div>${reportTable(["Refeição", "Horário", "Preparação / observações"], mealRows)}${total && (diabetes > total || hypertension > total || weightLoss > total) ? '<p class="report-note"><strong>Conferência necessária:</strong> há uma condição clínica com quantitativo superior ao total de residentes informado.</p>' : ""}${Number(data.mealsPerDay || 0) && scheduledMealCount !== Number(data.mealsPerDay) ? `<p class="report-note"><strong>Conferência necessária:</strong> foram registrados ${scheduledMealCount} horários, enquanto o total informado é de ${shown(data.mealsPerDay)} refeições diárias.</p>` : ""}`, 3, totalPages);
+  const page3 = reportPage(data, "Seção 03", "Perfil de saúde dos residentes", `<div class="metric-grid"><div class="metric"><span>Diabetes mellitus</span><strong>${shown(data.health0Count, "—")}</strong></div><div class="metric"><span>Hipertensão arterial</span><strong>${shown(data.health1Count, "—")}</strong></div><div class="metric"><span>Perda de peso recente</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Suplemento nutricional</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Condição / característica", "Nº de idosos", "Observações"], healthRows)}${total && (diabetes > total || hypertension > total || weightLoss > total) ? '<p class="report-note"><strong>Conferência necessária:</strong> há uma condição clínica com quantitativo superior ao total de residentes informado.</p>' : ""}<p class="report-note"><strong>Leitura técnica:</strong> os quantitativos desta seção representam prevalências informadas na visita e não substituem avaliação nutricional individual ou consulta aos prontuários.</p>`, 3, totalPages);
+
+  const page4 = reportPage(data, "Seção 04", "Rotina alimentar da instituição", `<div class="report-grid">${reportField("Refeições oferecidas por dia", data.mealsPerDay)}${reportField("Existe cardápio planejado", data.plannedMenu)}${reportField("Quem define as refeições", data.mealPlanner, true)}${reportField("Existem dietas especiais", data.specialDiets)}${reportField("Há registro de aceitação alimentar", data.acceptanceRecord)}${reportField("Dietas especiais / critérios", data.specialDietsDetails, true)}</div><h3>Distribuição diária das refeições</h3>${reportTable(["Refeição", "Horário", "Preparação / observações"], mealRows)}${Number(data.mealsPerDay || 0) && scheduledMealCount !== Number(data.mealsPerDay) ? `<p class="report-note"><strong>Conferência necessária:</strong> foram registrados ${scheduledMealCount} horários, enquanto o total informado é de ${shown(data.mealsPerDay)} refeições diárias. Recomenda-se validar o quantitativo antes da emissão definitiva.</p>` : ""}`, 4, totalPages);
 
   const residentRows = (data.residents || []).filter((resident) => resident.name || resident.diagnosis).map((resident) => [resident.name, resident.age, resident.diagnosis, resident.bedridden, resident.weightLoss, resident.specialDiet, resident.priority]);
-  const page4 = reportPage(data, "Seção 05", "Levantamento geral dos residentes", `<div class="metric-grid"><div class="metric"><span>Registros individualizados</span><strong>${residentRows.length}</strong></div><div class="metric"><span>Prioridade alta/imediata</span><strong>${highPriorityResidents}</strong></div><div class="metric"><span>Perda de peso informada</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Uso de suplemento</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Nome / identificação", "Idade", "Diagnóstico", "Acamado", "Perda de peso", "Dieta especial", "Prioridade"], residentRows)}<p class="report-note"><strong>Confidencialidade:</strong> esta página contém dados relacionados à saúde. O documento deve ser compartilhado apenas com pessoas autorizadas e armazenado conforme as políticas de privacidade aplicáveis.</p>`, 4, totalPages);
+  const page5 = reportPage(data, "Seção 05", "Levantamento geral dos residentes", `<div class="metric-grid"><div class="metric"><span>Registros individualizados</span><strong>${residentRows.length}</strong></div><div class="metric"><span>Prioridade alta/imediata</span><strong>${highPriorityResidents}</strong></div><div class="metric"><span>Perda de peso informada</span><strong>${shown(data.health4Count, "—")}</strong></div><div class="metric"><span>Uso de suplemento</span><strong>${shown(data.health7Count, "—")}</strong></div></div>${reportTable(["Nome / identificação", "Idade", "Diagnóstico", "Acamado", "Perda de peso", "Dieta especial", "Prioridade"], residentRows)}<p class="report-note"><strong>Confidencialidade:</strong> esta página contém dados relacionados à saúde. O documento deve ser compartilhado apenas com pessoas autorizadas e armazenado conforme as políticas de privacidade aplicáveis.</p>`, 5, totalPages);
 
   const observationRows = observationItems.map((item, index) => [item, data[`observation${index}Status`], data[`observation${index}Note`]]);
-  const page5 = reportPage(data, "Seções 06 e 08", "Avaliação do serviço de alimentação", `<div class="metric-grid"><div class="metric"><span>Itens avaliados</span><strong>${applicable.length}</strong></div><div class="metric"><span>Respostas conformes</span><strong>${applicable.length ? compliant : "—"}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div><div class="metric"><span>Índice descritivo</span><strong>${compliance}</strong></div></div><h3>Visita técnica à cozinha</h3>${reportTable(["Item avaliado", "S / N / NA", "Observações / evidência"], kitchenRows)}<h3>Observação da refeição</h3>${reportTable(["Aspecto observado", "Avaliação", "Observações"], observationRows)}`, 5, totalPages);
+  const page6 = reportPage(data, "Seção 06", "Visita técnica ao serviço de alimentação", `<div class="metric-grid"><div class="metric"><span>Itens avaliados</span><strong>${applicable.length}</strong></div><div class="metric"><span>Respostas conformes</span><strong>${applicable.length ? compliant : "—"}</strong></div><div class="metric"><span>Não conformidades</span><strong>${applicable.length ? nonCompliant : "—"}</strong></div><div class="metric"><span>Índice descritivo</span><strong>${compliance}</strong></div></div>${reportTable(["Item avaliado", "S / N / NA", "Observações / evidência"], kitchenRows)}<p class="report-note"><strong>Critério:</strong> S = requisito observado; N = requisito não observado; NA = não aplicável ao contexto avaliado. O índice considera somente respostas S e N.</p>`, 6, totalPages);
 
-  const page6 = reportPage(data, "Seções 07 e 09", "Entrevista e prioridades", `<h3>Entrevista com a cozinheira</h3><div class="report-grid">${reportField("Nome", data.cookName)}${reportField("Tempo de experiência", data.cookExperience)}${reportField("Capacitação em Boas Práticas", data.cookTraining)}${reportField("Planejamento das refeições", data.cookPlanning)}${reportField("Principais dificuldades", data.cookDifficulties, true)}${reportField("Alimentos com maior aceitação", data.mostAcceptedFoods)}${reportField("Alimentos com maior rejeição", data.mostRejectedFoods)}${reportField("Compras dos alimentos", data.foodPurchases, true)}${reportField("Dificuldade com dietas especiais", data.specialDietDifficulties)}${reportField("Equipamentos ou recursos ausentes", data.missingResources)}</div><h3>Demandas priorizadas</h3><div class="report-callout red"><strong>Prioridade imediata</strong>${shown(data.immediatePriority)}</div><div class="report-callout yellow"><strong>Curto prazo · até 30 dias</strong>${shown(data.shortPriority)}</div><div class="report-callout green"><strong>Médio prazo · 31 a 90 dias</strong>${shown(data.mediumPriority)}</div>`, 6, totalPages);
+  const findingRows = (data.findings || []).filter((finding) => finding.finding).map((finding, index) => [`AT-${String(index + 1).padStart(2, "0")}`, finding.area, finding.classification, finding.finding, finding.evidence, finding.reference, finding.guidance, finding.priority]);
+  const findingsPage = reportPage(data, "Matriz de achados", "Achados técnicos e orientações", `<p class="report-paragraph">A matriz abaixo diferencia o achado da evidência que o sustenta e registra a orientação proposta. Essa vinculação deve ser preservada nas revisões do documento.</p><div class="report-table-wrap findings-report-table">${reportTable(["ID", "Área", "Classificação", "Achado", "Evidência / fonte", "Referência", "Orientação", "Prioridade"], findingRows)}</div><p class="report-note"><strong>Referenciais considerados:</strong> RDC Anvisa nº 502/2021 para funcionamento de ILPI; RDC Anvisa nº 216/2004 para boas práticas em serviços de alimentação; Resolução CFN nº 600/2018 para áreas e atribuições profissionais; Lei nº 13.709/2018 (LGPD); e normas sanitárias estaduais e municipais aplicáveis. A referência específica de cada achado deve ser validada antes da emissão definitiva.</p>`, 8, totalPages);
+
+  const page7 = reportPage(data, "Seção 07", "Entrevista com a cozinheira", `<div class="report-grid">${reportField("Nome", data.cookName)}${reportField("Tempo de experiência", data.cookExperience)}${reportField("Capacitação em Boas Práticas", data.cookTraining)}${reportField("Planejamento das refeições", data.cookPlanning)}${reportField("Principais dificuldades", data.cookDifficulties, true)}${reportField("Alimentos com maior aceitação", data.mostAcceptedFoods)}${reportField("Alimentos com maior rejeição", data.mostRejectedFoods)}${reportField("Compras dos alimentos", data.foodPurchases, true)}${reportField("Dificuldade com dietas especiais", data.specialDietDifficulties)}${reportField("Equipamentos ou recursos ausentes", data.missingResources)}</div><p class="report-note"><strong>Fonte:</strong> informações relatadas durante a entrevista, sujeitas à validação por observação da rotina e análise documental.</p>`, 7, totalPages);
+
+  const page8 = reportPage(data, "Seções 08 e 09", "Observação da refeição e prioridades", `<h3>Observação da refeição</h3>${reportTable(["Aspecto observado", "Avaliação", "Observações"], observationRows)}<h3>Demandas priorizadas</h3><div class="report-callout red"><strong>Prioridade imediata</strong>${shown(data.immediatePriority)}</div><div class="report-callout yellow"><strong>Curto prazo · até 30 dias</strong>${shown(data.shortPriority)}</div><div class="report-callout green"><strong>Médio prazo · 31 a 90 dias</strong>${shown(data.mediumPriority)}</div>`, 8, totalPages);
 
   const actionRows = (data.actions || []).filter((action) => action.action).map((action) => [action.action, action.priority, action.responsible, action.deadline, action.status]);
-  const page7 = reportPage(data, "Seções 10 e 11", "Parecer e plano de ação", `<h3>Parecer diagnóstico inicial</h3><p class="report-paragraph">${shown(data.diagnosticOpinion)}</p><h3>Pontos fortes observados</h3><p class="report-paragraph">${shown(data.strengths)}</p><h3>Limitações do levantamento</h3><p class="report-paragraph">${shown(data.limitations, "Não foram registradas limitações específicas.")}</p><h3>Recomendações e próximos passos</h3><p class="report-paragraph">${shown(data.recommendations)}</p>${reportTable(["Ação recomendada", "Prioridade", "Responsável", "Prazo", "Status"], actionRows)}<p class="report-note"><strong>Metodologia e limites:</strong> diagnóstico inicial elaborado a partir de entrevista, informações disponibilizadas pela instituição e observação direta na data da visita. Os achados retratam o momento avaliado e devem ser reavaliados após as adequações. Recomendações clínicas individualizadas dependem de avaliação nutricional própria e integração com a equipe assistencial.</p><div class="signature-block"><div><strong>${shown(data.nutritionist, "Nutricionista responsável")}</strong><span>${shown(data.crn, "CRN")}</span></div><div><strong>${shown(data.institutionManager, "Responsável pela instituição")}</strong><span>Ciência e recebimento</span></div></div>`, 7, totalPages);
+  const page9 = reportPage(data, "Seções 10 e 11", "Parecer e plano de ação", `<h3>Parecer diagnóstico inicial</h3><p class="report-paragraph">${shown(data.diagnosticOpinion)}</p><h3>Pontos fortes observados</h3><p class="report-paragraph">${shown(data.strengths)}</p><h3>Limitações do levantamento</h3><p class="report-paragraph">${shown(data.limitations, "Não foram registradas limitações específicas.")}</p><h3>Recomendações e próximos passos</h3><p class="report-paragraph">${shown(data.recommendations)}</p>${reportTable(["Ação recomendada", "Prioridade", "Responsável", "Prazo", "Status"], actionRows)}<p class="report-note"><strong>Metodologia e limites:</strong> diagnóstico inicial elaborado a partir de entrevista, informações disponibilizadas pela instituição e observação direta na data da visita. Os achados retratam o momento avaliado e devem ser reavaliados após as adequações. Recomendações clínicas individualizadas dependem de avaliação nutricional própria e integração com a equipe assistencial.</p><div class="signature-block"><div><strong>${shown(data.nutritionist, "Nutricionista responsável")}</strong><span>${shown(data.crn, "CRN")}</span></div><div><strong>${shown(data.institutionManager, "Responsável pela instituição")}</strong><span>Ciência e recebimento</span></div></div>`, 9, totalPages);
 
-  return cover + page2 + page3 + page4 + page5 + page6 + page7;
+  const annexPages = annexChunks.map((chunk, chunkIndex) => {
+    const content = chunk.length
+      ? `<div class="annex-report-grid">${chunk.map((annex, index) => `<article class="annex-report-item"><div class="annex-report-heading"><strong>ANX-${String(chunkIndex * 2 + index + 1).padStart(2, "0")} · ${shown(annex.title, "Anexo sem título")}</strong><span>${shown(annex.type)}${annex.date ? ` · ${formatDate(annex.date)}` : ""}</span></div>${annex.dataUrl ? `<img src="${escapeAttribute(annex.dataUrl)}" alt="${escapeAttribute(annex.title || "Registro fotográfico")}" />` : `<div class="annex-file-placeholder"><strong>${shown(annex.fileName, "Arquivo não incorporado")}</strong><span>${annex.fileName ? "Documento relacionado ao relatório" : "Espaço reservado para inclusão do arquivo"}</span></div>`}<p>${shown(annex.description, "Descrição não informada")}</p><small>Referência: ${shown(annex.code, "Não informada")}</small></article>`).join("")}</div>`
+      : `<div class="annex-empty-report"><strong>Área reservada para anexos e evidências complementares</strong><p>Nenhum anexo foi incorporado nesta versão. Quando disponíveis, relacionar e identificar de forma sequencial:</p><ul><li>registros fotográficos autorizados;</li><li>instrumentos de mapeamento e checklists preenchidos;</li><li>documentos e controles consultados;</li><li>planilhas, indicadores e evidências de adequação.</li></ul><p>Cada anexo deverá indicar data, autoria ou fonte, local/processo retratado e relação com o respectivo achado técnico.</p></div>`;
+    return reportPage(data, "Anexos", chunk.length ? `Evidências complementares · bloco ${chunkIndex + 1}` : "Área reservada para evidências", content, 12 + chunkIndex, totalPages);
+  });
+
+  return finalizeReportPages(cover, [page2, page3Overview, page3, page4, page5, page6, findingsPage, page7, page8, page9, ...annexPages], totalPages);
 }
 
 function printCurrentReport() {

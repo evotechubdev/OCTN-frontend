@@ -673,9 +673,9 @@
               <div class="product-icon" aria-hidden="true">ILPI</div>
               <div>
                 <span class="product-tag">Disponível</span>
-                <h3>Diagnóstico Nutricional Inicial — ILPI</h3>
-                <p>Instrumento completo para caracterização institucional, perfil de saúde, rotina alimentar, inspeção da cozinha, prioridades e parecer técnico.</p>
-                <ul><li>11 seções técnicas</li><li>Indicadores automáticos</li><li>Relatório A4 profissional</li></ul>
+                <h3>Relatório Técnico de Diagnóstico — ILPI</h3>
+                <p>Instrumento completo para registrar escopo, metodologia, evidências, achados, orientações, plano de ação e anexos do diagnóstico institucional e nutricional.</p>
+                <ul><li>Rastreabilidade dos achados</li><li>Plano de ação</li><li>Anexos e evidências</li></ul>
               </div>
               <button class="button button-primary" type="button" id="new-ilpi">Novo diagnóstico</button>
             </article>
@@ -692,7 +692,7 @@
           </div>
           <div class="container editor-layout">
             <aside class="form-index" aria-label="Seções do formulário">
-              <strong>Diagnóstico ILPI</strong><div class="progress-track"><span id="form-progress"></span></div><small id="form-progress-text">0% preenchido</small><nav id="form-section-nav"></nav>
+              <strong>Relatório Técnico ILPI</strong><div class="progress-track"><span id="form-progress"></span></div><small id="form-progress-text">0% preenchido</small><nav id="form-section-nav"></nav>
             </aside>
             <form class="ilpi-form" id="ilpi-form">
               <input type="hidden" name="reportId" />
@@ -704,6 +704,11 @@
                   <label><span>Status</span><select name="status"><option>Em elaboração</option><option>Concluído</option><option>Revisão necessária</option></select></label>
                   <label class="span-2"><span>Título complementar</span><input name="subtitle" placeholder="Diagnóstico inicial do serviço de alimentação e nutrição" /></label>
                   <label><span>Local de emissão</span><input name="issueCity" placeholder="Salvador/BA" /></label>
+                  <label><span>Solicitante / contratante</span><input name="requestedBy" /></label>
+                  <label class="span-2"><span>Finalidade da contratação</span><textarea name="requestPurpose" rows="3" placeholder="Descreva por que o diagnóstico foi solicitado e qual decisão deverá apoiar."></textarea></label>
+                  <label class="span-3"><span>Escopo da avaliação</span><textarea name="assessmentScope" rows="4" placeholder="Áreas, processos, documentos e limites incluídos na visita."></textarea></label>
+                  <label class="span-3"><span>Metodologia aplicada</span><textarea name="methodology" rows="4" placeholder="Entrevistas, observação direta, análise documental, registros e instrumentos utilizados."></textarea></label>
+                  <label class="span-3"><span>Documentos e registros consultados</span><textarea name="documentsReviewed" rows="3" placeholder="Liste cardápios, POPs, controles, prontuários, licenças ou registre que não foram disponibilizados."></textarea></label>
                 </div>
               </section>
 
@@ -765,6 +770,11 @@
                 <div class="responsive-table wide-table"><table class="input-table assessment-table"><thead><tr><th>Item avaliado</th><th>Avaliação</th><th>Observações / evidência</th></tr></thead><tbody id="kitchen-rows"></tbody></table></div>
               </section>
 
+              <section class="form-section" id="section-achados" data-section-title="Achados técnicos">
+                <div class="form-section-heading with-action"><div><span>Registro técnico</span><h2>Achados, evidências e orientação</h2><p>Cada conclusão relevante deve estar vinculada ao que foi observado ou informado durante a avaliação.</p></div><button class="small-button" type="button" id="add-finding">+ Adicionar achado</button></div>
+                <div class="responsive-table wide-table"><table class="input-table findings-table"><thead><tr><th>Área</th><th>Classificação</th><th>Achado</th><th>Evidência / fonte</th><th>Referência</th><th>Orientação</th><th>Prioridade</th><th></th></tr></thead><tbody id="finding-rows"></tbody></table></div>
+              </section>
+
               <section class="form-section" id="section-entrevista" data-section-title="Entrevista">
                 <div class="form-section-heading"><span>07</span><h2>Entrevista com a cozinheira</h2></div>
                 <div class="form-grid two">
@@ -803,6 +813,12 @@
                 <div class="form-section-heading with-action"><div><span>11</span><h2>Recomendações e próximos passos</h2><p>Estruture ações verificáveis para facilitar o acompanhamento.</p></div><button class="small-button" type="button" id="add-action">+ Adicionar ação</button></div>
                 <label><span>Orientações gerais</span><textarea name="recommendations" rows="6"></textarea></label>
                 <div class="responsive-table wide-table"><table class="input-table"><thead><tr><th>Ação recomendada</th><th>Prioridade</th><th>Responsável</th><th>Prazo</th><th>Status</th><th></th></tr></thead><tbody id="action-rows"></tbody></table></div>
+              </section>
+
+              <section class="form-section" id="section-anexos" data-section-title="Anexos">
+                <div class="form-section-heading with-action"><div><span>Evidências complementares</span><h2>Anexos do relatório</h2><p>Área reservada para fotografias autorizadas, instrumentos de mapeamento, documentos consultados e outros registros. Imagens serão incorporadas ao PDF; outros arquivos serão relacionados pelo nome.</p></div><button class="small-button" type="button" id="add-annex">+ Adicionar anexo</button></div>
+                <div class="annex-list" id="annex-rows"></div>
+                <p class="storage-guidance">Por segurança, use imagens pertinentes, sem exposição desnecessária de residentes. Arquivos permanecem armazenados somente neste navegador.</p>
               </section>
 
               <section class="form-section final-review" id="section-revisao" data-section-title="Revisão final">
